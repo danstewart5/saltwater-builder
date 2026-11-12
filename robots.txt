@@ -1,0 +1,6 @@
+# PRE-LAUNCH: blocks search engines. At launch replace with:
+# User-agent: *
+# Allow: /
+# Sitemap: https://www.saltwaterbuildingco.ca/sitemap.xml
+User-agent: *
+Disallow: /

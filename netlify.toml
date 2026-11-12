@@ -1,0 +1,29 @@
+# Saltwater Building Co website. Plain static site: no build step, publish this folder as-is.
+[build]
+  publish = "."
+  command = "echo 'No build step'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    # PRE-LAUNCH: delete this line at launch so Google can list the site.
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Short links
+[[redirects]]
+  from = "/quote"
+  to = "/#quote"
+  status = 301
+[[redirects]]
+  from = "/contact"
+  to = "/#quote"
+  status = 301

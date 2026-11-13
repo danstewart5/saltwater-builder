@@ -11,7 +11,12 @@ thanks.html    Shown after the quote form is sent
 netlify.toml   Headers, short links (/quote, /contact), pre-launch noindex
 robots.txt, sitemap.xml, favicon.svg
 images/        Job photos go here
+admin/photos/  Owner photo page (sign in, upload from the phone, pick spots, gallery, captions)
+js/site-photos.js  Shows the owner's photos in the data-photo-slot spots and the #photos gallery
 ```
+
+Owner photos: `admin/photos/` and `js/site-photos.js` come from `danstewart5/Sitewalk-leads` `site-kit/` (copy, don't
+edit here). With nothing uploaded the page is unchanged; the #photos gallery stays hidden until it has photos.
 
 ## Still needed from Chris
 

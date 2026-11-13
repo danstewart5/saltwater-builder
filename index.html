@@ -322,7 +322,7 @@ footer a{color:var(--band-ink)}
       </div>
       <p class="coords">48.94° N, 125.55° W · Based in Ucluelet, BC</p>
     </div>
-    <figure class="slot" aria-label="Photo placeholder">
+    <figure class="slot" aria-label="Photo placeholder" data-photo-slot="hero">
       <figcaption><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="10" rx="1" fill="none" stroke="currentColor"/><circle cx="8" cy="8.5" r="2.6" fill="none" stroke="currentColor"/></svg>Best finished home, exterior at dusk</figcaption>
     </figure>
   </div>
@@ -340,7 +340,7 @@ footer a{color:var(--band-ink)}
 <section class="feature section" id="featured" aria-labelledby="feat-h">
   <div class="wrap feature-grid">
     <div class="stack" style="gap:16px">
-      <figure class="slot" aria-label="Photo placeholder">
+      <figure class="slot" aria-label="Photo placeholder" data-photo-slot="featured">
         <figcaption><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="10" rx="1" fill="none" stroke="currentColor"/><circle cx="8" cy="8.5" r="2.6" fill="none" stroke="currentColor"/></svg>Rising Tide site, wide shot of the build</figcaption>
       </figure>
     </div>
@@ -375,10 +375,10 @@ footer a{color:var(--band-ink)}
     <p class="lead" style="margin-top:16px">Scroll to watch one of our builds go from bare lot to finished home. <span class="ask">Chris's photos, 4 stages</span></p>
     <div class="story-track" data-story style="--n:4">
       <div class="story-stage">
-        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder"><figcaption>Stage 1 photo: cleared lot, forms set</figcaption></div><p class="story-cap"><b>Foundation</b>Lot cleared, drainage in, foundation poured for a wet site.</p></figure>
-        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder"><figcaption>Stage 2 photo: framing up</figcaption></div><p class="story-cap"><b>Framing</b>Walls and roof framed and braced for coastal wind.</p></figure>
-        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder"><figcaption>Stage 3 photo: wrapped, windows in</figcaption></div><p class="story-cap"><b>Weather-tight</b>Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></figure>
-        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder"><figcaption>Stage 4 photo: finished home</figcaption></div><p class="story-cap"><b>Finished</b>Keys handed over. Built to last on the wild side of the coast.</p></figure>
+        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder" data-photo-slot="stage-1"><figcaption>Stage 1 photo: cleared lot, forms set</figcaption></div><p class="story-cap"><b>Foundation</b>Lot cleared, drainage in, foundation poured for a wet site.</p></figure>
+        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder" data-photo-slot="stage-2"><figcaption>Stage 2 photo: framing up</figcaption></div><p class="story-cap"><b>Framing</b>Walls and roof framed and braced for coastal wind.</p></figure>
+        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder" data-photo-slot="stage-3"><figcaption>Stage 3 photo: wrapped, windows in</figcaption></div><p class="story-cap"><b>Weather-tight</b>Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></figure>
+        <figure class="story-frame"><div class="slot" role="img" aria-label="Photo placeholder" data-photo-slot="stage-4"><figcaption>Stage 4 photo: finished home</figcaption></div><p class="story-cap"><b>Finished</b>Keys handed over. Built to last on the wild side of the coast.</p></figure>
         <p class="story-hint" aria-hidden="true">Keep scrolling</p>
       </div>
     </div>
@@ -429,22 +429,32 @@ footer a{color:var(--band-ink)}
     </div>
     <div class="proj-grid">
       <a class="proj" href="#quote" data-k="home">
-        <figure class="slot" aria-label="Photo placeholder"><figcaption>1406 Imperial, front elevation</figcaption></figure>
+        <figure class="slot" aria-label="Photo placeholder" data-photo-slot="project-1"><figcaption>1406 Imperial, front elevation</figcaption></figure>
         <div class="proj-meta"><h3>1406 Imperial</h3><span>Ucluelet · Custom home</span></div>
       </a>
       <a class="proj" href="#quote" data-k="home">
-        <figure class="slot" aria-label="Photo placeholder"><figcaption>Rainforest Lane, through the trees</figcaption></figure>
+        <figure class="slot" aria-label="Photo placeholder" data-photo-slot="project-2"><figcaption>Rainforest Lane, through the trees</figcaption></figure>
         <div class="proj-meta"><h3>1769 Rainforest Lane</h3><span>Ucluelet · <span class="ask">Type?</span></span></div>
       </a>
       <a class="proj" href="#quote" data-k="home">
-        <figure class="slot" aria-label="Photo placeholder"><figcaption>Ucluelet Modern, living room and windows</figcaption></figure>
+        <figure class="slot" aria-label="Photo placeholder" data-photo-slot="project-3"><figcaption>Ucluelet Modern, living room and windows</figcaption></figure>
         <div class="proj-meta"><h3>Ucluelet Modern House</h3><span>Ucluelet · Custom home</span></div>
       </a>
       <a class="proj" href="#quote" data-k="reno">
-        <figure class="slot" aria-label="Photo placeholder"><figcaption>Gibsons Landing project</figcaption></figure>
+        <figure class="slot" aria-label="Photo placeholder" data-photo-slot="project-4"><figcaption>Gibsons Landing project</figcaption></figure>
         <div class="proj-meta"><h3>Gibsons Landing</h3><span>Sunshine Coast · <span class="ask">Type?</span></span></div>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- Owner photos (js/site-photos.js): shows only once the owner adds gallery photos at /admin/photos/ -->
+<section class="section" id="photos" aria-labelledby="photos-h" data-photo-section hidden>
+  <div class="wrap">
+    <p class="eyebrow">Photos</p>
+    <h2 id="photos-h" style="margin-top:14px">On site.</h2>
+    <p class="lead" style="margin:12px 0 22px">Tap a photo to see it full size.</p>
+    <div class="sp-gallery" data-photo-gallery data-photo-lightbox></div>
   </div>
 </section>
 
@@ -583,7 +593,7 @@ footer a{color:var(--band-ink)}
 <footer>
   <div class="wrap">
     <div style="display:grid;gap:8px"><b>Saltwater Building Co</b><span>Licensed home builder · Ucluelet, BC · Licence #52492</span></div>
-    <div style="display:grid;gap:8px"><span>604-848-4040</span><span>Website by <a href="https://keenfalcon.ca">Keen Falcon</a></span></div>
+    <div style="display:grid;gap:8px"><span>604-848-4040</span><span>Website by <a href="https://keenfalcon.ca">Keen Falcon</a> · <a href="/admin/photos/" rel="nofollow">Owner login</a></span></div>
   </div>
 </footer>
 
@@ -649,5 +659,6 @@ document.querySelectorAll('.chip').forEach(function(b){
 });
 
 </script>
+<script src="/js/site-photos.js?v=1" data-site="saltwater-builder" defer></script>
 </body>
 </html>

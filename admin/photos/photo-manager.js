@@ -84,7 +84,7 @@
           }, 'image/jpeg', 0.85);
         }, 'image/webp', 0.82);
       };
-      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('That file isn’t a photo this phone can open (try a JPEG or PNG)')); };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('That file isn\u2019t a photo this phone can open (try a JPEG or PNG)')); };
       img.src = url;
     });
   }
@@ -102,7 +102,7 @@
     var upList = el('div', { class: 'pm-up' });
     var grid = el('div', { class: 'pm-grid' });
     var file = el('input', { type: 'file', accept: 'image/*', multiple: true, hidden: true });
-    var addBtn = el('button', { type: 'button', class: 'pm-add', onclick: function () { file.click(); } }, '📷', 'Add photos');
+    var addBtn = el('button', { type: 'button', class: 'pm-add', onclick: function () { file.click(); } }, '\ud83d\udcf7', 'Add photos');
     root.append(
       el('div', { class: 'pm-bar' }, addBtn, file),
       el('p', { class: 'pm-help' }, 'Pick one or many from your camera roll. Then, for each photo: choose the spot on the website it fills (or none), whether it shows in the photo gallery, and a short caption. Changes show on the website straight away (refresh the site to see them).'),
@@ -112,7 +112,7 @@
     function slotLabel(name) { var s = slots.filter(function (x) { return x.slot === name; })[0]; return s ? s.label : name; }
 
     function load() {
-      say('Loading…');
+      say('Loading\u2026');
       return Promise.all([
         sb.from('site_slots').select('slot,label,sort').eq('business_id', biz.id).order('sort'),
         sb.from('site_photos').select('*').eq('business_id', biz.id).order('sort').order('created_at', { ascending: false }),
@@ -122,12 +122,12 @@
         photos = r[1].data || [];
         say(photos.length ? photos.length + ' photo' + (photos.length === 1 ? '' : 's') : '');
         paint();
-      }).catch(function (e) { say('Couldn’t load photos: ' + (e.message || e), true); });
+      }).catch(function (e) { say('Couldn\u2019t load photos: ' + (e.message || e), true); });
     }
 
     function paint() {
       if (!photos.length) {
-        grid.replaceChildren(el('div', { class: 'pm-empty' }, 'No photos yet. Tap “Add photos” to upload from your phone. Until then the website keeps its current pictures.'));
+        grid.replaceChildren(el('div', { class: 'pm-empty' }, 'No photos yet. Tap \u201cAdd photos\u201d to upload from your phone. Until then the website keeps its current pictures.'));
         return;
       }
       grid.replaceChildren.apply(grid, photos.map(card));
@@ -152,7 +152,7 @@
       gal.addEventListener('change', function () { save(p, { in_gallery: gal.checked }, gal.checked ? 'Shows in the gallery' : 'Hidden from the gallery'); });
 
       var sel = el('select', { 'aria-label': 'Spot on the website' },
-        el('option', { value: '' }, '— Not in a spot (gallery only) —'),
+        el('option', { value: '' }, '\u2014 Not in a spot (gallery only) \u2014'),
         slots.map(function (s) {
           var other = photos.filter(function (o) { return o.slot === s.slot && o.id !== p.id; })[0];
           return el('option', { value: s.slot, selected: p.slot === s.slot }, s.label + (other ? '  (has a photo: will swap)' : ''));
@@ -168,13 +168,13 @@
         }).then(function () { sel.disabled = false; paint(); });
       });
 
-      var up = el('button', { type: 'button', 'aria-label': 'Move up', disabled: i === 0, onclick: function () { move(i, -1); } }, '↑ Up');
-      var down = el('button', { type: 'button', 'aria-label': 'Move down', disabled: i === photos.length - 1, onclick: function () { move(i, 1); } }, '↓ Down');
-      var del = el('button', { type: 'button', class: 'pm-del', onclick: function () { remove(p); } }, '🗑 Delete');
+      var up = el('button', { type: 'button', 'aria-label': 'Move up', disabled: i === 0, onclick: function () { move(i, -1); } }, '\u2191 Up');
+      var down = el('button', { type: 'button', 'aria-label': 'Move down', disabled: i === photos.length - 1, onclick: function () { move(i, 1); } }, '\u2193 Down');
+      var del = el('button', { type: 'button', class: 'pm-del', onclick: function () { remove(p); } }, '\ud83d\uddd1 Delete');
 
       return el('div', { class: 'pm-card' },
         el('div', { class: 'pm-thumb' }, el('img', { src: p.url, alt: p.caption || '', loading: 'lazy' }),
-          p.slot ? el('span', { class: 'pm-badge' }, '📍 ' + slotLabel(p.slot)) : null),
+          p.slot ? el('span', { class: 'pm-badge' }, '\ud83d\udccd ' + slotLabel(p.slot)) : null),
         el('div', { class: 'pm-body' },
           slots.length ? el('label', {}, 'Spot on the website', sel) : null,
           el('label', { class: 'pm-toggle' }, gal, 'Show in photo gallery'),
@@ -194,8 +194,8 @@
     }
 
     function remove(p) {
-      if (!window.confirm('Delete this photo from the website? This can’t be undone.')) return;
-      say('Deleting…');
+      if (!window.confirm('Delete this photo from the website? This can\u2019t be undone.')) return;
+      say('Deleting\u2026');
       sb.from('site_photos').delete().eq('id', p.id).then(function (r) {
         if (r.error) { say('Not deleted: ' + r.error.message, true); return; }
         sb.storage.from(BUCKET).remove([p.path]).catch(function () {});
@@ -211,14 +211,14 @@
       addBtn.disabled = true;
       var top = photos.length ? Math.min.apply(null, photos.map(function (p) { return p.sort; })) : 0;
       var done = 0, failed = 0;
-      var rows = files.map(function (f) { var r = el('div', {}, '⏳ ' + (f.name || 'photo')); upList.append(r); return r; });
+      var rows = files.map(function (f) { var r = el('div', {}, '\u23f3 ' + (f.name || 'photo')); upList.append(r); return r; });
       // one at a time: kinder to a phone's memory and a weak signal
       files.reduce(function (chain, f, n) {
         return chain.then(function () {
-          rows[n].textContent = '⏳ Shrinking ' + (f.name || 'photo') + '…';
+          rows[n].textContent = '\u23f3 Shrinking ' + (f.name || 'photo') + '\u2026';
           return shrink(f).then(function (s) {
             var path = biz.slug + '/' + rid() + '.' + s.ext;
-            rows[n].textContent = '⬆️ Uploading ' + (f.name || 'photo') + '…';
+            rows[n].textContent = '\u2b06\ufe0f Uploading ' + (f.name || 'photo') + '\u2026';
             return sb.storage.from(BUCKET).upload(path, s.blob, { contentType: s.type, cacheControl: '31536000', upsert: false }).then(function (u) {
               if (u.error) throw u.error;
               var url = sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
@@ -227,16 +227,16 @@
             }).then(function (ins) {
               if (ins.error) { sb.storage.from(BUCKET).remove([path]).catch(function () {}); throw ins.error; }
               photos.push(ins.data); done++;
-              rows[n].textContent = '✅ ' + (f.name || 'photo');
+              rows[n].textContent = '\u2705 ' + (f.name || 'photo');
             });
-          }).catch(function (e) { failed++; rows[n].textContent = '⚠️ ' + (f.name || 'photo') + ': ' + (e.message || e); });
+          }).catch(function (e) { failed++; rows[n].textContent = '\u26a0\ufe0f ' + (f.name || 'photo') + ': ' + (e.message || e); });
         });
       }, Promise.resolve()).then(function () {
         addBtn.disabled = false;
         photos.sort(function (a, b) { return a.sort - b.sort || String(b.created_at).localeCompare(String(a.created_at)); });
         paint();
-        say(done + ' added' + (failed ? ', ' + failed + ' didn’t work' : '') + '. Now pick a spot or caption for each.', !!failed);
-        setTimeout(function () { rows.forEach(function (r) { if (r.textContent.charAt(0) === '✅') r.remove(); }); }, 4000);
+        say(done + ' added' + (failed ? ', ' + failed + ' didn\u2019t work' : '') + '. Now pick a spot or caption for each.', !!failed);
+        setTimeout(function () { rows.forEach(function (r) { if (r.textContent.charAt(0) === '\u2705') r.remove(); }); }, 4000);
       });
     });
 

@@ -71,8 +71,8 @@
     function build() {
       dlg = d.createElement('div');
       dlg.className = 'sp-lb'; dlg.setAttribute('role', 'dialog'); dlg.setAttribute('aria-modal', 'true'); dlg.setAttribute('aria-label', 'Photo');
-      dlg.innerHTML = '<figure><img alt=""><figcaption></figcaption></figure><button type="button" class="sp-x" aria-label="Close">×</button>' +
-        '<button type="button" class="sp-prev" aria-label="Previous photo">‹</button><button type="button" class="sp-next" aria-label="Next photo">›</button>';
+      dlg.innerHTML = '<figure><img alt=""><figcaption></figcaption></figure><button type="button" class="sp-x" aria-label="Close">\u00d7</button>' +
+        '<button type="button" class="sp-prev" aria-label="Previous photo">\u2039</button><button type="button" class="sp-next" aria-label="Next photo">\u203a</button>';
       d.body.appendChild(dlg);
       img = dlg.querySelector('img'); cap = dlg.querySelector('figcaption');
       dlg.querySelector('.sp-x').onclick = close;

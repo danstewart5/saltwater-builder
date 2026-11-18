@@ -59,6 +59,18 @@
   .hero .wordmark{position:absolute;left:0;right:0;bottom:0;z-index:2}
   .wordmark h1{color:#fff;text-transform:uppercase;font-weight:400;line-height:.8;letter-spacing:-.015em;white-space:nowrap;font-size:22.5vw;padding:0 0 calc(var(--pad) * .95);margin-left:-.04em}
 
+  .hero{height:88vh;height:88svh;min-height:520px}
+  .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.05) 45%,rgba(0,0,0,.3))}
+  .hero::after{z-index:1}
+  .hook{position:absolute;left:0;right:0;top:clamp(90px,16vh,170px);z-index:2;color:#fff}
+  .hook-h{font-size:clamp(34px,6vw,76px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;max-width:11ch}
+  .hook-s{margin-top:16px;font-size:clamp(15.5px,1.6vw,20px);line-height:1.3;max-width:34em;opacity:.92}
+  .hook-btn{display:inline-block;margin-top:22px;padding:14px 22px;background:#fff;color:var(--ink);font-weight:500;font-size:15px;letter-spacing:.01em}
+  .hook-btn:hover{background:var(--bg)}
+  .vid-tag{position:absolute;right:12px;top:64px;z-index:3;background:#ffd84d;color:#1c1c1c;font-size:12px;padding:4px 8px;font-weight:500}
+  @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
+
   /* ---------- type scale ---------- */
   .statement{font-size:33px;line-height:1.24;letter-spacing:-.012em}
   .statement .g,.g{color:var(--grey)}
@@ -230,11 +242,15 @@
 
   <!-- 1. HERO -->
   <section class="hero" id="hero">
-    <img class="slide on" src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_1600,h_1600,q_85,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Bozman Cabin, a custom home by Saltwater Building Co" fetchpriority="high">
-    <img class="slide" data-src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_1600,h_1600,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial, Ucluelet">
-    <img class="slide" data-src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_1600,h_1600,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="1769 Rainforest Lane">
-    <img class="slide" data-src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_1600,h_1600,q_85,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="302 Reef">
-    <img class="slide" data-src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_1600,h_1600,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project">
+    <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero-waves-poster.jpg" aria-hidden="true">
+      <source src="hero-waves.mp4" type="video/mp4">
+    </video>
+    <span class="vid-tag">Video placeholder: Saltwater's own drone footage goes here</span>
+    <div class="hook"><div class="wrap">
+      <p class="hook-h">Built for the Wild West Coast</p>
+      <p class="hook-s">A Ucluelet general contractor building custom homes, renovations and ADUs with modern building science, from Tofino to remote coastal BC. You'll always know where your build stands.</p>
+      <a class="hook-btn" href="#contact">Start Your Project</a>
+    </div></div>
     <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>
   </section>
 
@@ -420,19 +436,6 @@
   var hdr=document.getElementById('hdr'),hero=document.getElementById('hero');
   function onScroll(){hdr.classList.toggle('solid',window.scrollY>hero.offsetHeight-hdr.offsetHeight)}
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
-
-  // Hero slideshow: first photo loads right away, the rest after the page has loaded
-  var slides=hero.querySelectorAll('.slide'),cur=0,rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,sd=navigator.connection&&navigator.connection.saveData;
-  if(!rm&&!sd&&slides.length>1){
-    window.addEventListener('load',function(){
-      slides.forEach(function(im){if(im.dataset.src){im.src=im.dataset.src}});
-      setInterval(function(){
-        var nx=(cur+1)%slides.length;
-        if(!slides[nx].complete||!slides[nx].naturalWidth) return;
-        slides[cur].classList.remove('on');slides[nx].classList.add('on');cur=nx;
-      },2500);
-    });
-  }
 
   // Menu
   var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');

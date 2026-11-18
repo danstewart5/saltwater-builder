@@ -72,6 +72,41 @@
   .hero .wordmark{position:relative;z-index:2}
   @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
 
+
+  /* ---------- added: trust strip, Rising Tide, stages ---------- */
+  .s-trust{border-bottom:1px solid rgba(143,135,129,.35)}
+  .s-trust .row{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;padding-block:22px}
+  .s-trust .k{font-size:12px;color:var(--grey);letter-spacing:.02em;text-transform:uppercase}
+  .s-trust .v{margin-top:4px;font-size:16px;line-height:1.25}
+  .s-trust a.v{display:block;text-decoration:underline;text-underline-offset:3px}
+  .s-tide{padding-top:110px}
+  .s-tide .eyebrow,.s-stages .eyebrow{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
+  .s-tide h2{margin-top:10px}
+  .s-tide .grid > div:last-child{margin-top:24px}
+  @media (min-width:900px){.s-tide .grid > div:last-child{margin-top:0}}
+  .s-tide .ph{margin-top:28px;aspect-ratio:16/10}
+  .s-tide .facts{margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+  .s-tide .facts dt{font-size:12px;color:var(--grey);text-transform:uppercase;letter-spacing:.02em}
+  .s-tide .facts dd{margin:3px 0 0;font-size:15.5px}
+  .s-tide .link{margin-top:30px}
+  .s-stages{padding-top:115px}
+  .s-stages h2{margin-top:10px}
+  .s-stages .intro{margin-top:14px;color:var(--grey);max-width:34em}
+  .stages{margin-top:30px;display:grid;grid-template-columns:1fr;gap:34px}
+  .stage .ph{aspect-ratio:4/3}
+  .stage .n{margin-top:12px;font-size:12px;color:var(--grey);letter-spacing:.04em}
+  .stage .t{margin-top:2px;font-size:20px;letter-spacing:-.005em}
+  .stage .d{margin-top:4px;font-size:15.5px;line-height:1.29;color:#4a4642}
+  @media (min-width:900px){
+    .s-trust .row{grid-template-columns:repeat(4,1fr)}
+    .s-tide{padding-top:170px}
+    .s-tide .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+    .s-tide .ph{margin-top:0}
+    .s-tide .facts{margin-top:30px}
+    .s-stages{padding-top:170px}
+    .stages{grid-template-columns:repeat(4,1fr);gap:20px}
+  }
+
   /* ---------- type scale ---------- */
   .statement{font-size:33px;line-height:1.24;letter-spacing:-.012em}
   .statement .g,.g{color:var(--grey)}
@@ -255,6 +290,16 @@
     <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>
   </section>
 
+  <!-- ADDED: TRUST STRIP -->
+  <section class="s-trust">
+    <div class="wrap row">
+      <div><p class="k">Licensed builder</p><p class="v">BC licence #52492</p></div>
+      <div><p class="k">Home warranty</p><p class="v">2-5-10 coverage</p></div>
+      <div><p class="k">Where we build</p><p class="v">Ucluelet · Tofino · Whistler · remote coast</p></div>
+      <div><p class="k">Call or text</p><a class="v" href="tel:+16048484040">604-848-4040</a></div>
+    </div>
+  </section>
+
   <!-- 3. ABOUT -->
   <section class="s-about" id="about">
     <div class="wrap grid">
@@ -274,6 +319,25 @@
         <div class="ph ph-empty" role="img" aria-label="Owner photo placeholder"><span>Owner photo</span></div>
         <figcaption class="cap">Chris Bozman, Owner</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <!-- ADDED: RISING TIDE FEATURE -->
+  <section class="s-tide" id="rising-tide">
+    <div class="wrap grid">
+      <div class="ph ph-empty" role="img" aria-label="Rising Tide site photo placeholder"><span>Rising Tide site photo</span></div>
+      <div>
+        <p class="eyebrow">Now building</p>
+        <h2 class="h-md">Rising Tide Boat Works</h2>
+        <p class="body" style="margin-top:14px">An electric boat building hub on the site of Ucluelet&rsquo;s Second World War seaplane base. Designed by Michael Green Architecture. Built by Saltwater.</p>
+        <dl class="facts">
+          <div><dt>Status</dt><dd>Under construction</dd></div>
+          <div><dt>Timeline</dt><dd>About two years</dd></div>
+          <div><dt>Design</dt><dd>Michael Green Architecture</dd></div>
+          <div><dt>Type</dt><dd>Commercial / industrial</dd></div>
+        </dl>
+        <a class="link" href="#contact"><span class="arr"></span><span class="label">Talk to us about a commercial build</span></a>
+      </div>
     </div>
   </section>
 
@@ -341,6 +405,21 @@
   <section class="s-photos">
     <div class="wrap"><div class="land"><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project" loading="lazy"></div></div>
     <div class="bleed"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_1400,h_1400,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
+  </section>
+
+  <!-- ADDED: STAGE BY STAGE -->
+  <section class="s-stages">
+    <div class="wrap">
+      <p class="eyebrow">Start to finish</p>
+      <h2 class="h-md">A west coast home, stage by stage.</h2>
+      <p class="body intro">One of our builds, from bare lot to finished home.</p>
+      <div class="stages">
+        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 1 photo placeholder"><span>Stage 1 photo</span></div><p class="n">01</p><p class="t">Foundation</p><p class="d">Lot cleared, drainage in, foundation poured for a wet site.</p></div>
+        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 2 photo placeholder"><span>Stage 2 photo</span></div><p class="n">02</p><p class="t">Framing</p><p class="d">Walls and roof framed and braced for coastal wind.</p></div>
+        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 3 photo placeholder"><span>Stage 3 photo</span></div><p class="n">03</p><p class="t">Weather-tight</p><p class="d">Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div>
+        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 4 photo placeholder"><span>Stage 4 photo</span></div><p class="n">04</p><p class="t">Finished</p><p class="d">Keys handed over. Built to last on the wild side of the coast.</p></div>
+      </div>
+    </div>
   </section>
 
   <!-- 9. APPROACH -->

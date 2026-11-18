@@ -21,9 +21,9 @@
 # Short links
 [[redirects]]
   from = "/quote"
-  to = "/#quote"
+  to = "/#contact"
   status = 301
 [[redirects]]
   from = "/contact"
-  to = "/#quote"
+  to = "/#contact"
   status = 301

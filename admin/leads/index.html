@@ -31,6 +31,12 @@
   .who { font-size: 13px; color: var(--muted); max-width: 40%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @media (max-width: 430px) { .who { display: none; } }
   main { max-width: 760px; margin: 0 auto; padding: 12px 14px 60px; }
+  .a2hs { display: flex; align-items: center; gap: 12px; padding: 12px; margin: 0 0 14px; border-radius: 16px; background: #e8f4f6; border: 1px solid #b9dde2; }
+  .a2hs[hidden] { display: none; }
+  .a2hs img { border-radius: 12px; flex: none; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+  .a2hs-txt { flex: 1; display: grid; gap: 2px; font-size: 14px; line-height: 1.35; }
+  .a2hs-txt b { font-size: 16px; }
+  .a2hs-x { border: 0; background: transparent; font-size: 26px; min-height: 44px; padding: 0 6px; color: var(--muted); }
   button, .btn { font: inherit; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 0 14px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
   .btn.primary, button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .btn.small, button.small { min-height: 36px; padding: 0 10px; font-size: 14px; }
@@ -92,6 +98,12 @@
   </div>
 </header>
 <main>
+  <div class="a2hs" id="a2hs" hidden>
+    <img src="/icon-192.png" alt="" width="52" height="52">
+    <div class="a2hs-txt"><b>Put Saltwater on your home screen</b><span id="a2hs-how"></span></div>
+    <button class="primary" id="a2hs-add" type="button" hidden>Add</button>
+    <button class="a2hs-x" id="a2hs-x" type="button" aria-label="Not now">×</button>
+  </div>
   <p class="empty" id="loading">Loading…</p>
 
   <!-- Sign in -->
@@ -429,6 +441,40 @@
   }
 
   start();
+})();
+</script>
+<script>
+// "Put Saltwater on your home screen": one tap on Android (Chrome's install prompt), steps on iPhone (Apple allows no button).
+(function () {
+  var box = document.getElementById('a2hs'), how = document.getElementById('a2hs-how'), add = document.getElementById('a2hs-add');
+  var KEY = 'a2hsHidden';
+  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
+  var hidden = false; try { hidden = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (standalone || hidden) return;
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(ua);
+  if (!ios && !android) return;
+  var deferred = null;
+  if (ios) how.textContent = /CriOS|FxiOS|EdgiOS/.test(ua)
+    ? 'Tap the Share button (square with an arrow), then \u201cAdd to Home Screen\u201d.'
+    : 'Tap the Share button (square with an arrow) at the bottom, then \u201cAdd to Home Screen\u201d.';
+  else how.textContent = 'Tap the \u22ee menu at the top right, then \u201cAdd to Home screen\u201d.';
+  box.hidden = false;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e;
+    how.textContent = 'Opens straight to your leads, with the Saltwater logo.';
+    add.hidden = false;
+  });
+  add.addEventListener('click', function () {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function (c) { if (c && c.outcome === 'accepted') box.hidden = true; deferred = null; add.hidden = true; });
+  });
+  window.addEventListener('appinstalled', function () { box.hidden = true; });
+  document.getElementById('a2hs-x').addEventListener('click', function () {
+    box.hidden = true; try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  });
 })();
 </script>
 </body>

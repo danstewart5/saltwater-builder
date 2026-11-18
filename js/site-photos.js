@@ -13,6 +13,9 @@
        <template data-project-template>  data-photo-placeholder are removed once projects exist. Template fills
                                          {title} {kind} {src} (cover) {count}; tapping a card that has photos opens
                                          them all (a card with only a cover keeps its own link).
+   Videos:
+     <video data-video-slot="hero-video"> the owner's video (shrunk on upload) replaces this one, with its still as poster
+     <section data-video-poster="hero-video"> gets the owner's video still as its background (for when no video plays)
    Words (script tag has data-texts):
      <span data-text="quote-text">        replaced with the owner's words for that spot; empty = left as it is
    Nothing uploaded, or the database can't be reached: the page stays exactly as it was.
@@ -212,6 +215,20 @@
     });
   }
 
+  function applyVideos(rows) {
+    rows.forEach(function (p) {
+      if (!p.slot) return;
+      var name = p.slot.replace(/[^a-z0-9-]/g, '');
+      if (okUrl(p.poster_url)) q('[data-video-poster="' + name + '"]').forEach(function (n) { n.style.backgroundImage = 'url("' + p.poster_url + '")'; });
+      q('video[data-video-slot="' + name + '"]').forEach(function (v) {
+        if (okUrl(p.poster_url)) v.poster = p.poster_url;
+        q('source', v).forEach(function (s) { s.remove(); });
+        v.src = p.url; v.muted = true;
+        try { v.load(); var pl = v.play(); if (pl && pl.catch) pl.catch(function () {}); } catch (e) {}
+      });
+    });
+  }
+
   function applyTexts(texts) {
     var map = {};
     (texts || []).forEach(function (t) { if (t.value && String(t.value).trim()) map[t.key] = String(t.value).trim(); });
@@ -231,13 +248,15 @@
   var s = encodeURIComponent(site);
   var wantProjects = me.hasAttribute('data-projects'), wantTexts = me.hasAttribute('data-texts');
   Promise.all([
-    get('site_photos?select=url,caption,slot,in_gallery,sort,width,height' + (wantProjects ? ',project_id' : '') +
+    get('site_photos?select=url,caption,slot,in_gallery,sort,width,height,media,poster_url' + (wantProjects ? ',project_id' : '') +
       '&site=eq.' + s + '&order=sort.asc,created_at.desc&limit=500').catch(function () { return null; }),
     wantProjects ? get('site_projects?select=id,title,kind,cover_url&site=eq.' + s + '&visible=eq.true&order=sort.asc,created_at.asc').catch(function () { return []; }) : [],
     wantTexts ? get('site_texts?select=key,value&site=eq.' + s).catch(function () { return []; }) : [],
   ]).then(function (r) {
     var run = function () {
-      var rows = (r[0] || []).filter(function (p) { return okUrl(p.url); });
+      var all = (r[0] || []).filter(function (p) { return okUrl(p.url); });
+      var rows = all.filter(function (p) { return p.media !== 'video'; });
+      try { applyVideos(all.filter(function (p) { return p.media === 'video'; })); } catch (e) { /* keep the page as it was */ }
       // photos that belong to a project show in that project, not in the general gallery
       apply(rows.map(function (p) { return p.project_id ? Object.assign({}, p, { in_gallery: false }) : p; }));
       try { applyProjects(r[1], rows); } catch (e) { /* keep the page as it was */ }

@@ -59,22 +59,14 @@
   .hero .wordmark{position:absolute;left:0;right:0;bottom:0;z-index:2}
   .wordmark h1{color:#fff;text-transform:uppercase;font-weight:400;line-height:.8;letter-spacing:-.015em;white-space:nowrap;font-size:22.5vw;padding:0 0 calc(var(--pad) * .95);margin-left:-.04em}
 
-  .hero{height:auto;min-height:88vh;min-height:88svh;display:flex;flex-direction:column;justify-content:space-between}
   .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.15) 50%,rgba(0,0,0,.35))}
-  .hero::after{z-index:1}
-  .hook{position:relative;z-index:2;color:#fff;padding-top:76px;padding-bottom:28px}
-  .vid-tag{display:inline-block;background:#ffd84d;color:#1c1c1c;font-size:11px;line-height:1.3;padding:3px 7px;font-weight:500;margin-bottom:18px}
-  .hook-h{font-size:clamp(34px,6vw,76px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;max-width:11ch}
-  .hook-s{margin-top:14px;font-size:clamp(15px,1.6vw,20px);line-height:1.3;max-width:34em;opacity:.95}
-  .hook-btn{display:inline-block;margin-top:20px;padding:13px 20px;background:#fff;color:var(--ink);font-weight:500;font-size:15px;letter-spacing:.01em}
-  .hook-btn:hover{background:var(--bg)}
-  .hero .wordmark{position:relative;z-index:2}
+  .vid-tag{position:absolute;top:62px;left:var(--pad);z-index:3;background:rgba(255,216,77,.9);color:#1c1c1c;font-size:10px;line-height:1.2;padding:2px 6px;font-weight:500}
   @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
 
 
   /* ---------- added: trust strip, Rising Tide, stages ---------- */
-  .s-trust{border-bottom:1px solid rgba(143,135,129,.35)}
+  .s-trust{margin-top:110px}
+  .s-trust .row{border-top:1px solid rgba(143,135,129,.35);border-bottom:1px solid rgba(143,135,129,.35)}
   .s-trust .row{display:flex;flex-direction:column;gap:12px;padding-block:20px}
   .s-trust .row > div{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:12px;row-gap:2px}
   .s-trust .k{font-size:11.5px;color:var(--grey);letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
@@ -124,7 +116,7 @@
   /* ---------- 2 intro statement ---------- */
   .s-intro{padding-top:36px}
   /* ---------- 3 about ---------- */
-  .s-about{padding-top:64px}
+  .s-about{padding-top:110px}
   .s-about .body{margin-top:36px}
   .s-about .link{margin-top:48px}
   /* ---------- 4 portrait ---------- */
@@ -221,7 +213,7 @@
     .link{font-size:clamp(15px,1.1vw,17px)}
     .quote{font-size:clamp(30px,3vw,44px);max-width:24em}
     .s-intro{padding-top:56px}
-    .s-about{padding-top:96px}
+    .s-about{padding-top:160px}
     .s-portrait .ph{aspect-ratio:16/10}
     .card{flex-basis:calc((100% - 32px)/2.4)}
     .ig .card{flex-basis:calc((100% - 48px)/3.6)}
@@ -283,22 +275,14 @@
     <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero-waves-poster.jpg" aria-hidden="true">
       <source src="hero-waves.mp4" type="video/mp4">
     </video>
-    <div class="hook"><div class="wrap">
-      <span class="vid-tag">Video placeholder: drone footage goes here</span>
-      <p class="hook-h">Built for the Wild West Coast</p>
-      <p class="hook-s">Custom homes, renovations and ADUs, taken from first idea to finished build by one experienced team.</p>
-      <a class="hook-btn" href="#contact">Start Your Project</a>
-    </div></div>
+    <span class="vid-tag">Video placeholder</span>
     <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>
   </section>
 
-  <!-- ADDED: TRUST STRIP -->
-  <section class="s-trust">
-    <div class="wrap row">
-      <div><p class="k">Licensed builder</p><p class="v">BC licence <span style="white-space:nowrap">#52492</span></p></div>
-      <div><p class="k">Home warranty</p><p class="v">2-5-10 coverage</p></div>
-      <div><p class="k">Where we build</p><p class="v">Ucluelet · Tofino · Whistler · remote coast</p></div>
-      <div><p class="k">Call or text</p><a class="v" href="tel:+16048484040">604-848-4040</a></div>
+  <!-- 2. STATEMENT -->
+  <section class="s-intro">
+    <div class="wrap">
+      <p class="statement">Built for the wild west coast. <span class="g">Custom homes, renovations and ADUs, taken from first idea to finished build by one experienced team.</span></p>
     </div>
   </section>
 
@@ -448,6 +432,16 @@
       <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_09be3b94bee14498ba898faba337df7e.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
     </div>
     <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">Follow Us on Instagram</span></a></div>
+  </section>
+
+  <!-- ADDED: TRUST STRIP -->
+  <section class="s-trust">
+    <div class="wrap row">
+      <div><p class="k">Licensed builder</p><p class="v">BC licence <span style="white-space:nowrap">#52492</span></p></div>
+      <div><p class="k">Home warranty</p><p class="v">2-5-10 coverage</p></div>
+      <div><p class="k">Where we build</p><p class="v">Ucluelet · Tofino · Whistler · remote coast</p></div>
+      <div><p class="k">Call or text</p><a class="v" href="tel:+16048484040">604-848-4040</a></div>
+    </div>
   </section>
 
   <!-- 11. CONTACT -->

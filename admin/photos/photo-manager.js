@@ -83,7 +83,13 @@
     '.pm-spot img,.pm-spot-empty{width:52px;height:40px;border-radius:8px;object-fit:cover;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.1);font-weight:400}' +
     '.pm-spot small{display:block;font-weight:400;opacity:.7;font-size:13px}.pm-spot.full small{opacity:1;color:#188038}' +
     '.pm-words{display:grid;gap:14px}.pm-word{display:grid;gap:4px}.pm-word label small{font-weight:400;opacity:.75}' +
-    '.pm-saved{font-size:14px;color:#188038;min-height:1.2em}.pm-saved.err{color:#d93025;font-weight:600}';
+    '.pm-saved{font-size:14px;color:#188038;min-height:1.2em}.pm-saved.err{color:#d93025;font-weight:600}' +
+    '.pm-h{margin:4px 0 10px;font-size:17px}.pm-videos{margin:0 0 18px}' +
+    '.pm-vcard{display:grid;gap:10px;padding:12px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-soft);margin:0 0 10px}' +
+    '.pm-vhead{display:grid;gap:2px}.pm-vhead small{opacity:.7}' +
+    '.pm-vcard video{width:100%;max-height:260px;border-radius:12px;background:#000;object-fit:cover}' +
+    '.pm-vprog{margin:0;font-size:15px;min-height:1.2em}.pm-vprog.err{color:#d93025;font-weight:600}' +
+    '.pm-vundo{font:inherit;font-size:15px;font-weight:600;min-height:48px;border-radius:12px;border:1px solid var(--pm-line);background:transparent;color:inherit;cursor:pointer}';
 
   function injectCss() {
     if (document.getElementById('pm-css')) return;
@@ -119,10 +125,77 @@
 
   function rid() { return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8); }
 
+  // Shrink a phone video for slow internet: first MAX_VIDEO_SEC seconds, long side 960 px, ~1.2 Mbps, no sound.
+  // Plays the clip through once on a hidden canvas and records it (MP4 where the browser can, else WebM), so it takes
+  // about as long as the clip. Also returns a still (first frame, JPEG) to show while the video loads.
+  var MAX_VIDEO_SEC = 15, VIDEO_SIDE = 960;
+  function shrinkVideo(file, onProgress) {
+    return new Promise(function (resolve, reject) {
+      if (!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) {
+        return reject(new Error('This browser can’t shrink videos. Try Chrome or Safari on a phone or computer.'));
+      }
+      var types = ['video/mp4;codecs=avc1.42E01E', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+      var mime = types.filter(function (t) { return MediaRecorder.isTypeSupported(t); })[0];
+      if (!mime) return reject(new Error('This browser can’t shrink videos. Try Chrome or Safari.'));
+      var url = URL.createObjectURL(file);
+      var v = document.createElement('video');
+      v.muted = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.preload = 'auto'; v.src = url;
+      var fail = function (m) { URL.revokeObjectURL(url); reject(new Error(m)); };
+      v.onerror = function () { fail('That file isn’t a video this phone can open (try an MP4 or MOV).'); };
+      v.onloadedmetadata = function () {
+        var vw = v.videoWidth, vh = v.videoHeight;
+        if (!vw || !vh) return fail('Couldn’t read that video.');
+        var dur = Math.min(isFinite(v.duration) ? v.duration : MAX_VIDEO_SEC, MAX_VIDEO_SEC);
+        var k = Math.min(1, VIDEO_SIDE / Math.max(vw, vh));
+        var w = Math.max(2, Math.round(vw * k / 2) * 2), h = Math.max(2, Math.round(vh * k / 2) * 2);
+        var c = document.createElement('canvas'); c.width = w; c.height = h;
+        var g = c.getContext('2d');
+        var poster = null;
+        v.currentTime = Math.min(0.1, dur / 2);
+        v.onseeked = function () {
+          v.onseeked = null;
+          g.drawImage(v, 0, 0, w, h);
+          c.toBlob(function (pb) {
+            poster = pb;
+            v.currentTime = 0;
+            v.onseeked = function () { v.onseeked = null; record(); };
+          }, 'image/jpeg', 0.82);
+        };
+        function record() {
+          var stream = c.captureStream(30), chunks = [], done = false;
+          var rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 1200000 });
+          rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+          rec.onstop = function () {
+            URL.revokeObjectURL(url);
+            stream.getTracks().forEach(function (t) { t.stop(); });
+            var type = mime.split(';')[0];
+            var blob = new Blob(chunks, { type: type });
+            if (!blob.size) return reject(new Error('The video came out empty. Keep the screen on while it shrinks, then try again.'));
+            resolve({ blob: blob, type: type, ext: type === 'video/mp4' ? 'mp4' : 'webm', w: w, h: h, poster: poster, seconds: Math.max(1, Math.round(Math.min(dur, v.currentTime || dur))) });
+          };
+          function finish() { if (done) return; done = true; v.pause(); g.drawImage(v, 0, 0, w, h); setTimeout(function () { rec.stop(); }, 150); }
+          var tick = function () {
+            if (done) return;
+            g.drawImage(v, 0, 0, w, h);
+            if (onProgress) onProgress(Math.min(1, v.currentTime / dur));
+            if (v.currentTime >= dur || v.ended) return finish();
+            if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(tick); else requestAnimationFrame(tick);
+          };
+          v.onended = finish;
+          rec.start(500);
+          var pl = v.play();
+          (pl && pl.then ? pl : Promise.resolve()).then(function () {
+            if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(tick); else requestAnimationFrame(tick);
+          }, function () { done = true; try { rec.stop(); } catch (e) {} fail('The phone wouldn’t play the video to shrink it. Try again.'); });
+        }
+      };
+    });
+  }
+
   function mount(root, opts) {
     injectCss();
     var sb = opts.sb, biz = opts.business;
-    var photos = [], slots = [], projects = [], texts = [], busy = false;
+    var photos = [], slots = [], videos = [], videoSlots = [], projects = [], texts = [], busy = false;
     var tabbed = false, tab = 'projects', openId = null;
     root.innerHTML = '';
     root.classList.add('pm');
@@ -154,10 +227,14 @@
         optional(sb.from('site_texts').select('*').eq('business_id', biz.id).order('sort')),
       ]).then(function (r) {
         if (r[1].error) throw r[1].error;
-        slots = (r[0].data || []).filter(function (s) { return !s.retired; });
-        photos = r[1].data || [];
+        var live = (r[0].data || []).filter(function (s) { return !s.retired; });
+        slots = live.filter(function (s) { return s.kind !== 'video'; });
+        videoSlots = live.filter(function (s) { return s.kind === 'video'; });
+        var all = r[1].data || [];
+        photos = all.filter(function (p) { return p.media !== 'video'; });
+        videos = all.filter(function (p) { return p.media === 'video'; });
         projects = r[2]; texts = r[3];
-        tabbed = !!(opts.projects || projects.length || texts.length);
+        tabbed = !!(opts.projects || projects.length || texts.length || videoSlots.length);
         if (tabbed && tab === 'projects' && !(opts.projects || projects.length)) tab = 'spots';
         say('');
         paint();
@@ -191,6 +268,8 @@
     function paintSpots() {
       var gallery = !(opts.projects || projects.length); // with projects, the projects are the gallery
       view.replaceChildren(
+        videoSlots.length ? videoSection() : null,
+        videoSlots.length ? el('h3', { class: 'pm-h' }, '\ud83d\uddbc\ufe0f Photos') : null,
         el('div', { class: 'pm-bar' }, addButton('Add photos')),
         el('p', { class: 'pm-help' }, tabbed
           ? 'Fill the photo spots on the website. Upload here, or use a photo already in a project, then pick its spot. A spot keeps its current picture until you fill it.'
@@ -207,6 +286,65 @@
           p ? el('img', { src: p.url, alt: '' }) : el('span', { class: 'pm-spot-empty' }, '—'),
           el('span', {}, s.label, el('small', {}, p ? 'Has your photo' : 'Current picture (not filled yet)')));
       }));
+    }
+
+    // ---------- videos (e.g. the top-of-page video) ----------
+    function videoSection() {
+      return el('div', { class: 'pm-videos' }, el('h3', { class: 'pm-h' }, '🎬 Videos'), videoSlots.map(videoCard),
+        el('p', { class: 'pm-help' }, 'Pick a video from your phone. It’s shrunk on your phone before it’s sent so the website stays fast on slow internet: the first ' +
+          MAX_VIDEO_SEC + ' seconds are used, without sound. Keep the screen on while it shrinks (about as long as the clip).'));
+    }
+
+    function videoCard(s) {
+      var cur = videos.filter(function (x) { return x.slot === s.slot; })[0];
+      var pick = el('input', { type: 'file', accept: 'video/*', hidden: true });
+      var prog = el('p', { class: 'pm-vprog', role: 'status', 'aria-live': 'polite' });
+      var btn = el('button', { type: 'button', class: 'pm-add', onclick: function () { pick.click(); } }, '🎬', cur ? 'Replace video' : 'Use my own video');
+      var undo = cur ? el('button', { type: 'button', class: 'pm-vundo', onclick: function () { removeVideo(cur, 'Back to the original video'); } }, 'Use the original video again') : null;
+      pick.addEventListener('change', function () {
+        var f = pick.files && pick.files[0]; pick.value = '';
+        if (!f) return;
+        btn.disabled = true; if (undo) undo.disabled = true;
+        prog.className = 'pm-vprog'; prog.textContent = '⏳ Shrinking… 0%';
+        shrinkVideo(f, function (x) { prog.textContent = '⏳ Shrinking… ' + Math.round(x * 100) + '%'; }).then(function (out) {
+          var base = biz.slug + '/' + rid();
+          var path = base + '.' + out.ext, ppath = base + '-poster.jpg';
+          prog.textContent = '⬆️ Uploading (' + (out.blob.size / 1048576).toFixed(1) + ' MB)…';
+          var st = sb.storage.from(BUCKET);
+          return (out.poster ? st.upload(ppath, out.poster, { contentType: 'image/jpeg', cacheControl: '31536000', upsert: false }) : Promise.resolve({}))
+            .then(function (u) { if (u.error) throw u.error; return st.upload(path, out.blob, { contentType: out.type, cacheControl: '31536000', upsert: false }); })
+            .then(function (u) {
+              if (u.error) throw u.error;
+              var row = { business_id: biz.id, path: path, url: st.getPublicUrl(path).data.publicUrl, media: 'video', slot: s.slot,
+                in_gallery: false, width: out.w, height: out.h, poster_url: out.poster ? st.getPublicUrl(ppath).data.publicUrl : null };
+              // the spot holds one video: clear the old one's spot first, insert the new one, then delete the old
+              return (cur ? save(cur, { slot: null }) : Promise.resolve(true)).then(function () {
+                return sb.from('site_photos').insert(row).select().single();
+              }).then(function (ins) {
+                if (ins.error) { st.remove([path, ppath]).catch(function () {}); if (cur) save(cur, { slot: s.slot }); throw ins.error; }
+                videos.push(ins.data);
+                if (cur) return removeVideo(cur, null);
+              });
+            }).then(function () { paint(); say('New video is on the website (' + out.seconds + ' seconds). Refresh the site to see it.'); });
+        }).catch(function (e) {
+          btn.disabled = false; if (undo) undo.disabled = false;
+          prog.className = 'pm-vprog err'; prog.textContent = '⚠️ ' + (e.message || e);
+        });
+      });
+      return el('div', { class: 'pm-vcard' },
+        el('div', { class: 'pm-vhead' }, el('b', {}, s.label), el('small', {}, cur ? 'Showing your video' : 'Showing the original video')),
+        cur ? el('video', { src: cur.url, poster: cur.poster_url || null, muted: true, loop: true, playsinline: true, controls: true, preload: 'metadata' }) : null,
+        btn, pick, prog, undo);
+    }
+
+    function removeVideo(v, okMsg) {
+      if (okMsg && !window.confirm('Go back to the original video? Your video will be deleted.')) return Promise.resolve();
+      return sb.from('site_photos').delete().eq('id', v.id).then(function (r) {
+        if (r.error) { say('Not changed: ' + r.error.message, true); return; }
+        sb.storage.from(BUCKET).remove([v.path, v.path.replace(/\.[a-z0-9]+$/, '-poster.jpg')]).catch(function () {});
+        videos = videos.filter(function (x) { return x.id !== v.id; });
+        if (okMsg) { paint(); say(okMsg); }
+      });
     }
 
     // ---------- projects ----------
@@ -496,5 +634,5 @@
     return { reload: load };
   }
 
-  window.PhotoManager = { mount: mount, shrink: shrink };
+  window.PhotoManager = { mount: mount, shrink: shrink, shrinkVideo: shrinkVideo };
 })();

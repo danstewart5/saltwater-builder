@@ -61,6 +61,7 @@
 
   .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .vid-tag{position:absolute;top:62px;left:var(--pad);z-index:3;background:rgba(255,216,77,.9);color:#1c1c1c;font-size:10px;line-height:1.2;padding:2px 6px;font-weight:500}
+  .hero{background:#2f3a40 url(wave-poster.jpg) center/cover no-repeat}
   @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
 
 
@@ -272,10 +273,7 @@
 
   <!-- 1. HERO -->
   <section class="hero" id="hero">
-    <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero-waves-poster.jpg" aria-hidden="true">
-      <source src="hero-waves.mp4" type="video/mp4">
-    </video>
-    <span class="vid-tag">Video placeholder</span>
+    <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="metadata" poster="wave-poster.jpg" aria-hidden="true"></video>
     <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>
   </section>
 
@@ -505,6 +503,14 @@
   var hdr=document.getElementById('hdr'),hero=document.getElementById('hero');
   function onScroll(){hdr.classList.toggle('solid',window.scrollY>hero.offsetHeight-hdr.offsetHeight)}
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Hero video: still image shows instantly; small loop picked by screen size; skipped on Save-Data or reduced motion
+  (function(){var v=document.getElementById('heroVid');if(!v)return;
+    var c=navigator.connection||{},slow=c.saveData||/(^|-)2g$/.test(c.effectiveType||''),rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(slow||rm){v.remove();return}
+    v.src=(c.effectiveType==='3g')?'wave-640.mp4':'wave-960.mp4';
+    var p=v.play();if(p&&p.catch)p.catch(function(){});
+  })();
 
   // Menu
   var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');

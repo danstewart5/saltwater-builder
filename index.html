@@ -164,7 +164,12 @@
   .s-services{padding-top:115px}
   .s-services .link{margin-top:40px}
   .svc{list-style:none;margin:70px 0 0;padding:0;border-bottom:1px solid var(--rule)}
-  .svc li{display:grid;grid-template-columns:60px 1fr;border-top:1px solid var(--rule);padding:9px 0 9px}
+  .svc li{border-top:1px solid var(--rule)}
+  .svc a{display:grid;grid-template-columns:60px 1fr;padding:9px 0 9px;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
+  .svc a:active{opacity:.5}
+  @media (hover:hover){.svc a:hover .s{color:var(--ink)}}
+  .card.flash .ph{outline:2px solid var(--ink);outline-offset:4px;transition:outline-color .6s}
+  #projects,#contact{scroll-margin-top:70px}
   .svc .n{font-size:11px;line-height:1;padding-top:7px;color:#5b5652;letter-spacing:.02em}
   .svc .s{font-size:17.5px;line-height:1.2;color:var(--grey)}
 
@@ -237,7 +242,7 @@
     .card{flex-basis:calc((100% - 32px)/2.4)}
     .ig .card{flex-basis:calc((100% - 48px)/3.6)}
     .svc .s{font-size:clamp(20px,2vw,30px)}
-    .svc li{grid-template-columns:22% 1fr;padding:14px 0}
+    .svc a{grid-template-columns:22% 1fr;padding:14px 0}
     .svc .n{font-size:13px;padding-top:10px}
     .s-photos .land{width:66%;aspect-ratio:3/2}
     .bleed{height:auto;aspect-ratio:16/9;max-height:none}
@@ -390,11 +395,11 @@
         <a class="link" href="#contact"><span class="arr"></span><span class="label">See Our Services</span></a>
       </div>
       <ul class="svc">
-        <li><span class="n">01</span><span class="s">Custom Homes</span></li>
-        <li><span class="n">02</span><span class="s">Residential Developments</span></li>
-        <li><span class="n">03</span><span class="s">Renovations</span></li>
-        <li><span class="n">04</span><span class="s">Commercial Developments</span></li>
-        <li><span class="n">05</span><span class="s">ADUs (Accessory Dwelling Units)</span></li>
+        <li><a href="#projects" data-svc="custom home"><span class="n">01</span><span class="s">Custom Homes</span></a></li>
+        <li><a href="#projects" data-svc="residential"><span class="n">02</span><span class="s">Residential Developments</span></a></li>
+        <li><a href="#projects" data-svc="renovation"><span class="n">03</span><span class="s">Renovations</span></a></li>
+        <li><a href="#projects" data-svc="commercial"><span class="n">04</span><span class="s">Commercial Developments</span></a></li>
+        <li><a href="#projects" data-svc="accessory dwelling|adu"><span class="n">05</span><span class="s">ADUs (Accessory Dwelling Units)</span></a></li>
       </ul>
     </div>
   </section>
@@ -556,6 +561,28 @@
         headers:{'content-type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).catch(function(){})}catch(e){}
     });
   })();
+
+  // Services list: tap a service -> jump to a matching project in Select Projects (slides the carousel to it).
+  // Matches on each card's category text at tap time, so cards added later in the photo manager work too.
+  // No matching project (e.g. Renovations) -> go to the quote form with the message started for them.
+  document.querySelectorAll('.svc a[data-svc]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var keys=a.dataset.svc.split('|'),name=a.querySelector('.s').textContent.trim(),car=document.querySelector('.carousel'),hit=null;
+      if(car) car.querySelectorAll('.card').forEach(function(c){
+        if(hit)return; var k=((c.querySelector('.c')||{}).textContent||'').toLowerCase();
+        if(keys.some(function(x){return k.indexOf(x)>-1}))hit=c;
+      });
+      if(hit){
+        document.getElementById('projects').scrollIntoView({behavior:'smooth',block:'start'});
+        car.scrollTo({left:car.scrollLeft+hit.getBoundingClientRect().left-car.getBoundingClientRect().left-parseFloat(getComputedStyle(car).paddingLeft||0),behavior:'smooth'});
+        hit.classList.add('flash'); setTimeout(function(){hit.classList.remove('flash')},1800);
+      }else{
+        var m=document.getElementById('msg'); if(m&&!m.value) m.value="Hi, I'm interested in "+name.toLowerCase()+". ";
+        document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
 
   // Thank-you note after Netlify form post
   if(location.search.indexOf('sent=1')>-1){

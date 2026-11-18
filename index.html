@@ -28,6 +28,8 @@
   h1,h2,h3,p{margin:0;font-weight:400}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
+  .wm-sub{color:#fff;text-transform:uppercase;line-height:1;margin:0;padding:0 0 calc(var(--pad) * .95) .15em;opacity:.95;white-space:nowrap}
+  .hero .wordmark h1{padding-bottom:calc(var(--pad) * .45)}
   /* logo (brand colours: teal #5DB5C0, slate #2D4955) */
   .brand{display:flex;align-items:center;gap:10px}
   .badge{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 1px 6px rgba(0,0,0,.18)}
@@ -288,7 +290,7 @@
   <!-- 1. HERO -->
   <section class="hero" id="hero">
     <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="metadata" poster="wave-poster.jpg" aria-hidden="true"></video>
-    <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>
+    <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1><p class="wm-sub">Building Co</p></div></div>
   </section>
 
   <!-- 2. STATEMENT -->
@@ -504,6 +506,14 @@
     wm.style.fontSize='100px';
     var w=wm.scrollWidth;
     if(w) wm.style.fontSize=(100*avail/w*0.995)+'px';
+    // Spread the small 'Building Co' line to the same width, like the logo
+    var sub=wm.nextElementSibling;
+    if(sub&&sub.classList.contains('wm-sub')){
+      var rw=document.createRange();rw.selectNodeContents(wm);var target=rw.getBoundingClientRect().width*0.97;
+      sub.style.fontSize=Math.max(12,target*0.052)+'px';sub.style.letterSpacing='0px';
+      var r=document.createRange();r.selectNodeContents(sub);var tw=r.getBoundingClientRect().width,n=sub.textContent.length;
+      if(n>1) sub.style.letterSpacing=Math.max(0,(target-tw)/(n-1))+'px';
+    }
   }
   fit(); window.addEventListener('resize',fit);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);

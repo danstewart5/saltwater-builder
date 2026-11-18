@@ -59,16 +59,17 @@
   .hero .wordmark{position:absolute;left:0;right:0;bottom:0;z-index:2}
   .wordmark h1{color:#fff;text-transform:uppercase;font-weight:400;line-height:.8;letter-spacing:-.015em;white-space:nowrap;font-size:22.5vw;padding:0 0 calc(var(--pad) * .95);margin-left:-.04em}
 
-  .hero{height:88vh;height:88svh;min-height:520px}
+  .hero{height:auto;min-height:88vh;min-height:88svh;display:flex;flex-direction:column;justify-content:space-between}
   .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.05) 45%,rgba(0,0,0,.3))}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.15) 50%,rgba(0,0,0,.35))}
   .hero::after{z-index:1}
-  .hook{position:absolute;left:0;right:0;top:clamp(90px,16vh,170px);z-index:2;color:#fff}
+  .hook{position:relative;z-index:2;color:#fff;padding-top:76px;padding-bottom:28px}
+  .vid-tag{display:inline-block;background:#ffd84d;color:#1c1c1c;font-size:11px;line-height:1.3;padding:3px 7px;font-weight:500;margin-bottom:18px}
   .hook-h{font-size:clamp(34px,6vw,76px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;max-width:11ch}
-  .hook-s{margin-top:16px;font-size:clamp(15.5px,1.6vw,20px);line-height:1.3;max-width:34em;opacity:.92}
-  .hook-btn{display:inline-block;margin-top:22px;padding:14px 22px;background:#fff;color:var(--ink);font-weight:500;font-size:15px;letter-spacing:.01em}
+  .hook-s{margin-top:14px;font-size:clamp(15px,1.6vw,20px);line-height:1.3;max-width:34em;opacity:.95}
+  .hook-btn{display:inline-block;margin-top:20px;padding:13px 20px;background:#fff;color:var(--ink);font-weight:500;font-size:15px;letter-spacing:.01em}
   .hook-btn:hover{background:var(--bg)}
-  .vid-tag{position:absolute;right:12px;top:64px;z-index:3;background:#ffd84d;color:#1c1c1c;font-size:12px;padding:4px 8px;font-weight:500}
+  .hero .wordmark{position:relative;z-index:2}
   @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
 
   /* ---------- type scale ---------- */
@@ -245,10 +246,10 @@
     <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero-waves-poster.jpg" aria-hidden="true">
       <source src="hero-waves.mp4" type="video/mp4">
     </video>
-    <span class="vid-tag">Video placeholder: Saltwater's own drone footage goes here</span>
     <div class="hook"><div class="wrap">
+      <span class="vid-tag">Video placeholder: drone footage goes here</span>
       <p class="hook-h">Built for the Wild West Coast</p>
-      <p class="hook-s">A Ucluelet general contractor building custom homes, renovations and ADUs with modern building science, from Tofino to remote coastal BC. You'll always know where your build stands.</p>
+      <p class="hook-s">Custom homes, renovations and ADUs from Ucluelet to remote coastal BC, built with modern building science. You'll always know where your build stands.</p>
       <a class="hook-btn" href="#contact">Start Your Project</a>
     </div></div>
     <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>

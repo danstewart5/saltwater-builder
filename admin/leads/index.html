@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Leads · Saltwater Building Co</title>
+<meta name="theme-color" content="#F5F3F3">
+<!--
+  Private lead viewer ("back door"). Not linked from the site, kept out of search (noindex + X-Robots-Tag).
+  Signs in to the shared lead tracker (Supabase project "Lead-tracker", cgrqejsigmzvlhlmvjbx) with the public
+  anon key only. What each person sees is decided by the database (row level security on business_members):
+    Dan: every business, each on its own tab (this site's first). Chris (chris@bozman.ca): Saltwater only, no tabs.
+    Leads are always shown one business at a time, never mixed.
+  Copied from the Brix Interiors back door (danstewart5/brix-interiors admin/leads/); only the SITE block, title
+  and colours differ. Full tracker: https://sitewalk-leads.pages.dev
+  The homepage quote form lands here through the shared lead-capture function (key lk_salt_..., see index.html).
+-->
+<style>
+  :root { --accent: #2D4955; --gold: #5DB5C0; --ink: #1d1d1f; --muted: #6b6b70; --line: #e3e1dc; --bg: #f7f6f3; --card: #fff; --red: #b42318; --green: #1e7a46; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  header { border-top: 3px solid var(--gold); position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line); padding: 10px 14px calc(10px) 14px; }
+  .bar { display: flex; align-items: center; gap: 10px; max-width: 760px; margin: 0 auto; }
+  .bar h1 { font-size: 18px; margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .who { font-size: 13px; color: var(--muted); max-width: 40%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (max-width: 430px) { .who { display: none; } }
+  main { max-width: 760px; margin: 0 auto; padding: 12px 14px 60px; }
+  button, .btn { font: inherit; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 0 14px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+  .btn.primary, button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .btn.small, button.small { min-height: 36px; padding: 0 10px; font-size: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .signin { max-width: 420px; margin: 28px auto; }
+  .signin h2 { margin: 0 0 6px; font-size: 22px; }
+  label { display: block; font-size: 14px; color: var(--muted); margin: 12px 0 4px; }
+  input, select { font: inherit; width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 12px; padding: 0 12px; background: #fff; color: var(--ink); }
+  input[inputmode="numeric"] { letter-spacing: 6px; font-size: 22px; text-align: center; }
+  .row-btns { display: grid; gap: 8px; margin-top: 14px; }
+  .link { background: none; border: 0; color: var(--accent); text-decoration: underline; min-height: 36px; padding: 0; }
+  .msg { min-height: 1.4em; font-size: 14px; color: var(--muted); margin: 10px 0 0; }
+  .msg.err { color: var(--red); }
+  .tabs { display: flex; gap: 6px; margin: 0 0 12px; overflow-x: auto; }
+  .tab { flex: 1 1 0; min-width: 0; padding: 4px 6px; white-space: normal; line-height: 1.15; font-weight: 600; font-size: 15px; }
+  .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 6px 4px; text-align: center; cursor: pointer; flex-direction: column; min-height: 58px; }
+  .stat b { display: block; font-size: 22px; }
+  .stat span { font-size: 12px; color: var(--muted); }
+  .stat[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .stat.due b { color: var(--red); }
+  .tools { display: flex; gap: 8px; margin-bottom: 12px; }
+  .tools input { flex: 1; }
+  .list { display: grid; gap: 8px; }
+  .lead { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+  .lead.closed { opacity: .6; }
+  .lead.hot { border: 2px solid #e8590c; background: #fff4e6; }
+  .l-co { font-weight: 400; opacity: .75; }
+  .l-top { display: flex; gap: 8px; align-items: baseline; }
+  .l-name { font-weight: 700; flex: 1; overflow-wrap: anywhere; }
+  .chip { font-size: 12px; border-radius: 99px; padding: 2px 8px; background: #efede8; color: var(--ink); white-space: nowrap; }
+  .chip.new { background: var(--accent); color: #fff; }
+  .l-sub { font-size: 14px; color: var(--muted); margin-top: 2px; }
+  .l-next { font-size: 14px; margin-top: 4px; }
+  .l-next.due { color: var(--red); font-weight: 600; }
+  .l-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+  .quick-stage { width: auto; min-height: 38px; flex: 1 1 130px; }
+  .ed-row { display: flex; gap: 6px; margin-top: 6px; } .ed-row input { flex: 1; }
+  .l-more textarea { font: inherit; width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; white-space: normal; }
+  .chip.cold { background: #dbe4ff; color: #364fc7; } .chip.lost, .chip.not_interested { background: #eee; color: #777; }
+  .chip.won, .chip.signed { background: #d3f9d8; color: #2b8a3e; }
+  .l-more { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 8px; font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .l-more h4 { margin: 8px 0 2px; font-size: 13px; color: var(--muted); font-weight: 600; }
+  .empty { text-align: center; color: var(--muted); padding: 30px 10px; }
+  .foot { text-align: center; font-size: 13px; color: var(--muted); margin-top: 18px; }
+  .l-photo img { max-width: 100%; border-radius: 10px; margin-top: 4px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <h1 id="title">Leads</h1>
+    <span class="who" id="who"></span>
+    <a class="btn small" href="/admin/photos/" id="photos-link">📷 Photos</a>
+    <button class="small" id="chpw" type="button" hidden>Change password</button>
+    <button class="small" id="signout" type="button" hidden>Sign out</button>
+  </div>
+</header>
+<main>
+  <p class="empty" id="loading">Loading…</p>
+
+  <!-- Sign in -->
+  <section class="card signin" id="v-signin" hidden>
+    <h2>Sign in</h2>
+    <p class="msg" style="margin-top:0">Private page for the business owner.</p>
+    <form id="f-email" novalidate>
+      <label for="email">Email</label>
+      <input id="email" name="username" type="email" autocomplete="username" inputmode="email" required>
+      <div id="pw-wrap">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password">
+      </div>
+      <div class="row-btns">
+        <button class="primary" id="b-pw" type="submit">Sign in</button>
+        <button class="primary" id="b-code" type="submit" hidden>Email me a sign-in code</button>
+        <button class="link" id="b-toggle" type="button">Forgot it? Email me a code instead</button>
+      </div>
+    </form>
+    <form id="f-code" hidden novalidate>
+      <label for="code">6-digit code from the email</label>
+      <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" pattern="[0-9]*">
+      <div class="row-btns">
+        <button class="primary" type="submit">Sign in</button>
+        <button class="link" id="b-back" type="button">Use a different email</button>
+      </div>
+    </form>
+    <p class="msg" id="signin-msg" role="status"></p>
+  </section>
+
+  <!-- Signed in, but no business -->
+  <section class="card signin" id="v-none" hidden>
+    <h2>No leads here yet</h2>
+    <p>You're signed in as <b id="none-email"></b>, but this account hasn't been given access to any business's leads.</p>
+    <p class="msg">Ask Dan (Keen Falcon) to add this email, then sign in again.</p>
+  </section>
+
+  <!-- Leads -->
+  <section id="v-leads" hidden>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Business" hidden></div>
+    <div class="stats" id="stats"></div>
+    <div class="tools">
+      <input id="q" type="search" placeholder="Search name, phone, email, notes" autocomplete="off" aria-label="Search">
+      <button class="small" id="refresh" type="button" aria-label="Refresh">↻</button>
+    </div>
+    <div class="list" id="list"></div>
+    <p class="foot">Showing every lead for <span id="foot-biz"></span>.
+      <a href="https://sitewalk-leads.pages.dev" rel="noopener">Open the full lead tracker</a></p>
+  </section>
+</main>
+
+<script>
+  window.LEAD_DOOR = {
+    // ---- the only part that differs per site ----
+    site: 'saltwater-builder',   // this site's business; its tab comes first
+    brand: 'Saltwater Building Co',
+    // ---- shared tracker (public values; row level security decides what each person sees) ----
+    supabaseUrl: 'https://cgrqejsigmzvlhlmvjbx.supabase.co',
+    supabaseKey: 'sb_publishable_UkXqc8XM9vH8LLQ9CO_u7g_b1qZ1KxP',
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var CFG = window.LEAD_DOOR;
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var PICK_KEY = 'leadDoor:biz';
+  var STAGES = { new: 'New', contacted: 'Contacted', replied: 'Replied', demo_booked: 'Booked', pitched: 'Pitched', won: 'Won', lost: 'Lost', cold: 'Cold',
+    visited: 'Visited', interested: 'Interested', follow_up: 'Follow up', signed: 'Signed', not_interested: 'Not interested' };
+  var STAGE_PICK = ['new', 'contacted', 'follow_up', 'replied', 'interested', 'demo_booked', 'pitched', 'won', 'cold', 'lost', 'not_interested'];
+  var CLOSED = { won: 1, lost: 1, signed: 1, not_interested: 1 };
+  var SHORT = function (n) { return String(n || '').replace(/\b(business systems|beauty spa|ltd|inc)\b\.?/gi, '').trim() || n; };
+
+  var sb = null, user = null, businesses = [], leads = [], view = 'all', openId = null;
+
+  function show(name) {
+    ['loading', 'v-signin', 'v-none', 'v-leads'].forEach(function (v) { $(v).hidden = v !== name; });
+    $('signout').hidden = !(name === 'v-none' || name === 'v-leads');
+    $('chpw').hidden = $('signout').hidden;
+  }
+  function say(text, err) { var m = $('signin-msg'); m.textContent = text || ''; m.className = 'msg' + (err ? ' err' : ''); }
+
+  // ---------- auth ----------
+  function start() {
+    $('title').textContent = 'Leads · ' + CFG.brand;
+    if (!window.supabase || !window.supabase.createClient) {
+      show('v-signin'); say('Couldn’t load the sign-in system. Check your connection and refresh.', true); return;
+    }
+    sb = window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseKey, {
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storageKey: 'lead-door-auth' } });
+    sb.auth.onAuthStateChange(function (_e, session) { setTimeout(function () { onSession(session); }, 0); });
+    sb.auth.getSession().then(function (r) { onSession(r.data && r.data.session); });
+  }
+  var lastUid;
+  function onSession(session) {
+    var u = session && session.user ? session.user : null;
+    var uid = u ? u.id : null;
+    if (uid === lastUid) return;
+    lastUid = uid; user = u;
+    if (location.hash.indexOf('access_token') >= 0 || location.search.indexOf('code=') >= 0) history.replaceState(null, '', location.pathname);
+    if (!u) { $('who').textContent = ''; show('v-signin'); return; }
+    $('who').textContent = u.email || '';
+    show('loading');
+    loadBusinesses();
+  }
+  var usePw = true;
+  $('b-toggle').addEventListener('click', function () {
+    usePw = !usePw;
+    $('pw-wrap').hidden = !usePw; $('b-pw').hidden = !usePw; $('b-code').hidden = usePw;
+    $('b-toggle').textContent = usePw ? 'Forgot it? Email me a code instead' : 'Use my password';
+    say('');
+  });
+  var emailOk = function (e) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); };
+  $('f-email').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (usePw) { $('b-pw').click(); return; }
+    var email = $('email').value.trim().toLowerCase();
+    if (!emailOk(email)) { say('Please enter a valid email.', true); return; }
+    $('b-code').disabled = true; say('Sending…');
+    sb.auth.signInWithOtp({ email: email, options: { shouldCreateUser: false, emailRedirectTo: location.origin + location.pathname } }).then(function (r) {
+      $('b-code').disabled = false;
+      if (r.error) { say('Couldn’t send a code: ' + r.error.message + '. Try the password option, or ask Dan.', true); return; }
+      $('f-email').hidden = true; $('f-code').hidden = false; $('code').focus();
+      say('Check ' + email + ' for a code (or tap the link in the email on this phone).');
+    });
+  });
+  $('f-code').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var token = $('code').value.replace(/\D/g, '');
+    if (token.length < 6) { say('Enter the code from the email.', true); return; }
+    say('Checking…');
+    sb.auth.verifyOtp({ email: $('email').value.trim().toLowerCase(), token: token, type: 'email' }).then(function (r) {
+      if (r.error) say('That code didn’t work: ' + r.error.message, true); else say('');
+    });
+  });
+  $('b-back').addEventListener('click', function () { $('f-code').hidden = true; $('f-email').hidden = false; say(''); });
+  $('b-pw').addEventListener('click', function (e) {
+    if (e) e.preventDefault();
+    var email = $('email').value.trim().toLowerCase(), pw = $('password').value;
+    if (!emailOk(email) || !pw) { say('Enter your email and password.', true); return; }
+    say('Signing in…');
+    sb.auth.signInWithPassword({ email: email, password: pw }).then(function (r) {
+      if (r.error) say('Couldn’t sign in: ' + r.error.message, true); else say('');
+    });
+  });
+  $('chpw').addEventListener('click', function () {
+    var pw = window.prompt('New password (at least 8 characters). You\'ll use it with "Use a password instead".');
+    if (pw == null) return;
+    if (pw.length < 8) { alert('Too short. Use at least 8 characters.'); return; }
+    sb.auth.updateUser({ password: pw }).then(function (r) { alert(r.error ? 'Not changed: ' + r.error.message : 'Password changed.'); });
+  });
+  $('signout').addEventListener('click', function () { sb.auth.signOut().then(function () { lastUid = undefined; onSession(null); }); });
+
+  // ---------- businesses (tabs) ----------
+  function loadBusinesses() {
+    // Join any business this email was invited to (Jess / Del), then list what this person can see.
+    sb.rpc('accept_invites').then(function () { return sb.rpc('my_businesses'); }).then(function (r) {
+      if (r.error) throw r.error;
+      businesses = (r.data || []).map(function (b) { return { id: b.id, name: b.name, role: b.role, slug: '' }; });
+      return sb.from('businesses').select('id,slug,kind');
+    }).then(function (r) {
+      (r && r.data || []).forEach(function (s) { businesses.forEach(function (b) { if (b.id === s.id) { b.slug = s.slug || ''; b.kind = s.kind || 'client'; } }); });
+      // Only the three website businesses; this site's own first, then the order the database gives.
+      businesses = businesses.filter(function (b) { return b.slug && b.kind !== 'sample'; }); // sample sites: photos only
+      businesses.sort(function (a, b) { return (b.slug === CFG.site) - (a.slug === CFG.site); });
+      if (!businesses.length) { $('none-email').textContent = user.email || ''; show('v-none'); return; }
+      paintTabs(); show('v-leads'); loadLeads();
+    }).catch(function (e) { show('v-signin'); say('Couldn’t load your businesses: ' + (e.message || e), true); });
+  }
+  function picked() {
+    var p = localStorage.getItem(PICK_KEY);
+    for (var i = 0; i < businesses.length; i++) if (businesses[i].id === p) return businesses[i];
+    return businesses[0];
+  }
+  function paintTabs() {
+    var tabs = $('tabs'), cur = picked();
+    tabs.hidden = businesses.length < 2;   // Jess (one business): no tabs at all
+    tabs.innerHTML = businesses.map(function (b) {
+      return '<button class="tab" type="button" role="tab" data-id="' + esc(b.id) + '" data-slug="' + esc(b.slug) + '" aria-selected="' + (b.id === cur.id) + '">' + esc(SHORT(b.name)) + '</button>';
+    }).join('');
+    $('title').textContent = SHORT(cur.name) + ' · Leads';
+    $('foot-biz').textContent = cur.name;
+  }
+  $('tabs').addEventListener('click', function (e) {
+    var t = e.target.closest('.tab'); if (!t) return;
+    localStorage.setItem(PICK_KEY, t.dataset.id); view = 'all'; openId = null; $('q').value = '';
+    paintTabs(); loadLeads();
+  });
+
+  // ---------- leads of ONE business ----------
+  function loadLeads() {
+    var biz = picked();
+    $('list').innerHTML = '<p class="empty">Loading…</p>'; $('stats').innerHTML = '';
+    sb.from('leads').select('id,name,company,email,phone,area,address,source,list_name,stage,next_action,next_action_at,notes,intake,job_type,description,preferred_contact,photo_path,created_at,last_contact_at,updated_at')
+      .eq('business_id', biz.id).eq('deleted', false).eq('is_example', false)
+      .order('created_at', { ascending: false }).limit(5000)
+      .then(function (r) {
+        if (r.error) { $('list').innerHTML = '<p class="empty">Couldn’t load leads: ' + esc(r.error.message) + '</p>'; return; }
+        if (picked().id !== biz.id) return; // switched tabs meanwhile
+        leads = r.data || []; paint();
+      });
+  }
+  var endOfToday = function () { var d = new Date(); d.setHours(23, 59, 59, 999); return d; };
+  var HOT = { interested: 1, replied: 1, demo_booked: 1, pitched: 1 };
+  var isDue = function (l) { return !CLOSED[l.stage] && l.next_action_at && new Date(l.next_action_at) <= endOfToday(); };
+  var isWeek = function (l) { return Date.now() - new Date(l.created_at).getTime() < 7 * 864e5; };
+  var VIEWS = { hot: function (l) { return HOT[l.stage]; }, all: function () { return true; }, due: isDue, new: function (l) { return l.stage === 'new'; }, week: isWeek };
+  function when(iso) {
+    if (!iso) return '';
+    var d = new Date(iso), days = Math.round((new Date(d).setHours(0, 0, 0, 0) - new Date().setHours(0, 0, 0, 0)) / 864e5);
+    var t = d.toLocaleTimeString('en-CA', { hour: 'numeric', minute: '2-digit' });
+    if (days === 0) return 'today ' + t;
+    if (days === -1) return 'yesterday ' + t;
+    if (days === 1) return 'tomorrow';
+    return d.toLocaleDateString('en-CA', { month: 'short', day: 'numeric' }) + (Math.abs(days) > 300 ? ', ' + d.getFullYear() : '');
+  }
+  function paint() {
+    var counts = { hot: leads.filter(function (l) { return HOT[l.stage]; }).length, all: leads.length, due: leads.filter(isDue).length, new: leads.filter(VIEWS.new).length, week: leads.filter(isWeek).length };
+    $('stats').innerHTML = [['hot', '🔥 Hot'], ['all', 'Leads'], ['due', 'Due today'], ['new', 'New']].map(function (s) {
+      return '<button class="stat' + (s[0] === 'due' && counts.due ? ' due' : '') + '" type="button" data-view="' + s[0] + '" aria-pressed="' + (view === s[0]) + '"><b>' + counts[s[0]] + '</b><span>' + s[1] + '</span></button>';
+    }).join('');
+    var q = $('q').value.trim().toLowerCase();
+    var rows = leads.filter(VIEWS[view]).filter(function (l) {
+      return !q || [l.name, l.company, l.email, l.phone, l.notes, l.source, l.area, l.job_type, l.description].join(' ').toLowerCase().indexOf(q) >= 0;
+    });
+    // Hot leads (interested, replied, demo booked, pitched) always on top, then anything due, then newest.
+    var rank = function (l) { return HOT[l.stage] ? 0 : isDue(l) ? 1 : CLOSED[l.stage] ? 4 : l.stage === 'cold' ? 3 : 2; };
+    rows.sort(function (a, b) { return rank(a) - rank(b) || (view === 'due' ? new Date(a.next_action_at) - new Date(b.next_action_at) : 0) || new Date(b.created_at) - new Date(a.created_at); });
+    if (!rows.length) {
+      $('list').innerHTML = '<p class="empty">' + (leads.length ? (view === 'due' ? 'Nothing due today.' : 'No leads match.') : 'No leads yet. Website leads show up here by themselves.') + '</p>';
+      return;
+    }
+    $('list').innerHTML = rows.map(card).join('');
+  }
+  function card(l) {
+    var due = isDue(l);
+    var next = l.next_action || l.next_action_at ? (l.next_action || 'Next action') + (l.next_action_at ? ' · ' + when(l.next_action_at) : '') : '';
+    var tel = l.phone ? String(l.phone).replace(/[^\d+]/g, '') : '';
+    var html = '<article class="lead' + (CLOSED[l.stage] ? ' closed' : '') + (HOT[l.stage] ? ' hot' : '') + '" data-id="' + esc(l.id) + '">' +
+      '<div class="l-top"><span class="l-name">' + (HOT[l.stage] ? '🔥 ' : '') + esc(l.name || l.email || l.phone || 'Lead') + (l.company && l.company !== l.name ? ' <span class="l-co">· ' + esc(l.company) + '</span>' : '') + '</span><span class="chip ' + esc(l.stage) + '">' + esc(STAGES[l.stage] || l.stage) + '</span></div>' +
+      '<div class="l-sub">' + esc([l.job_type, l.area, l.source, when(l.created_at)].filter(Boolean).join(' · ')) + '</div>' +
+      (next ? '<div class="l-next' + (due ? ' due' : '') + '">' + esc(next) + '</div>' : '') +
+      '<div class="l-acts">' +
+        (tel ? '<a class="btn small" href="tel:' + esc(tel) + '">Call ' + esc(l.phone) + '</a><a class="btn small" href="sms:' + esc(tel) + '">Text</a>' : '') +
+        (l.email ? '<a class="btn small" href="mailto:' + esc(l.email) + '">Email</a>' : '') +
+        '<button class="small" type="button" data-more>' + (openId === l.id ? 'Less' : 'Details / notes') + '</button>' +
+        '<select class="quick-stage" data-stage aria-label="Where they are">' + STAGE_PICK.concat(STAGE_PICK.indexOf(l.stage) < 0 ? [l.stage] : []).map(function (s) {
+          return '<option value="' + esc(s) + '"' + (s === l.stage ? ' selected' : '') + '>' + esc(STAGES[s] || s) + '</option>'; }).join('') + '</select>' +
+      '</div>';
+    if (openId === l.id) {
+      var parts = [];
+      if (l.company) parts.push(['Company', l.company]);
+      if (l.email) parts.push(['Email', l.email]);
+      if (l.phone) parts.push(['Phone', l.phone]);
+      if (l.area || l.address) parts.push(['Where', [l.address, l.area].filter(Boolean).join(', ')]);
+      if (l.list_name) parts.push(['List', l.list_name]);
+      if (l.job_type) parts.push(['Job', l.job_type]);
+      if (l.preferred_contact) parts.push(['Best way to reach them', l.preferred_contact]);
+      if (l.description) parts.push(['What they want done', l.description]);
+
+      var page = l.intake && (l.intake.page || l.intake.came_from || l.intake.source_page);
+      var utm = l.intake ? Object.keys(l.intake).filter(function (k) { return /^utm_/.test(k); }).map(function (k) { return k.slice(4) + ': ' + l.intake[k]; }).join(', ') : '';
+      if (page) parts.push(['Page', page]);
+      if (utm) parts.push(['Campaign', utm]);
+      html += '<div class="l-more">' + parts.map(function (p) { return '<h4>' + esc(p[0]) + '</h4>' + esc(p[1]); }).join('') +
+        '<h4>Next step</h4><div class="ed-row"><input data-f="next_action" value="' + esc(l.next_action || '') + '" placeholder="e.g. Call back, send quote">' +
+        '<input data-f="next_action_at" type="date" value="' + esc(l.next_action_at ? String(l.next_action_at).slice(0, 10) : '') + '" aria-label="When"></div>' +
+        '<h4>Lead notes</h4><textarea data-f="notes" rows="4">' + esc(l.notes || '') + '</textarea>' +
+        '<div class="ed-row"><button class="primary small" type="button" data-save>Save</button></div>' +
+        '<h4>Add a note</h4><textarea data-newnote rows="2" placeholder="What was said, who to ask for…"></textarea>' +
+        '<div class="ed-row"><button class="small" type="button" data-addnote>Add note</button></div>' +
+        '<div id="notes-' + esc(l.id) + '"></div>' +
+        (l.photo_path ? '<h4>Photo</h4><div id="photo-' + esc(l.id) + '" class="l-photo">Loading photo…</div>' : '') + '</div>';
+    }
+    return html + '</article>';
+  }
+  $('stats').addEventListener('click', function (e) { var s = e.target.closest('.stat'); if (!s) return; view = s.dataset.view; paint(); });
+  $('q').addEventListener('input', function () { clearTimeout(paint.t); paint.t = setTimeout(paint, 150); });
+  $('refresh').addEventListener('click', loadLeads);
+  $('list').addEventListener('click', function (e) {
+    if (!e.target.closest('[data-more]')) return;
+    var id = e.target.closest('.lead').dataset.id;
+    openId = openId === id ? null : id; paint();
+    if (openId) { loadNotes(openId); loadPhoto(openId); }
+  });
+  $('list').addEventListener('change', function (e) {
+    var sel = e.target.closest('[data-stage]'); if (!sel) return;
+    var id = e.target.closest('.lead').dataset.id, now = new Date().toISOString();
+    var patch = { stage: sel.value, updated_at: now };
+    if (CLOSED[sel.value]) patch.next_action_at = null;
+    if (sel.value === 'contacted') patch.last_contact_at = now;
+    sb.from('leads').update(patch).eq('id', id).then(function (r) {
+      if (r.error) { alert('Couldn’t save: ' + r.error.message); return; }
+      leads.forEach(function (l) { if (l.id === id) Object.assign(l, patch); }); paint(); loadNotes(id);
+    });
+  });
+  $('list').addEventListener('click', function (e) {
+    var card = e.target.closest('.lead'); if (!card) return;
+    var id = card.dataset.id, now = new Date().toISOString();
+    if (e.target.closest('[data-save]')) {
+      var patch = { updated_at: now };
+      card.querySelectorAll('[data-f]').forEach(function (f) { patch[f.dataset.f] = f.value.trim() || null; });
+      if (patch.next_action_at) patch.next_action_at = new Date(patch.next_action_at + 'T09:00:00').toISOString();
+      sb.from('leads').update(patch).eq('id', id).then(function (r) {
+        if (r.error) { alert('Couldn’t save: ' + r.error.message); return; }
+        leads.forEach(function (l) { if (l.id === id) Object.assign(l, patch); }); paint(); loadNotes(id);
+      });
+    }
+    if (e.target.closest('[data-addnote]')) {
+      var ta = card.querySelector('[data-newnote]'), body = ta && ta.value.trim(); if (!body) return;
+      var nid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : undefined;
+      sb.from('notes').insert(Object.assign({ lead_id: id, kind: 'note', body: body, created_at: now }, nid ? { id: nid } : {})).then(function (r) {
+        if (r.error) { alert('Couldn’t add the note: ' + r.error.message); return; }
+        ta.value = ''; sb.from('leads').update({ last_contact_at: now, updated_at: now }).eq('id', id); loadNotes(id);
+      });
+    }
+  });
+  // Photo sent with the quote (stored privately in Supabase; members of the business get a link for an hour).
+  function loadPhoto(id) {
+    var l = leads.filter(function (x) { return x.id === id; })[0];
+    if (!l || !l.photo_path) return;
+    sb.storage.from('lead-photos').createSignedUrl(l.photo_path, 3600).then(function (r) {
+      var box = document.getElementById('photo-' + id); if (!box) return;
+      if (r.error || !r.data) { box.textContent = 'Couldn’t load the photo.'; return; }
+      box.innerHTML = '<a href="' + esc(r.data.signedUrl) + '" target="_blank" rel="noopener"><img src="' + esc(r.data.signedUrl) + '" alt="Photo sent with the quote"></a>';
+    });
+  }
+  function loadNotes(id) {
+    sb.from('notes').select('body,created_at').eq('lead_id', id).order('created_at', { ascending: false }).limit(20).then(function (r) {
+      var box = document.getElementById('notes-' + id); if (!box || r.error || !r.data || !r.data.length) return;
+      box.innerHTML = '<h4>Earlier notes</h4>' + r.data.map(function (n) { return esc(when(n.created_at) + ': ' + (n.body || '')); }).join('\n');
+    });
+  }
+
+  start();
+})();
+</script>
+</body>
+</html>

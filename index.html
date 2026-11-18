@@ -487,7 +487,7 @@
     <div class="foot-logo"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg><p class="wm">Saltwater<small>BUILDING CO</small></p></div>
     <p><a href="tel:+16048484040">604-848-4040</a><br>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p>
     <p><a href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">Instagram</a></p>
-    <p class="owner"><a href="/admin/photos/" rel="nofollow">Owner login</a></p>
+    <p class="owner"><a href="/admin/leads/" rel="nofollow">Owner login</a></p>
   </div>
 </footer>
 
@@ -539,6 +539,22 @@
   function setMenu(open){document.body.classList.toggle('menu-open',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Close menu':'Open menu');menu.setAttribute('aria-hidden',!open)}
   btn.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'))});
   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+
+  // Quote form: also save the enquiry in Saltwater's lead tracker (back door: /admin/leads/). Netlify Forms still
+  // gets and emails everything as before; this copy never blocks or changes the form. The key is public by design:
+  // it can only add a lead to Saltwater's tracker, only from this website, and the tracker limits how many.
+  (function(){var f=document.querySelector('form[name=contact]');if(!f||!window.fetch)return;
+    f.addEventListener('submit',function(){
+      if(f.checkValidity&&!f.checkValidity())return;
+      var v=function(n){var e=f.elements[n];return e&&e.value?String(e.value).trim():''};
+      var body={key:'lk_salt_65209ed33064f0e84b1aff7a',form_name:'contact',source:'Saltwater website (contact form)',
+        next_action:'Reply to enquiry',name:(v('first-name')+' '+v('last-name')).trim(),email:v('email'),phone:v('phone'),
+        message:v('message').slice(0,1000),'bot-field':v('bot-field'),
+        details:{mailing_list:f.elements['mailing-list']&&f.elements['mailing-list'].checked?'yes':'no'}};
+      try{fetch('https://cgrqejsigmzvlhlmvjbx.supabase.co/functions/v1/lead-capture',{method:'POST',keepalive:true,
+        headers:{'content-type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).catch(function(){})}catch(e){}
+    });
+  })();
 
   // Thank-you note after Netlify form post
   if(location.search.indexOf('sent=1')>-1){

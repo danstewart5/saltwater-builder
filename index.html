@@ -217,6 +217,7 @@
   footer .wrap{position:relative;z-index:1;padding-top:62px;padding-bottom:58px;font-size:16px;line-height:1.3}
   footer p + p{margin-top:28px}
   footer a:hover{text-decoration:underline;text-underline-offset:3px}
+  footer .owner{font-size:13px;opacity:.65}
 
   /* ---------- tablet / desktop ---------- */
   @media (min-width:700px){
@@ -317,7 +318,7 @@
     <div class="wrap">
       <figure style="margin:0">
         <!-- PLACEHOLDER: swap for a team photo of the Saltwater crew on site (keep the frame) -->
-        <div class="ph ph-empty" role="img" aria-label="Team photo placeholder"><span>Team photo</span></div>
+        <div class="ph ph-empty" data-photo-slot="team" data-photo-replace role="img" aria-label="Team photo placeholder"><span>Team photo</span></div>
         <figcaption class="cap">The Saltwater team</figcaption>
       </figure>
     </div>
@@ -326,11 +327,11 @@
   <!-- ADDED: RISING TIDE FEATURE -->
   <section class="s-tide" id="rising-tide">
     <div class="wrap grid">
-      <div class="ph ph-empty" role="img" aria-label="Rising Tide site photo placeholder"><span>Rising Tide site photo</span></div>
+      <div class="ph ph-empty" data-photo-slot="featured" data-photo-replace role="img" aria-label="Rising Tide site photo placeholder"><span>Rising Tide site photo</span></div>
       <div>
         <p class="eyebrow">Now building</p>
-        <h2 class="h-md">Rising Tide Boat Works</h2>
-        <p class="body" style="margin-top:14px">An electric boat hub on Ucluelet&rsquo;s old WWII seaplane base, designed by Michael Green Architecture. Now under construction, about a two-year build.</p>
+        <h2 class="h-md" data-text="tide-title">Rising Tide Boat Works</h2>
+        <p class="body" style="margin-top:14px" data-text="tide-body">An electric boat hub on Ucluelet&rsquo;s old WWII seaplane base, designed by Michael Green Architecture. Now under construction, about a two-year build.</p>
         <a class="link" href="#contact"><span class="arr"></span><span class="label">Talk to us about a commercial build</span></a>
       </div>
     </div>
@@ -339,31 +340,32 @@
   <!-- 5. SELECT PROJECTS -->
   <section class="s-projects" id="projects">
     <div class="wrap"><h2 class="h-sm">Select Projects</h2></div>
-    <div class="carousel">
-      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+    <div class="carousel" data-photo-projects>
+      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
         <p class="t">Bozman Cabin</p><p class="c">Custom Homes</p>
         <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Bozman Cabin" loading="lazy"></div>
       </a>
-      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
         <p class="t">1406 Imperial</p><p class="c">Custom Homes</p>
         <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
       </a>
-      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
         <p class="t">1769 Rainforest Lane</p><p class="c">Residential Developments</p>
         <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="1769 Rainforest Lane" loading="lazy"></div>
       </a>
-      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
         <p class="t">302 Reef</p><p class="c">Residential Developments</p>
         <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="302 Reef" loading="lazy"></div>
       </a>
-      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
         <p class="t">Centerpoint</p><p class="c">Commercial Developments</p>
         <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="Centerpoint commercial development" loading="lazy"></div>
       </a>
-      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
         <p class="t">ADU</p><p class="c">Accessory Dwelling Units</p>
         <div class="ph"><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="Accessory dwelling unit" loading="lazy"></div>
       </a>
+      <template data-project-template><a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><p class="t">{title}</p><p class="c" data-if-kind>{kind}</p><div class="ph"><img src="{src}" alt="{title}" loading="lazy"></div></a></template>
     </div>
     <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">View All Projects</span></a></div>
   </section>
@@ -373,8 +375,8 @@
   <section class="s-quote">
     <div class="wrap">
       <blockquote style="margin:0">
-        <p class="quote">&ldquo;Throughout the construction process we are 100% transparent, so that at any time you know exactly where your project stands.&rdquo;</p>
-        <p class="attr">&mdash; Saltwater Building Co.</p>
+        <p class="quote">&ldquo;<span data-text="quote-text">Throughout the construction process we are 100% transparent, so that at any time you know exactly where your project stands.</span>&rdquo;</p>
+        <p class="attr">&mdash; <span data-text="quote-name">Saltwater Building Co.</span></p>
       </blockquote>
     </div>
   </section>
@@ -398,8 +400,8 @@
 
   <!-- 8. PHOTOS -->
   <section class="s-photos">
-    <div class="wrap"><div class="land"><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project" loading="lazy"></div></div>
-    <div class="bleed"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_1400,h_1400,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
+    <div class="wrap"><div class="land"><img data-photo-slot="photo-wide" src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project" loading="lazy"></div></div>
+    <div class="bleed"><img data-photo-slot="photo-full" src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_1400,h_1400,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
   </section>
 
   <!-- ADDED: STAGE BY STAGE -->
@@ -409,10 +411,10 @@
       <h2 class="h-md">A west coast home, stage by stage.</h2>
       <p class="body intro">One of our builds, from bare lot to finished home.</p>
       <div class="stages">
-        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 1 photo placeholder"><span>Stage 1 photo</span></div><p class="n">01</p><p class="t">Foundation</p><p class="d">Lot cleared, drainage in, foundation poured for a wet site.</p></div>
-        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 2 photo placeholder"><span>Stage 2 photo</span></div><p class="n">02</p><p class="t">Framing</p><p class="d">Walls and roof framed and braced for coastal wind.</p></div>
-        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 3 photo placeholder"><span>Stage 3 photo</span></div><p class="n">03</p><p class="t">Weather-tight</p><p class="d">Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div>
-        <div class="stage"><div class="ph ph-empty" role="img" aria-label="Stage 4 photo placeholder"><span>Stage 4 photo</span></div><p class="n">04</p><p class="t">Finished</p><p class="d">Keys handed over. Built to last on the wild side of the coast.</p></div>
+        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-1" data-photo-replace role="img" aria-label="Stage 1 photo placeholder"><span>Stage 1 photo</span></div><p class="n">01</p><p class="t">Foundation</p><p class="d">Lot cleared, drainage in, foundation poured for a wet site.</p></div>
+        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-2" data-photo-replace role="img" aria-label="Stage 2 photo placeholder"><span>Stage 2 photo</span></div><p class="n">02</p><p class="t">Framing</p><p class="d">Walls and roof framed and braced for coastal wind.</p></div>
+        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-3" data-photo-replace role="img" aria-label="Stage 3 photo placeholder"><span>Stage 3 photo</span></div><p class="n">03</p><p class="t">Weather-tight</p><p class="d">Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div>
+        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-4" data-photo-replace role="img" aria-label="Stage 4 photo placeholder"><span>Stage 4 photo</span></div><p class="n">04</p><p class="t">Finished</p><p class="d">Keys handed over. Built to last on the wild side of the coast.</p></div>
       </div>
     </div>
   </section>
@@ -426,7 +428,7 @@
         <a class="link" href="#contact"><span class="arr"></span><span class="label">Our Approach</span></a>
       </div>
     </div>
-    <div class="wrap"><div class="land"><img src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="302 Reef" loading="lazy"></div></div>
+    <div class="wrap"><div class="land"><img data-photo-slot="approach" src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="302 Reef" loading="lazy"></div></div>
   </section>
 
   <!-- 10. INSTAGRAM -->
@@ -485,6 +487,7 @@
     <div class="foot-logo"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg><p class="wm">Saltwater<small>BUILDING CO</small></p></div>
     <p><a href="tel:+16048484040">604-848-4040</a><br>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p>
     <p><a href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">Instagram</a></p>
+    <p class="owner"><a href="/admin/leads/" rel="nofollow">Owner login</a></p>
   </div>
 </footer>
 
@@ -537,6 +540,22 @@
   btn.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'))});
   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
 
+  // Quote form: also save the enquiry in Saltwater's lead tracker (back door: /admin/leads/). Netlify Forms still
+  // gets and emails everything as before; this copy never blocks or changes the form. The key is public by design:
+  // it can only add a lead to Saltwater's tracker, only from this website, and the tracker limits how many.
+  (function(){var f=document.querySelector('form[name=contact]');if(!f||!window.fetch)return;
+    f.addEventListener('submit',function(){
+      if(f.checkValidity&&!f.checkValidity())return;
+      var v=function(n){var e=f.elements[n];return e&&e.value?String(e.value).trim():''};
+      var body={key:'lk_salt_65209ed33064f0e84b1aff7a',form_name:'contact',source:'Saltwater website (contact form)',
+        next_action:'Reply to enquiry',name:(v('first-name')+' '+v('last-name')).trim(),email:v('email'),phone:v('phone'),
+        message:v('message').slice(0,1000),'bot-field':v('bot-field'),
+        details:{mailing_list:f.elements['mailing-list']&&f.elements['mailing-list'].checked?'yes':'no'}};
+      try{fetch('https://cgrqejsigmzvlhlmvjbx.supabase.co/functions/v1/lead-capture',{method:'POST',keepalive:true,
+        headers:{'content-type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).catch(function(){})}catch(e){}
+    });
+  })();
+
   // Thank-you note after Netlify form post
   if(location.search.indexOf('sent=1')>-1){
     var f=document.querySelector('form[name=contact]');
@@ -544,5 +563,6 @@
   }
 })();
 </script>
+<script src="/js/site-photos.js?v=1" data-site="saltwater-builder" data-projects data-texts defer></script>
 </body>
 </html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saltwater Building Co | West Coast General Contractor | Ucluelet, Tofino &amp; Whistler</title>
+<meta name="description" content="A West Coast General Contractor. Servicing Tofino, Ucluelet, and Whistler. Custom homes, renovations, residential developments, commercial construction and ADUs.">
+<meta name="theme-color" content="#F5F3F3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://static.wixstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F3F3;
+    --ink:#1C1C1C;
+    --grey:#8F8781;
+    --rule:#8F8781;
+    --pad:23px;
+    --maxw:1440px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter Tight","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:15.5px;line-height:1.3;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,p{margin:0;font-weight:400}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+
+  /* ---------- header ---------- */
+  .hdr{position:fixed;top:0;left:0;right:0;z-index:50;height:56px;transition:background .25s ease}
+  .hdr .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+  .hdr .mark{font-size:25px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .25s ease;padding-top:2px}
+  .hdr.solid{background:var(--bg)}
+  .hdr.solid .mark{opacity:1}
+  .plus{width:40px;height:40px;margin-right:-10px;border:0;background:none;padding:0;cursor:pointer;position:relative;color:#fff}
+  .plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:1.5px;background:currentColor;transform:translate(-50%,-50%);transition:transform .3s ease}
+  .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .hdr.solid .plus,.menu-open .plus{color:var(--ink)}
+  .menu-open .plus::before{transform:translate(-50%,-50%) rotate(45deg)}
+  .menu-open .plus::after{transform:translate(-50%,-50%) rotate(135deg)}
+  .menu-open .hdr{background:var(--bg)}
+  .menu-open .hdr .mark{opacity:1}
+  .menu{position:fixed;inset:0;z-index:40;background:var(--bg);padding:110px var(--pad) 40px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+  .menu-open .menu{opacity:1;visibility:visible}
+  .menu nav a{display:block;font-size:33px;line-height:1.25;letter-spacing:-.01em}
+  .menu .menu-foot{color:var(--grey);font-size:15.5px;line-height:1.25}
+  .menu-open{overflow:hidden}
+
+  /* ---------- 1 hero ---------- */
+  .hero{position:relative;height:76vh;height:76svh;min-height:420px;overflow:hidden;background:#6b6256}
+  .hero img{position:absolute;inset:0;transform-origin:62% 55%;animation:kb 18s ease-in-out infinite alternate;will-change:transform}
+  /* Pure-CSS slow push-in/pan, stands in for Summerhill's looping hero video. Adds no page weight. */
+  @keyframes kb{0%{transform:scale(1) translate3d(0,0,0)}100%{transform:scale(1.12) translate3d(-2.5%,-1.5%,0)}}
+  @media (prefers-reduced-motion:reduce){.hero img{animation:none}}
+  .save-data .hero img{animation:none}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to top,rgba(0,0,0,.28),rgba(0,0,0,0))}
+  .hero .wordmark{position:absolute;left:0;right:0;bottom:0;z-index:2}
+  .wordmark h1{color:#fff;text-transform:uppercase;font-weight:400;line-height:.8;letter-spacing:-.015em;white-space:nowrap;font-size:22.5vw;padding:0 0 calc(var(--pad) * .95);margin-left:-.04em}
+
+  /* ---------- type scale ---------- */
+  .statement{font-size:33px;line-height:1.24;letter-spacing:-.012em}
+  .statement .g,.g{color:var(--grey)}
+  .h-md{font-size:24px;line-height:1.25;letter-spacing:-.01em}
+  .h-sm{font-size:20px;line-height:1.25;letter-spacing:-.005em}
+  .body{font-size:15.5px;line-height:1.29}
+  .link{display:inline-flex;align-items:center;gap:20px;font-weight:500;font-size:15px;line-height:1}
+  .link .arr{display:inline-block;width:16px;height:9px;position:relative}
+  .link .arr::before{content:"";position:absolute;left:0;right:1px;top:50%;height:1.2px;background:currentColor;transform:translateY(-50%)}
+  .link .arr::after{content:"";position:absolute;right:1px;top:50%;width:6px;height:6px;border-top:1.2px solid currentColor;border-right:1.2px solid currentColor;transform:translateY(-50%) rotate(45deg);transform-origin:center}
+  .link:hover .label{text-decoration:underline;text-underline-offset:3px}
+
+  /* ---------- 2 intro statement ---------- */
+  .s-intro{padding-top:36px}
+  /* ---------- 3 about ---------- */
+  .s-about{padding-top:110px}
+  .s-about .body{margin-top:36px}
+  .s-about .link{margin-top:48px}
+  /* ---------- 4 portrait ---------- */
+  .s-portrait{padding-top:50px}
+  .s-portrait .ph{aspect-ratio:4/5;overflow:hidden;background:#d8d4d1}
+  .ph-empty{display:flex;align-items:center;justify-content:center;background:#E3E0DE !important}
+  .ph-empty span{font-size:13px;color:var(--grey);letter-spacing:.01em}
+  .cap{margin-top:14px;font-size:15.5px;line-height:1.3;color:var(--ink)}
+
+  /* ---------- 5 projects ---------- */
+  .s-projects{padding-top:70px}
+  .s-projects .h-sm{margin-bottom:70px}
+  .carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--pad);scroll-padding:0 var(--pad);max-width:var(--maxw);margin:0 auto}
+  .carousel::-webkit-scrollbar{display:none}
+  .card{flex:0 0 83%;scroll-snap-align:start;display:block}
+  .card .t{font-weight:600;font-size:16px;line-height:1.35}
+  .card .c{font-size:16px;line-height:1.35;color:var(--ink)}
+  .card .ph{margin-top:55px;aspect-ratio:4/5;overflow:hidden;background:#d8d4d1}
+  .s-projects .link{margin-top:40px}
+
+  /* ---------- 6 quote ---------- */
+  .s-quote{padding-top:110px}
+  .quote{font-size:23px;line-height:1.2;letter-spacing:-.01em;text-indent:-.4em}
+  .attr{margin-top:34px;font-size:15.5px;line-height:1.3}
+
+  /* ---------- 7 services ---------- */
+  .s-services{padding-top:115px}
+  .s-services .link{margin-top:40px}
+  .svc{list-style:none;margin:70px 0 0;padding:0;border-bottom:1px solid var(--rule)}
+  .svc li{display:grid;grid-template-columns:60px 1fr;border-top:1px solid var(--rule);padding:9px 0 9px}
+  .svc .n{font-size:11px;line-height:1;padding-top:7px;color:#5b5652;letter-spacing:.02em}
+  .svc .s{font-size:17.5px;line-height:1.2;color:var(--grey)}
+
+  /* ---------- 8 photos ---------- */
+  .s-photos{padding-top:86px}
+  .s-photos .land{aspect-ratio:5/4;overflow:hidden;background:#d8d4d1}
+  .bleed{margin-top:132px;height:118vw;max-height:92vh;overflow:hidden;background:#cfd4d6}
+
+  /* ---------- 9 approach ---------- */
+  .s-approach{padding-top:112px}
+  .s-approach .body{margin-top:38px}
+  .s-approach .link{margin-top:40px}
+  .s-approach .land{margin-top:56px;aspect-ratio:5/4;overflow:hidden;background:#d8d4d1}
+
+  /* ---------- 10 instagram ---------- */
+  .s-insta{padding-top:94px}
+  .s-insta .h-sm{margin-bottom:66px}
+  .ig .card{flex-basis:100%}
+  .ig .tile{aspect-ratio:628/746;overflow:hidden;background:#dcdcdc;display:block}
+  .ig .tile img{transition:transform .5s ease}
+  .ig .tile:hover img{transform:scale(1.03)}
+  .s-insta .link{margin-top:40px}
+
+  /* ---------- 11 contact ---------- */
+  .s-contact{padding-top:140px;padding-bottom:40px}
+  .s-contact .lead{margin-top:110px;font-size:24px;line-height:1.25;letter-spacing:-.01em}
+  .s-contact .lead + .lead{margin-top:20px}
+  form{margin-top:48px;max-width:574px}
+  .fld{margin-bottom:22px}
+  .fld label{display:block;font-size:15.5px;line-height:1.2;color:#3c3c3c;margin-bottom:6px}
+  .fld label .req{color:#c00;margin-left:4px}
+  .fld input,.fld textarea{width:92%;display:block;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid #c9c7c6;border-radius:3px;padding:8px 10px;height:37px;outline:none;-webkit-appearance:none;appearance:none}
+  .fld textarea{height:116px;resize:vertical}
+  .fld input:focus,.fld textarea:focus{border-color:var(--ink)}
+  .chk{display:flex;align-items:center;gap:10px;font-size:16px;color:#3c3c3c;margin:4px 0 26px;cursor:pointer}
+  .chk input{width:14px;height:14px;margin:0;accent-color:var(--ink)}
+  .btn{background:#000;color:#fff;border:0;border-radius:0;font:inherit;font-size:15px;width:115px;height:34px;cursor:pointer;-webkit-appearance:none}
+  .btn:hover{background:#2a2a2a}
+  .hp{position:absolute;left:-9999px}
+
+  /* ---------- 12 footer ---------- */
+  footer{position:relative;color:#fff;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 70% at 18% 8%,rgba(255,255,255,.16),rgba(255,255,255,0) 70%),
+      radial-gradient(ellipse 50% 60% at 85% 85%,rgba(0,0,0,.25),rgba(0,0,0,0) 70%),
+      linear-gradient(160deg,#6e716d 0%,#5b5f5c 45%,#4c504e 100%);}
+  footer::before{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.25 -.35'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
+  footer::after{content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='p'><feTurbulence type='turbulence' baseFrequency='.012' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");mix-blend-mode:soft-light}
+  footer .wrap{position:relative;z-index:1;padding-top:62px;padding-bottom:58px;font-size:14.5px;line-height:1.3}
+  footer p + p{margin-top:28px}
+  footer a:hover{text-decoration:underline;text-underline-offset:3px}
+
+  /* ---------- tablet / desktop ---------- */
+  @media (min-width:700px){
+    :root{--pad:40px}
+    .hdr{height:72px}
+    .hdr .mark{font-size:30px}
+    .statement{font-size:clamp(40px,4.6vw,66px);line-height:1.18;max-width:21em}
+    .h-md{font-size:clamp(28px,2.6vw,38px)}
+    .h-sm{font-size:clamp(22px,1.9vw,28px)}
+    .body,.attr{font-size:clamp(16px,1.25vw,19px)}
+    .link{font-size:clamp(15px,1.1vw,17px)}
+    .quote{font-size:clamp(30px,3vw,44px);max-width:24em}
+    .s-intro{padding-top:56px}
+    .s-about{padding-top:160px}
+    .s-portrait .ph{aspect-ratio:16/10}
+    .card{flex-basis:calc((100% - 32px)/2.4)}
+    .ig .card{flex-basis:calc((100% - 48px)/3.6)}
+    .svc .s{font-size:clamp(20px,2vw,30px)}
+    .svc li{grid-template-columns:22% 1fr;padding:14px 0}
+    .svc .n{font-size:13px;padding-top:10px}
+    .s-photos .land{width:66%;aspect-ratio:3/2}
+    .bleed{height:auto;aspect-ratio:16/9;max-height:none}
+    .s-approach .land{width:66%;margin-left:auto;aspect-ratio:3/2}
+    .s-contact .lead{font-size:clamp(28px,2.6vw,38px);max-width:22em}
+    .fld label{font-size:16px}
+    footer .wrap{font-size:17px}
+  }
+  @media (min-width:1000px){
+    :root{--pad:56px}
+    .s-about .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .s-about .body{margin-top:0}
+    .s-approach .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .s-approach .body{margin-top:0}
+    .s-quote,.s-services{padding-top:170px}
+    .s-services .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .s-services .svc{margin-top:0}
+    .s-contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:140px}
+    .s-contact .grid .lead{margin-top:0}
+    .s-contact form{margin-top:0}
+    footer .wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-top:90px;padding-bottom:90px}
+    footer p + p{margin-top:0}
+  }
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#top" class="mark" aria-label="Saltwater Building Co home">Saltwater</a>
+    <button class="plus" id="menuBtn" aria-label="Open menu" aria-expanded="false"></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#approach">Approach</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="menu-foot">
+    <p>Saltwater Building Co.</p>
+    <p><a href="tel:+16049672573">604 967 2573</a></p>
+    <p>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- 1. HERO -->
+  <section class="hero" id="hero">
+    <img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg" alt="Bozman Cabin, a custom home by Saltwater Building Co" fetchpriority="high">
+    <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1></div></div>
+  </section>
+
+  <!-- 2. STATEMENT -->
+  <section class="s-intro">
+    <div class="wrap">
+      <p class="statement">A West Coast General Contractor. <span class="g">Servicing Tofino, Ucluelet, and Whistler. A licensed home builder specializing in custom builds, renovations, residential developments and commercial construction.</span></p>
+    </div>
+  </section>
+
+  <!-- 3. ABOUT -->
+  <section class="s-about" id="about">
+    <div class="wrap grid">
+      <h2 class="h-md">Design, build and renovate your way to better homes and working spaces</h2>
+      <div>
+        <p class="body">Based in Ucluelet and Tofino BC, Saltwater Building Co is a full service building company. We are focused on building to the highest standard, utilizing modern construction methodology, building science, and professional project management practices. With an experienced and cohesive team, Saltwater combines industry experience with innovative thinking to complete projects with efficiency and honorable craftsmanship.</p>
+        <a class="link" href="#contact"><span class="arr"></span><span class="label">About Us</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PORTRAIT SLOT (no owner photo known; strong project photo used instead) -->
+  <section class="s-portrait">
+    <div class="wrap">
+      <!-- PLACEHOLDER: swap this block for a real photo of Chris Bozman (keep the 4:5 frame) -->
+      <figure style="margin:0">
+        <div class="ph ph-empty" role="img" aria-label="Owner photo placeholder"><span>Owner photo</span></div>
+        <figcaption class="cap">Chris Bozman, Owner</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. SELECT PROJECTS -->
+  <section class="s-projects" id="projects">
+    <div class="wrap"><h2 class="h-sm">Select Projects</h2></div>
+    <div class="carousel">
+      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+        <p class="t">Bozman Cabin</p><p class="c">Custom Homes</p>
+        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg" alt="Bozman Cabin" loading="lazy"></div>
+      </a>
+      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+        <p class="t">1406 Imperial</p><p class="c">Custom Homes</p>
+        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg" alt="1406 Imperial" loading="lazy"></div>
+      </a>
+      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+        <p class="t">1769 Rainforest Lane</p><p class="c">Residential Developments</p>
+        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg" alt="1769 Rainforest Lane" loading="lazy"></div>
+      </a>
+      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+        <p class="t">302 Reef</p><p class="c">Residential Developments</p>
+        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg" alt="302 Reef" loading="lazy"></div>
+      </a>
+      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+        <p class="t">Centerpoint</p><p class="c">Commercial Developments</p>
+        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png" alt="Centerpoint commercial development" loading="lazy"></div>
+      </a>
+      <a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
+        <p class="t">ADU</p><p class="c">Accessory Dwelling Units</p>
+        <div class="ph"><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg" alt="Accessory dwelling unit" loading="lazy"></div>
+      </a>
+    </div>
+    <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">View All Projects</span></a></div>
+  </section>
+
+  <!-- 6. PULL-QUOTE -->
+  <!-- PLACEHOLDER: replace this with a real client testimonial (quote + client name) once Saltwater supplies one. -->
+  <section class="s-quote">
+    <div class="wrap">
+      <blockquote style="margin:0">
+        <p class="quote">&ldquo;Throughout the construction process we are 100% transparent, so that at any time you know exactly where your project stands.&rdquo;</p>
+        <p class="attr">&mdash; Saltwater Building Co.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- 7. SERVICES -->
+  <section class="s-services" id="services">
+    <div class="wrap grid">
+      <div>
+        <h2 class="h-md">Thinking about building, renovating or adding an ADU, or already have a design? Our team is here to help.</h2>
+        <a class="link" href="#contact"><span class="arr"></span><span class="label">See Our Services</span></a>
+      </div>
+      <ul class="svc">
+        <li><span class="n">01</span><span class="s">Custom Homes</span></li>
+        <li><span class="n">02</span><span class="s">Residential Developments</span></li>
+        <li><span class="n">03</span><span class="s">Renovations</span></li>
+        <li><span class="n">04</span><span class="s">Commercial Developments</span></li>
+        <li><span class="n">05</span><span class="s">ADUs (Accessory Dwelling Units)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. PHOTOS -->
+  <section class="s-photos">
+    <div class="wrap"><div class="land"><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg" alt="Saltwater Building Co project" loading="lazy"></div></div>
+    <div class="bleed"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg" alt="1406 Imperial" loading="lazy"></div>
+  </section>
+
+  <!-- 9. APPROACH -->
+  <section class="s-approach" id="approach">
+    <div class="wrap grid">
+      <h2 class="h-md">Building science is in our nature.</h2>
+      <div>
+        <p class="body">We are focused on building to the highest standard, utilizing modern construction methodology, building science, and professional project management practices. We focus on our clients&rsquo; needs from project conception through to completion. Once we understand those needs we connect the right team of trades and suppliers to execute the work, resulting in successful projects.</p>
+        <a class="link" href="#contact"><span class="arr"></span><span class="label">Our Approach</span></a>
+      </div>
+    </div>
+    <div class="wrap"><div class="land"><img src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg" alt="302 Reef" loading="lazy"></div></div>
+  </section>
+
+  <!-- 10. INSTAGRAM -->
+  <section class="s-insta">
+    <div class="wrap"><h2 class="h-sm">Instagram</h2></div>
+    <div class="carousel ig">
+      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
+      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
+      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
+      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
+      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
+      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
+    </div>
+    <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">Follow Us on Instagram</span></a></div>
+  </section>
+
+  <!-- 11. CONTACT -->
+  <section class="s-contact" id="contact">
+    <div class="wrap">
+      <p class="statement">From an idea to a reality. <span class="g">If you have a project coming up please don&rsquo;t hesitate to reach out, as we would love to help you take it there.</span></p>
+      <div class="grid">
+        <div>
+          <p class="lead">We are based in Ucluelet, and service Tofino, Ucluelet, Whistler and remote coastal British Columbia projects.</p>
+          <p class="lead">We look forward to speaking with you!</p>
+        </div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1#contact">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+          <div class="fld"><label for="fn">First Name<span class="req">*</span></label><input id="fn" name="first-name" type="text" autocomplete="given-name" required></div>
+          <div class="fld"><label for="ln">Last Name<span class="req">*</span></label><input id="ln" name="last-name" type="text" autocomplete="family-name" required></div>
+          <div class="fld"><label for="em">Email<span class="req">*</span></label><input id="em" name="email" type="email" autocomplete="email" required></div>
+          <div class="fld"><label for="ph">Phone<span class="req">*</span></label><input id="ph" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="fld"><label for="msg">Message</label><textarea id="msg" name="message"></textarea></div>
+          <label class="chk"><input type="checkbox" name="mailing-list" value="yes"> Join our mailing list.</label>
+          <button class="btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 12. FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>Saltwater Building Co.</p>
+    <p><a href="tel:+16049672573">604 967 2573</a><br>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p>
+    <p><a href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">Instagram</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(navigator.connection&&navigator.connection.saveData) document.documentElement.classList.add('save-data');
+  // Image fallback: if a Wix original fails, use the resized Wix variant of the same file
+  document.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error',function(){
+      if(img.dataset.fb) return; img.dataset.fb=1;
+      img.src=img.src.split('/v1/')[0]+'/v1/fill/w_1600,h_1200,al_c,q_85/file.jpg';
+    });
+  });
+
+  // Fit the giant wordmark to the content width, like SUMMERHILL
+  var wm=document.getElementById('wm');
+  function fit(){
+    var avail=wm.parentElement.clientWidth-parseFloat(getComputedStyle(wm.parentElement).paddingLeft)-parseFloat(getComputedStyle(wm.parentElement).paddingRight);
+    wm.style.fontSize='100px';
+    var w=wm.scrollWidth;
+    if(w) wm.style.fontSize=(100*avail/w*0.995)+'px';
+  }
+  fit(); window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+
+  // Header: transparent over hero, solid with dark wordmark after
+  var hdr=document.getElementById('hdr'),hero=document.getElementById('hero');
+  function onScroll(){hdr.classList.toggle('solid',window.scrollY>hero.offsetHeight-hdr.offsetHeight)}
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Menu
+  var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+  function setMenu(open){document.body.classList.toggle('menu-open',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Close menu':'Open menu');menu.setAttribute('aria-hidden',!open)}
+  btn.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'))});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+
+  // Thank-you note after Netlify form post
+  if(location.search.indexOf('sent=1')>-1){
+    var f=document.querySelector('form[name=contact]');
+    if(f){var p=document.createElement('p');p.className='lead';p.style.marginTop='0';p.textContent='Thanks, we will be in touch soon.';f.replaceWith(p)}
+  }
+})();
+</script>
+</body>
+</html>

@@ -75,10 +75,11 @@
 
   /* ---------- added: trust strip, Rising Tide, stages ---------- */
   .s-trust{border-bottom:1px solid rgba(143,135,129,.35)}
-  .s-trust .row{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;padding-block:22px}
-  .s-trust .k{font-size:12px;color:var(--grey);letter-spacing:.02em;text-transform:uppercase}
-  .s-trust .v{margin-top:4px;font-size:16px;line-height:1.25}
-  .s-trust a.v{display:block;text-decoration:underline;text-underline-offset:3px}
+  .s-trust .row{display:flex;flex-direction:column;gap:12px;padding-block:20px}
+  .s-trust .row > div{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:12px;row-gap:2px}
+  .s-trust .k{font-size:11.5px;color:var(--grey);letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+  .s-trust .v{font-size:15.5px;line-height:1.25}
+  .s-trust a.v{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
   .s-tide{padding-top:110px}
   .s-tide .eyebrow,.s-stages .eyebrow{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
   .s-tide h2{margin-top:10px}
@@ -98,7 +99,8 @@
   .stage .t{margin-top:2px;font-size:20px;letter-spacing:-.005em}
   .stage .d{margin-top:4px;font-size:15.5px;line-height:1.29;color:#4a4642}
   @media (min-width:900px){
-    .s-trust .row{grid-template-columns:repeat(4,1fr)}
+    .s-trust .row{flex-direction:row;justify-content:space-between}
+    .s-trust .row > div{flex-direction:column;align-items:flex-start}
     .s-tide{padding-top:170px}
     .s-tide .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
     .s-tide .ph{margin-top:0}
@@ -293,7 +295,7 @@
   <!-- ADDED: TRUST STRIP -->
   <section class="s-trust">
     <div class="wrap row">
-      <div><p class="k">Licensed builder</p><p class="v">BC licence #52492</p></div>
+      <div><p class="k">Licensed builder</p><p class="v">BC licence <span style="white-space:nowrap">#52492</span></p></div>
       <div><p class="k">Home warranty</p><p class="v">2-5-10 coverage</p></div>
       <div><p class="k">Where we build</p><p class="v">Ucluelet · Tofino · Whistler · remote coast</p></div>
       <div><p class="k">Call or text</p><a class="v" href="tel:+16048484040">604-848-4040</a></div>

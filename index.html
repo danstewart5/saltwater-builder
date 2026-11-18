@@ -28,17 +28,17 @@
   h1,h2,h3,p{margin:0;font-weight:400}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
-  /* logo */
+  /* logo (brand colours: teal #5DB5C0, slate #2D4955) */
   .brand{display:flex;align-items:center;gap:10px}
-  .logo-mark{width:26px;height:24px;display:block;flex:none}
-  .logo-mark .l,.logo-mark .r{stroke:#fff;transition:stroke .25s ease}
-  .hdr.solid .logo-mark .l,.menu-open .logo-mark .l{stroke:#5EB5C0}
-  .hdr.solid .logo-mark .r,.menu-open .logo-mark .r{stroke:#2E4A57}
-  .foot-logo{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-  .foot-logo .logo-mark{width:40px;height:37px}
-  .foot-logo .logo-mark .l{stroke:#9fd3da}.foot-logo .logo-mark .r{stroke:#fff}
-  .foot-logo .wm{font-family:"DM Serif Display",Georgia,serif;font-size:28px;line-height:.95;letter-spacing:-.005em}
-  .foot-logo .wm small{display:block;font-family:"Inter Tight",Arial,sans-serif;font-size:10.5px;letter-spacing:.32em;margin-top:5px;opacity:.85}
+  .badge{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 1px 6px rgba(0,0,0,.18)}
+  .logo-mark{width:22px;height:21px;display:block}
+  .logo-mark .l{stroke:#5DB5C0}.logo-mark .r{stroke:#2D4955}
+  .hdr.solid .badge,.menu-open .badge{box-shadow:none}
+  .foot-logo{display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;background:#fff;border-radius:999px;padding:12px 22px 12px 14px}
+  .foot-logo .badge{width:auto;height:auto;box-shadow:none;background:none}
+  .foot-logo .logo-mark{width:34px;height:32px}
+  .foot-logo .wm{font-family:"DM Serif Display",Georgia,serif;font-size:26px;line-height:.95;color:#2D4955;margin:0}
+  .foot-logo .wm small{display:block;font-family:"Inter Tight",Arial,sans-serif;font-size:10px;letter-spacing:.32em;margin-top:5px;color:#5DB5C0}
   /* ---------- header ---------- */
   .hdr{position:fixed;top:0;left:0;right:0;z-index:50;height:56px;transition:background .25s ease}
   .hdr .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
@@ -263,7 +263,7 @@
 
 <header class="hdr" id="hdr">
   <div class="wrap">
-    <a href="#top" class="brand" aria-label="Saltwater Building Co home"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg><span class="mark">Saltwater</span></a>
+    <a href="#top" class="brand" aria-label="Saltwater Building Co home"><span class="badge"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg></span><span class="mark">Saltwater</span></a>
     <button class="plus" id="menuBtn" aria-label="Open menu" aria-expanded="false"></button>
   </div>
 </header>

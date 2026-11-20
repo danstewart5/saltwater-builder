@@ -93,7 +93,7 @@
   .s-tide h2{margin-top:10px}
   .s-tide .grid > div:last-child{margin-top:24px}
   @media (min-width:900px){.s-tide .grid > div:last-child{margin-top:0}}
-  .s-tide .ph{margin-top:28px;aspect-ratio:16/10}
+  .s-tide .ph{margin-top:28px;aspect-ratio:16/10;overflow:hidden;background:#d8d4d1}
   .s-tide .facts{margin:26px 0 0;border-top:1px solid rgba(143,135,129,.35)}
   .s-tide .facts > div{padding:10px 0;border-bottom:1px solid rgba(143,135,129,.35)}
   .s-tide .facts dt{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
@@ -103,7 +103,7 @@
   .s-stages h2{margin-top:10px}
   .s-stages .intro{margin-top:14px;color:var(--grey);max-width:34em}
   .stages{margin-top:30px;display:grid;grid-template-columns:1fr;gap:34px}
-  .stage .ph{aspect-ratio:4/3}
+  .stage .ph{aspect-ratio:4/3;overflow:hidden;background:#d8d4d1}
   .stage .n{margin-top:12px;font-size:12px;color:var(--grey);letter-spacing:.04em}
   .stage .t{margin-top:2px;font-size:20px;letter-spacing:-.005em}
   .stage .d{margin-top:4px;font-size:15.5px;line-height:1.29;color:#4a4642}
@@ -116,6 +116,61 @@
     .s-tide .facts{margin-top:30px}
     .s-stages{padding-top:170px}
     .stages{grid-template-columns:repeat(4,1fr);gap:20px}
+  }
+
+  /* ---------- added: reviews, build portal, FAQ, licence badges ---------- */
+  .s-reviews,.s-portal,.s-faq{padding-top:110px}
+  .s-reviews .eyebrow,.s-portal .eyebrow,.s-faq .eyebrow{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
+  .s-reviews h2,.s-portal h2,.s-faq h2{margin-top:10px}
+  .s-reviews .intro,.s-portal .intro{margin-top:14px;color:var(--grey);max-width:34em}
+  .reviews{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:28px}
+  .reviews:empty{display:none}
+  .review{border-top:1px solid rgba(143,135,129,.35);padding-top:18px}
+  .review p{font-size:20px;line-height:1.3;letter-spacing:-.005em}
+  .review .who{margin-top:12px;font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
+  .s-reviews .link,.s-portal .link{margin-top:30px}
+  .s-portal .grid > div:first-child{max-width:30em}
+  .s-portal ul{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid rgba(143,135,129,.35)}
+  .s-portal li{padding:10px 0;border-bottom:1px solid rgba(143,135,129,.35);font-size:15.5px}
+  .phone{margin:44px auto 0;width:260px;border-radius:34px;background:#1C1C1C;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.18)}
+  .phone .scr{border-radius:26px;overflow:hidden;background:var(--bg);font-size:11px;line-height:1.3}
+  .phone .bar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 8px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+  .phone .bar b{font-weight:500;color:var(--ink)}
+  .phone .feed{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:4px;height:150px;padding:0 10px}
+  .phone .feed div{overflow:hidden;background:#d8d4d1;border-radius:4px}
+  .phone .feed div:first-child{grid-row:span 2}
+  .phone .sch{margin:12px 10px 0;padding:10px 12px;background:#fff;border-radius:6px}
+  .phone .sch .k{display:flex;justify-content:space-between;color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-size:9.5px}
+  .phone .sch .track{margin-top:8px;height:3px;background:rgba(143,135,129,.3);border-radius:2px;overflow:hidden}
+  .phone .sch .track span{display:block;width:62%;height:100%;background:#5DB5C0}
+  .phone .sch .st{display:flex;justify-content:space-between;margin-top:6px;font-size:9.5px;color:var(--grey)}
+  .phone .sch .st .on{color:var(--ink)}
+  .phone .note{margin:8px 10px 14px;padding:10px 12px;background:#fff;border-radius:6px;border-left:2px solid #2D4955}
+  .phone .note .k{color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-size:9.5px}
+  .phone .note p{margin-top:4px;font-size:11.5px;color:var(--ink)}
+  .faq{margin-top:34px;border-bottom:1px solid var(--rule)}
+  .faq details{border-top:1px solid var(--rule)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0;font-size:17.5px;line-height:1.25;-webkit-tap-highlight-color:transparent}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.3px no-repeat,linear-gradient(currentColor,currentColor) center/1.3px 12px no-repeat;transition:transform .25s ease}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq .a{padding:0 0 18px;color:#4a4642;font-size:15.5px;line-height:1.35;max-width:38em}
+  .s-badges{margin-top:-1px}
+  .s-badges .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-block:20px;border-bottom:1px solid rgba(143,135,129,.35)}
+  .badge-x{display:flex;gap:12px;align-items:center;padding:12px;background:#fff;border-radius:3px}
+  .badge-x svg{flex:none;width:30px;height:30px;color:#2D4955}
+  .badge-x b{display:block;font-weight:500;font-size:13.5px;line-height:1.2}
+  .badge-x small{display:block;margin-top:2px;font-size:12px;color:var(--grey)}
+  @media (max-width:420px){.s-badges .row{grid-template-columns:1fr}}
+  @media (min-width:900px){
+    .s-reviews,.s-portal,.s-faq{padding-top:170px}
+    .reviews{grid-template-columns:repeat(3,1fr);gap:20px}
+    .s-portal .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+    .phone{margin-top:0}
+    .s-faq .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
+    .faq{margin-top:0}
+    .faq summary{font-size:20px}
+    .s-badges .row{display:flex;gap:20px}
   }
 
   /* ---------- type scale ---------- */
@@ -169,7 +224,7 @@
   .svc a:active{opacity:.5}
   @media (hover:hover){.svc a:hover .s{color:var(--ink)}}
   .card.flash .ph{outline:2px solid var(--ink);outline-offset:4px;transition:outline-color .6s}
-  #projects,#contact{scroll-margin-top:70px}
+  #projects,#contact,#faq{scroll-margin-top:70px}
   .svc .n{font-size:11px;line-height:1;padding-top:7px;color:#5b5652;letter-spacing:.02em}
   .svc .s{font-size:17.5px;line-height:1.2;color:var(--grey)}
 
@@ -209,6 +264,55 @@
   .btn{background:#000;color:#fff;border:0;border-radius:0;font:inherit;font-size:15px;width:115px;height:34px;cursor:pointer;-webkit-appearance:none}
   .btn:hover{background:#2a2a2a}
   .hp{position:absolute;left:-9999px}
+  /* quote wizard: without JS every step shows as one long form; the script adds .q-on and shows one step at a time */
+  .q-step{border:0;margin:0 0 44px;padding:0;min-width:0}
+  .q-step legend{padding:0;margin:0 0 22px;font-size:24px;line-height:1.25;letter-spacing:-.01em}
+  .q-step .q-sub{margin:-12px 0 22px;color:var(--grey);font-size:15.5px;line-height:1.29}
+  .q-opt{color:var(--grey);font-size:13px;margin-left:4px}
+  .q-lbl{display:block;font-size:17px;line-height:1.2;color:#3c3c3c;margin-bottom:8px}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:92%}
+  .tiles.sm{grid-template-columns:repeat(3,1fr)}
+  .tiles.sm .tile span{min-height:46px;justify-content:center}
+  .tile{position:relative;display:block;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .tile input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .tile span{display:flex;align-items:center;min-height:64px;height:100%;padding:12px 14px;background:#fff;border:1px solid #c9c7c6;border-radius:3px;font-size:16px;line-height:1.2;color:var(--ink);transition:border-color .15s,background .15s,color .15s}
+  @media (hover:hover){.tile:hover span{border-color:var(--ink)}}
+  .tile input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+  .tile input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+  .q-progress{width:92%;margin-bottom:34px}
+  .q-label{display:flex;justify-content:space-between;font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
+  .q-bar{margin-top:10px;height:1.5px;background:rgba(143,135,129,.35);position:relative}
+  .q-bar span{position:absolute;left:0;top:-.5px;bottom:-.5px;width:0;background:var(--ink);transition:width .3s ease}
+  .q-error{margin:14px 0 0;color:#c00;font-size:15px}
+  .q-nav{display:flex;align-items:center;justify-content:space-between;width:92%;margin-top:30px}
+  .q-nav .btn{width:auto;min-width:115px;height:44px;padding:0 22px}
+  .q-nav [data-next],.q-nav [type=submit]{margin-left:auto}
+  .q-back{background:none;border:0;padding:12px 0;cursor:pointer;color:var(--ink);font-family:inherit}
+  .q-back .arr{transform:scaleX(-1)}
+  .drop{display:block;width:92%;margin-top:4px;padding:16px 14px;border:1px dashed #c9c7c6;border-radius:3px;background:#fff;cursor:pointer}
+  .drop-h{display:block;font-size:16px;color:var(--ink)}
+  .drop input{display:block;margin:10px 0 6px;font:inherit;font-size:14px;max-width:100%}
+  .drop small{display:block;font-size:13px;color:var(--grey);line-height:1.3}
+  .drop-name{display:block;margin-top:6px;font-size:14px;font-weight:500}
+  .drop-name:empty{display:none}
+  .q-on .q-step{display:none;margin-bottom:0}
+  .q-on .q-step.q-cur{display:block;animation:qIn .25s ease}
+  @keyframes qIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.q-on .q-step.q-cur{animation:none}.q-bar span{transition:none}}
+  .q-done{margin-top:48px;max-width:574px}
+  .q-done .lead{margin-top:0}
+  .q-done .body{margin-top:18px;color:var(--grey)}
+  .q-done .link{margin-top:34px}
+  .q-done .call{margin-top:22px;font-size:15.5px}
+  .q-done .call a{text-decoration:underline;text-underline-offset:3px}
+  /* sticky call / text bar (phones only) */
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;background:var(--ink);padding-bottom:env(safe-area-inset-bottom);transform:translateY(110%);transition:transform .3s ease}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;display:flex;align-items:center;justify-content:center;height:52px;color:#fff;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .mbar a + a{border-left:1px solid rgba(255,255,255,.25)}
+  .menu-open .mbar{display:none}
+  @media (max-width:699px){body.has-mbar footer .wrap{padding-bottom:110px}html:has(body.has-mbar){scroll-padding-bottom:70px}}
+  @media (min-width:700px){.mbar{display:none}}
 
   /* ---------- 12 footer ---------- */
   footer{position:relative;color:#fff;overflow:hidden;
@@ -249,6 +353,9 @@
     .s-approach .land{width:66%;margin-left:auto;aspect-ratio:3/2}
     .s-contact .lead{font-size:clamp(28px,2.6vw,38px);max-width:22em}
     .fld label{font-size:16px}
+    .q-step legend{font-size:clamp(28px,2.6vw,34px)}
+    .tiles{grid-template-columns:repeat(3,1fr)}
+    .tiles.sm{grid-template-columns:repeat(3,1fr)}
     footer .wrap{font-size:17px}
   }
   @media (min-width:1000px){
@@ -283,6 +390,7 @@
     <a href="#projects">Projects</a>
     <a href="#services">Services</a>
     <a href="#approach">Approach</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="menu-foot">
@@ -323,9 +431,9 @@
   <section class="s-portrait">
     <div class="wrap">
       <figure style="margin:0">
-        <!-- PLACEHOLDER: swap for a team photo of the Saltwater crew on site (keep the frame) -->
-        <div class="ph ph-empty" data-photo-slot="team" data-photo-replace role="img" aria-label="Team photo placeholder"><span>Team photo</span></div>
-        <figcaption class="cap">The Saltwater team</figcaption>
+        <!-- Default is a project photo; swap for a team photo of the Saltwater crew on site in the photo manager (keep the frame) -->
+        <div class="ph" data-photo-slot="team" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="A Saltwater-built home among the coastal trees" loading="lazy" decoding="async"></div>
+        <figcaption class="cap">Built by the Saltwater team</figcaption>
       </figure>
     </div>
   </section>
@@ -333,7 +441,7 @@
   <!-- ADDED: RISING TIDE FEATURE -->
   <section class="s-tide" id="rising-tide">
     <div class="wrap grid">
-      <div class="ph ph-empty" data-photo-slot="featured" data-photo-replace role="img" aria-label="Rising Tide site photo placeholder"><span>Rising Tide site photo</span></div>
+      <div class="ph" data-photo-slot="featured" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="A Saltwater commercial build" loading="lazy" decoding="async"></div>
       <div>
         <p class="eyebrow">Now building</p>
         <h2 class="h-md" data-text="tide-title">Rising Tide Boat Works</h2>
@@ -417,10 +525,10 @@
       <h2 class="h-md">A west coast home, stage by stage.</h2>
       <p class="body intro">One of our builds, from bare lot to finished home.</p>
       <div class="stages">
-        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-1" data-photo-replace role="img" aria-label="Stage 1 photo placeholder"><span>Stage 1 photo</span></div><p class="n">01</p><p class="t">Foundation</p><p class="d">Lot cleared, drainage in, foundation poured for a wet site.</p></div>
-        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-2" data-photo-replace role="img" aria-label="Stage 2 photo placeholder"><span>Stage 2 photo</span></div><p class="n">02</p><p class="t">Framing</p><p class="d">Walls and roof framed and braced for coastal wind.</p></div>
-        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-3" data-photo-replace role="img" aria-label="Stage 3 photo placeholder"><span>Stage 3 photo</span></div><p class="n">03</p><p class="t">Weather-tight</p><p class="d">Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div>
-        <div class="stage"><div class="ph ph-empty" data-photo-slot="stage-4" data-photo-replace role="img" aria-label="Stage 4 photo placeholder"><span>Stage 4 photo</span></div><p class="n">04</p><p class="t">Finished</p><p class="d">Keys handed over. Built to last on the wild side of the coast.</p></div>
+        <div class="stage"><div class="ph" data-photo-slot="stage-1" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_09be3b94bee14498ba898faba337df7e.jpg" alt="Stage 1: foundation" loading="lazy" decoding="async"></div><p class="n">01</p><p class="t">Foundation</p><p class="d">Lot cleared, drainage in, foundation poured for a wet site.</p></div>
+        <div class="stage"><div class="ph" data-photo-slot="stage-2" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="Stage 2: framing" loading="lazy" decoding="async"></div><p class="n">02</p><p class="t">Framing</p><p class="d">Walls and roof framed and braced for coastal wind.</p></div>
+        <div class="stage"><div class="ph" data-photo-slot="stage-3" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="Stage 3: house wrapped with windows in, 1769 Rainforest Lane" loading="lazy" decoding="async"></div><p class="n">03</p><p class="t">Weather-tight</p><p class="d">Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div>
+        <div class="stage"><div class="ph" data-photo-slot="stage-4" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Stage 4: finished home, Bozman Cabin" loading="lazy" decoding="async"></div><p class="n">04</p><p class="t">Finished</p><p class="d">Keys handed over. Built to last on the wild side of the coast.</p></div>
       </div>
     </div>
   </section>
@@ -451,6 +559,71 @@
     <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">Follow Us on Instagram</span></a></div>
   </section>
 
+  <!-- ADDED: GOOGLE REVIEWS -->
+  <section class="s-reviews" id="reviews">
+    <div class="wrap">
+      <p class="eyebrow">Reviews</p>
+      <h2 class="h-md">What our clients say on Google</h2>
+      <p class="body intro">Hear from the homeowners we&rsquo;ve built for on the coast.</p>
+      <!-- Real Google reviews go here, one <li> each (copy them word for word, with the client's first name):
+           <li class="review"><p>&ldquo;Review text&rdquo;</p><p class="who">Client name &middot; Google review</p></li>
+           The list hides itself while it's empty. Never add made-up reviews or star ratings. -->
+      <ul class="reviews" data-reviews></ul>
+      <!-- TODO: replace href="#" with Saltwater's Google Business Profile reviews link -->
+      <a class="link" href="#" data-google-reviews><span class="arr"></span><span class="label">Read our reviews on Google</span></a>
+    </div>
+  </section>
+
+  <!-- ADDED: CLIENT BUILD PORTAL -->
+  <section class="s-portal" id="portal">
+    <div class="wrap grid">
+      <div>
+        <p class="eyebrow">Your build, in your pocket</p>
+        <h2 class="h-md">Follow your build from anywhere.</h2>
+        <p class="body intro">Every Saltwater client gets a private login to see how their build is going, wherever they are.</p>
+        <ul>
+          <li>Progress photos from site</li>
+          <li>Your schedule, stage by stage</li>
+          <li>Updates and notes from the team</li>
+        </ul>
+        <a class="link" href="#contact"><span class="arr"></span><span class="label">Start your project</span></a>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="scr">
+          <div class="bar"><b>Your build</b><span>Updated today</span></div>
+          <div class="feed">
+            <div><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_500,h_500,q_80,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_400,h_400,q_80,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_400,h_400,q_80,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="sch"><p class="k"><span>Schedule</span><span>Stage 3 of 4</span></p><div class="track"><span></span></div><p class="st"><span>Foundation</span><span>Framing</span><span class="on">Weather-tight</span><span>Finished</span></p></div>
+          <div class="note"><p class="k">Site update</p><p>Windows are in and the house is wrapped. Siding starts next week.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED: FAQ -->
+  <section class="s-faq" id="faq">
+    <div class="wrap grid">
+      <div>
+        <p class="eyebrow">FAQ</p>
+        <h2 class="h-md">Questions we hear a lot.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>How much does it cost to build a custom home out here?</summary><p class="a">It depends on the size of the home, the site and the finishes you choose. Building on the coast also adds remote-location costs, like getting materials and trades to site and preparing rocky or sloped lots. We give you a realistic ballpark after a site visit and a look at your plans or ideas.</p></details>
+        <details><summary>How long does a build take?</summary><p class="a">It depends on the size and complexity of the home, the site and the weather. Before we start, we set out a schedule with you, then keep you updated at every stage.</p></details>
+        <details><summary>How long do permits and approvals take?</summary><p class="a">It varies with the municipality or regional district, the type of project and how complete the drawings are. We help you understand what is needed and work with your designer to keep things moving.</p></details>
+        <details><summary>Can you help if I don&rsquo;t have a lot yet?</summary><p class="a">Yes. We can walk a lot with you before you buy and point out what affects the build, such as access, slope, rock, drainage and services.</p></details>
+        <details><summary>Do you build from my plans, or can you help with design?</summary><p class="a">Both. Bring drawings from your architect or designer and we will build them, or start with an idea and we will bring in the right designer and work alongside them from the start.</p></details>
+        <details><summary>Do you do renovations, additions and ADUs?</summary><p class="a">Yes. Along with new custom homes and commercial builds, we take on major renovations, additions, suites and carriage houses.</p></details>
+        <details><summary>What areas do you serve?</summary><p class="a">We are based in Ucluelet and build across Tofino, the West Coast, Whistler, the Sunshine Coast and remote coastal British Columbia.</p></details>
+        <details><summary>How is building on the coast different?</summary><p class="a">Heavy rain, wind and salt air call for careful detailing, rainscreen walls and materials and fasteners that stand up to the weather. Remote sites also need planning for access, deliveries and working around the seasons.</p></details>
+      </div>
+    </div>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does it cost to build a custom home out here?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size of the home, the site and the finishes you choose. Building on the coast also adds remote-location costs, like getting materials and trades to site and preparing rocky or sloped lots. We give you a realistic ballpark after a site visit and a look at your plans or ideas."}}, {"@type": "Question", "name": "How long does a build take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size and complexity of the home, the site and the weather. Before we start, we set out a schedule with you, then keep you updated at every stage."}}, {"@type": "Question", "name": "How long do permits and approvals take?", "acceptedAnswer": {"@type": "Answer", "text": "It varies with the municipality or regional district, the type of project and how complete the drawings are. We help you understand what is needed and work with your designer to keep things moving."}}, {"@type": "Question", "name": "Can you help if I don't have a lot yet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We can walk a lot with you before you buy and point out what affects the build, such as access, slope, rock, drainage and services."}}, {"@type": "Question", "name": "Do you build from my plans, or can you help with design?", "acceptedAnswer": {"@type": "Answer", "text": "Both. Bring drawings from your architect or designer and we will build them, or start with an idea and we will bring in the right designer and work alongside them from the start."}}, {"@type": "Question", "name": "Do you do renovations, additions and ADUs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Along with new custom homes and commercial builds, we take on major renovations, additions, suites and carriage houses."}}, {"@type": "Question", "name": "What areas do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "We are based in Ucluelet and build across Tofino, the West Coast, Whistler, the Sunshine Coast and remote coastal British Columbia."}}, {"@type": "Question", "name": "How is building on the coast different?", "acceptedAnswer": {"@type": "Answer", "text": "Heavy rain, wind and salt air call for careful detailing, rainscreen walls and materials and fasteners that stand up to the weather. Remote sites also need planning for access, deliveries and working around the seasons."}}]}</script>
+  </section>
+
   <!-- ADDED: TRUST STRIP -->
   <section class="s-trust">
     <div class="wrap row">
@@ -458,6 +631,14 @@
       <div><p class="k">Home warranty</p><p class="v">2-5-10 coverage</p></div>
       <div><p class="k">Where we build</p><p class="v">Ucluelet · Tofino · Whistler · Sunshine Coast · remote coast</p></div>
       <div><p class="k">Call or text</p><a class="v" href="tel:+16048484040">604-848-4040</a></div>
+    </div>
+  </section>
+
+  <!-- ADDED: LICENCE & WARRANTY BADGES (details as already shown in the trust strip; confirm with Chris before launch) -->
+  <section class="s-badges">
+    <div class="wrap row">
+      <div class="badge-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><p><b>Licensed Residential Builder</b><small>BC Housing licence #52492</small></p></div>
+      <div class="badge-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 11 12 3.5 21 11"/><path d="M5.5 9v11.5h13V9"/><path d="M10 20.5V15h4v5.5"/></svg><p><b>2-5-10 New Home Warranty</b><small>2-5-10 home warranty coverage</small></p></div>
     </div>
   </section>
 
@@ -470,17 +651,120 @@
           <p class="lead">We take on projects in Ucluelet, Tofino, Whistler, the Sunshine Coast and remote coastal British Columbia.</p>
           
         </div>
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1#contact">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1#contact" enctype="multipart/form-data" class="q-form">
           <input type="hidden" name="form-name" value="contact">
-          <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
-          <div class="fld"><label for="fn">First Name<span class="req">*</span></label><input id="fn" name="first-name" type="text" autocomplete="given-name" required></div>
-          <div class="fld"><label for="ln">Last Name<span class="req">*</span></label><input id="ln" name="last-name" type="text" autocomplete="family-name" required></div>
-          <div class="fld"><label for="em">Email<span class="req">*</span></label><input id="em" name="email" type="email" autocomplete="email" required></div>
-          <div class="fld"><label for="ph">Phone<span class="req">*</span></label><input id="ph" name="phone" type="tel" autocomplete="tel" required></div>
-          <div class="fld"><label for="msg">Message</label><textarea id="msg" name="message"></textarea></div>
-          <label class="chk"><input type="checkbox" name="mailing-list" value="yes"> Join our mailing list.</label>
-          <button class="btn" type="submit">Submit</button>
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="q-progress" hidden><p class="q-label"><span class="q-count"></span><span class="q-name"></span></p><div class="q-bar" role="progressbar" aria-label="Quote progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span></span></div></div>
+
+          <fieldset class="q-step" data-step="1" data-title="Your details">
+            <legend>Start your project. First, who are we talking to?</legend>
+            <div class="fld"><label for="fn">First Name<span class="req">*</span></label><input id="fn" name="first-name" type="text" autocomplete="given-name" maxlength="60" required></div>
+            <div class="fld"><label for="ln">Last Name</label><input id="ln" name="last-name" type="text" autocomplete="family-name" maxlength="60"></div>
+            <div class="fld"><label for="ph">Phone<span class="req">*</span></label><input id="ph" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required></div>
+            <div class="fld"><label for="em">Email<span class="q-opt" data-em-note>(optional)</span></label><input id="em" name="email" type="email" autocomplete="email" maxlength="160"></div>
+            <div class="fld"><span class="q-lbl" id="q-pc">Best way to reach you</span>
+              <div class="tiles sm" role="radiogroup" aria-labelledby="q-pc">
+                <label class="tile"><input type="radio" name="preferred-contact" value="Call" checked><span>Call</span></label>
+                <label class="tile"><input type="radio" name="preferred-contact" value="Text"><span>Text</span></label>
+                <label class="tile"><input type="radio" name="preferred-contact" value="Email"><span>Email</span></label>
+              </div>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="btn" data-next>Next</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="2" data-title="Project">
+            <legend>What are you planning?</legend>
+            <div class="tiles" data-auto>
+              <label class="tile"><input type="radio" name="project-type" value="New custom home" data-slug="custom-home" data-svc="custom home" required><span>New custom home</span></label>
+              <label class="tile"><input type="radio" name="project-type" value="Addition" data-slug="addition"><span>Addition</span></label>
+              <label class="tile"><input type="radio" name="project-type" value="Major renovation" data-slug="renovation" data-svc="renovation"><span>Major renovation</span></label>
+              <label class="tile"><input type="radio" name="project-type" value="Suite or carriage house (ADU)" data-slug="adu" data-svc="accessory dwelling|adu"><span>Suite or carriage house (ADU)</span></label>
+              <label class="tile"><input type="radio" name="project-type" value="Commercial build" data-slug="commercial" data-svc="commercial"><span>Commercial build</span></label>
+              <label class="tile"><input type="radio" name="project-type" value="Not sure yet" data-slug="not-sure"><span>Not sure yet</span></label>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Next</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="3" data-title="Location">
+            <legend>Where&rsquo;s the project?</legend>
+            <div class="tiles" data-auto>
+              <label class="tile"><input type="radio" name="location" value="Ucluelet" required><span>Ucluelet</span></label>
+              <label class="tile"><input type="radio" name="location" value="Tofino"><span>Tofino</span></label>
+              <label class="tile"><input type="radio" name="location" value="Elsewhere on the West Coast"><span>Elsewhere on the West Coast</span></label>
+              <label class="tile"><input type="radio" name="location" value="Sunshine Coast"><span>Sunshine Coast</span></label>
+              <label class="tile"><input type="radio" name="location" value="Other"><span>Other</span></label>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Next</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="4" data-title="Land" data-optional>
+            <legend>What about the land?</legend>
+            <div class="tiles" data-auto>
+              <label class="tile"><input type="radio" name="land" value="I own the lot"><span>I own the lot</span></label>
+              <label class="tile"><input type="radio" name="land" value="Buying a lot"><span>Buying a lot</span></label>
+              <label class="tile"><input type="radio" name="land" value="Don't have one yet"><span>Don&rsquo;t have one yet</span></label>
+              <label class="tile"><input type="radio" name="land" value="Existing home"><span>Existing home</span></label>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="5" data-title="Plans" data-optional>
+            <legend>Do you have plans yet?</legend>
+            <div class="tiles" data-auto>
+              <label class="tile"><input type="radio" name="plans" value="I have drawings"><span>I have drawings</span></label>
+              <label class="tile"><input type="radio" name="plans" value="Working with a designer or architect"><span>Working with a designer or architect</span></label>
+              <label class="tile"><input type="radio" name="plans" value="Starting from scratch"><span>Starting from scratch</span></label>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="6" data-title="Budget" data-optional>
+            <legend>Roughly what budget are you working with?</legend>
+            <div class="tiles" data-auto>
+              <label class="tile"><input type="radio" name="budget" value="Under $500K"><span>Under $500K</span></label>
+              <label class="tile"><input type="radio" name="budget" value="$500K–$1M"><span>$500K&ndash;$1M</span></label>
+              <label class="tile"><input type="radio" name="budget" value="$1M–$2M"><span>$1M&ndash;$2M</span></label>
+              <label class="tile"><input type="radio" name="budget" value="$2M+"><span>$2M+</span></label>
+              <label class="tile"><input type="radio" name="budget" value="Not sure yet"><span>Not sure yet</span></label>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="7" data-title="Timeline" data-optional>
+            <legend>When are you hoping to start?</legend>
+            <div class="tiles" data-auto>
+              <label class="tile"><input type="radio" name="timeline" value="Within 6 months"><span>Within 6 months</span></label>
+              <label class="tile"><input type="radio" name="timeline" value="6–12 months"><span>6&ndash;12 months</span></label>
+              <label class="tile"><input type="radio" name="timeline" value="1–2 years"><span>1&ndash;2 years</span></label>
+              <label class="tile"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring</span></label>
+            </div>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="8" data-title="Details">
+            <legend>Tell us about it.</legend>
+            <p class="q-sub">A few lines is plenty. Drawings or a photo of the site help us get back to you with something useful.</p>
+            <div class="fld"><label for="msg">Your project<span class="req">*</span></label><textarea id="msg" name="description" maxlength="5000" required placeholder="What you&rsquo;re planning, rough size, and anything we should know about the site." data-hint-custom-home="Rough size, bedrooms, the feel you&rsquo;re after, and anything about the lot (slope, access, views, services)." data-hint-addition="What you want to add, roughly how big, and the age and style of the house now." data-hint-renovation="Which parts of the home, what you want changed, and roughly when the house was built." data-hint-adu="Suite or carriage house? Rough size, who it&rsquo;s for, and where it would sit on the lot." data-hint-commercial="What the building is for, rough size, and where you are with the design and permits." data-hint-not-sure="Tell us what you have in mind and we&rsquo;ll help you work out the next step."></textarea></div>
+            <label class="drop" for="q-photo"><span class="drop-h">Add drawings or a photo<span class="q-opt">(optional)</span></span><input id="q-photo" name="attachment" type="file" accept="image/*,application/pdf" data-max-mb="8"><small>Plans, a sketch, or a photo of the lot or house. One file, up to 8 MB.</small><span class="drop-name" aria-live="polite"></span></label>
+            <label class="chk" style="margin-top:22px"><input type="checkbox" name="mailing-list" value="yes"> Join our mailing list.</label>
+            <p class="q-error" role="alert" hidden></p>
+            <div class="q-nav"><button type="button" class="q-back link" data-back hidden><span class="arr"></span><span class="label">Back</span></button><button class="btn" type="submit">Send</button></div>
+          </fieldset>
         </form>
+        <div class="q-done" id="q-done" hidden>
+          <p class="lead">Thanks<span data-done-name></span>, we&rsquo;ve got your project.</p>
+          <p class="body">We&rsquo;ll be in touch soon. If you&rsquo;d like to talk it through sooner, book a call.</p>
+          <!-- TODO: Saltwater has no booking page yet. Swap href="#" for their booking link (e.g. a calendar page) when they have one. -->
+          <a class="link" href="#" data-book-call><span class="arr"></span><span class="label">Book a call</span></a>
+          <p class="call">Or call or text <a href="tel:+16048484040">604-848-4040</a>.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -496,6 +780,8 @@
     <p class="owner"><a href="/admin/leads/" rel="nofollow">Owner login</a></p>
   </div>
 </footer>
+
+<div class="mbar" id="mbar" role="region" aria-label="Quick contact"><a href="tel:+16048484040">Call</a><a href="sms:+16048484040">Text</a></div>
 
 <script>
 (function(){
@@ -546,25 +832,97 @@
   btn.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'))});
   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
 
+  // Quote wizard ("Start your project"). Without this script every step shows as one normal form.
+  // One step at a time: tapping a tile answers it and moves on; optional steps can be skipped; Back goes back.
+  // Nothing is sent until Send on the last step (a normal Netlify Forms post, so all fields stay in the HTML).
+  var qf=document.querySelector('form[name=contact]');
+  (function(){var f=qf;if(!f)return;
+    var steps=[].slice.call(f.querySelectorAll('.q-step')),cur=0,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var bar=f.querySelector('.q-bar'),cnt=f.querySelector('.q-count'),nm=f.querySelector('.q-name');
+    var desc=f.elements['description'],basePh=desc?desc.placeholder:'',email=f.elements['email'],emNote=f.querySelector('[data-em-note]');
+    // Email becomes required when they ask us to reply by email
+    function needEmail(){var pc=f.querySelector('input[name="preferred-contact"]:checked'),on=!!(pc&&pc.value==='Email');
+      email.required=on; if(emNote){emNote.className=on?'req':'q-opt';emNote.textContent=on?'*':'(optional)'}}
+    f.addEventListener('change',function(e){if(e.target.name==='preferred-contact')needEmail()}); needEmail();
+    // File: show the name, keep it under 8 MB
+    var file=f.querySelector('input[type=file][data-max-mb]'),dn=f.querySelector('.drop-name');
+    if(file)file.addEventListener('change',function(){var mb=+file.getAttribute('data-max-mb'),x=file.files&&file.files[0],big=x&&x.size>mb*1048576;
+      file.setCustomValidity(big?'That file is over '+mb+' MB. Please choose a smaller one, or send it by email after.':'');
+      if(big)file.reportValidity(); if(dn)dn.textContent=x&&!big?'Added: '+x.name:'';});
+    f.classList.add('q-on');
+    f.querySelector('.q-progress').hidden=false;
+    f.querySelectorAll('.q-nav,[data-back]').forEach(function(n){n.hidden=false});
+    function picked(s){return s.querySelector('.tiles input:checked')}
+    function err(s,m){var e=s.querySelector('.q-error');e.textContent=m||'';e.hidden=!m}
+    function valid(s){
+      var bad=[].slice.call(s.querySelectorAll('input,textarea')).filter(function(el){return !el.checkValidity()})[0];
+      if(!bad){err(s);return true}
+      if(bad.type==='radio')err(s,'Please pick one to continue.'); else{err(s);bad.reportValidity()}
+      return false;
+    }
+    function show(i,focus){
+      cur=i;var s=steps[i];
+      steps.forEach(function(x){x.classList.toggle('q-cur',x===s)});
+      cnt.textContent='Step '+(i+1)+' of '+steps.length; nm.textContent=s.getAttribute('data-title')||'';
+      bar.querySelector('span').style.width=((i+1)/steps.length*100)+'%'; bar.setAttribute('aria-valuenow',String(i+1));
+      var nb=s.querySelector('[data-next]'); if(nb&&s.hasAttribute('data-optional'))nb.textContent=picked(s)?'Next':'Skip';
+      if(desc&&s.contains(desc)){var pt=f.querySelector('input[name="project-type"]:checked'),sl=pt&&pt.getAttribute('data-slug');
+        desc.placeholder=(sl&&desc.getAttribute('data-hint-'+sl))||basePh}
+      if(focus){
+        var top=f.getBoundingClientRect().top; if(top<70||top>innerHeight*.5)window.scrollTo({top:top+window.scrollY-80,behavior:reduce?'auto':'smooth'});
+        var t=s.querySelector('input:not([type=hidden]):not([type=radio]):not([type=file]),textarea');
+        if(t&&!('ontouchstart' in window))t.focus({preventScroll:true});
+      }
+    }
+    function next(){var s=steps[cur];if(!valid(s))return;if(cur<steps.length-1)show(cur+1,true)}
+    function back(){if(cur>0){err(steps[cur]);show(cur-1,true)}}
+    f.addEventListener('click',function(e){
+      if(e.target.closest('[data-back]')){back();return}
+      if(e.target.closest('[data-next]')){next();return}
+      var t=e.target.closest('.tiles[data-auto] input');
+      if(t&&steps[cur].contains(t)){err(steps[cur]);setTimeout(next,200)}
+    });
+    // Enter in a text box moves on instead of sending early
+    f.addEventListener('keydown',function(e){
+      if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='radio'&&e.target.type!=='file'&&cur<steps.length-1){e.preventDefault();next()}
+    });
+    // On Send, make sure every step is OK (jump back to the first one that isn't), then stop double sends
+    f.addEventListener('submit',function(e){
+      for(var i=0;i<steps.length;i++){
+        var bad=[].slice.call(steps[i].querySelectorAll('input,textarea')).some(function(el){return !el.checkValidity()});
+        if(bad){e.preventDefault();e.stopImmediatePropagation();show(i,true);valid(steps[i]);return}
+      }
+      try{sessionStorage.setItem('sw-first',(f.elements['first-name'].value||'').trim().slice(0,40))}catch(x){}
+      var b=f.querySelector('button[type=submit]');setTimeout(function(){b.disabled=true;b.textContent='Sending…'},0);
+    });
+    f._show=show; f._steps=steps;
+    show(0,false);
+  })();
+
   // Quote form: also save the enquiry in Saltwater's lead tracker (back door: /admin/leads/). Netlify Forms still
   // gets and emails everything as before; this copy never blocks or changes the form. The key is public by design:
   // it can only add a lead to Saltwater's tracker, only from this website, and the tracker limits how many.
-  (function(){var f=document.querySelector('form[name=contact]');if(!f||!window.fetch)return;
-    f.addEventListener('submit',function(){
-      if(f.checkValidity&&!f.checkValidity())return;
-      var v=function(n){var e=f.elements[n];return e&&e.value?String(e.value).trim():''};
-      var body={key:'lk_salt_65209ed33064f0e84b1aff7a',form_name:'contact',source:'Saltwater website (contact form)',
-        next_action:'Reply to enquiry',name:(v('first-name')+' '+v('last-name')).trim(),email:v('email'),phone:v('phone'),
-        message:v('message').slice(0,1000),'bot-field':v('bot-field'),
-        details:{mailing_list:f.elements['mailing-list']&&f.elements['mailing-list'].checked?'yes':'no'}};
+  (function(){var f=qf;if(!f||!window.fetch)return;
+    f.addEventListener('submit',function(e){
+      if(e.defaultPrevented||(f.checkValidity&&!f.checkValidity()))return;
+      var v=function(n){var el=f.elements[n];if(!el)return'';if(el.length!==undefined&&!el.tagName){var c=f.querySelector('input[name="'+n+'"]:checked');return c?c.value:''}return el.value?String(el.value).trim():''};
+      var d={project_type:v('project-type'),location:v('location'),land:v('land'),plans:v('plans'),budget:v('budget'),timeline:v('timeline'),
+        preferred_contact:v('preferred-contact'),attachment:(f.elements['attachment']&&f.elements['attachment'].files&&f.elements['attachment'].files[0])?f.elements['attachment'].files[0].name+' (in the Netlify form email)':'',
+        mailing_list:f.elements['mailing-list']&&f.elements['mailing-list'].checked?'yes':'no'};
+      var lines=[['Project',d.project_type],['Location',d.location],['Land',d.land],['Plans',d.plans],['Budget',d.budget],['Timeline',d.timeline],['Prefers',d.preferred_contact]]
+        .filter(function(x){return x[1]}).map(function(x){return x[0]+': '+x[1]}).join('\n');
+      var body={key:'lk_salt_65209ed33064f0e84b1aff7a',form_name:'contact',source:'Saltwater website (quote form)',
+        next_action:'Reply to enquiry'+(d.preferred_contact?' ('+d.preferred_contact.toLowerCase()+')':''),name:(v('first-name')+' '+v('last-name')).trim(),email:v('email'),phone:v('phone'),
+        message:(v('description')+(lines?'\n\n'+lines:'')).slice(0,1000),'bot-field':v('bot-field'),details:d};
       try{fetch('https://cgrqejsigmzvlhlmvjbx.supabase.co/functions/v1/lead-capture',{method:'POST',keepalive:true,
-        headers:{'content-type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).catch(function(){})}catch(e){}
+        headers:{'content-type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).catch(function(){})}catch(x){}
     });
   })();
 
   // Services list: tap a service -> jump to a matching project in Select Projects (slides the carousel to it).
   // Matches on each card's category text at tap time, so cards added later in the photo manager work too.
-  // No matching project (e.g. Renovations) -> go to the quote form with the message started for them.
+  // No matching project (e.g. Renovations) -> go to the quote form with the message started for them
+  // (and the matching project type picked).
   document.querySelectorAll('.svc a[data-svc]').forEach(function(a){
     a.addEventListener('click',function(e){
       e.preventDefault();
@@ -579,16 +937,35 @@
         hit.classList.add('flash'); setTimeout(function(){hit.classList.remove('flash')},1800);
       }else{
         var m=document.getElementById('msg'); if(m&&!m.value) m.value="Hi, I'm interested in "+name.toLowerCase()+". ";
+        var pt=qf&&qf.querySelector('input[name="project-type"][data-svc="'+a.dataset.svc+'"]'); if(pt) pt.checked=true;
         document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
       }
     });
   });
 
-  // Thank-you note after Netlify form post
-  if(location.search.indexOf('sent=1')>-1){
-    var f=document.querySelector('form[name=contact]');
-    if(f){var p=document.createElement('p');p.className='lead';p.style.marginTop='0';p.textContent='Thanks, we will be in touch soon.';f.replaceWith(p)}
+  // Thank-you state after the Netlify form post, with a "Book a call" option
+  if(location.search.indexOf('sent=1')>-1&&qf){
+    var done=document.getElementById('q-done'),fn='';
+    try{fn=sessionStorage.getItem('sw-first')||''}catch(x){}
+    if(fn)done.querySelector('[data-done-name]').textContent=', '+fn;
+    qf.replaceWith(done); done.hidden=false;
   }
+  // TODO: "Book a call" has no booking page yet; until there is one it just scrolls to the phone number below it.
+  document.querySelectorAll('[data-book-call]').forEach(function(b){
+    b.addEventListener('click',function(e){if(b.getAttribute('href')==='#'){e.preventDefault();var c=b.parentNode.querySelector('.call a');if(c)c.focus()}});
+  });
+
+  // TODO: no Google reviews link yet; until there is one the button does nothing instead of jumping to the top
+  document.querySelectorAll('[data-google-reviews]').forEach(function(b){
+    if(b.getAttribute('href')!=='#'){b.target='_blank';b.rel='noopener';return}
+    b.addEventListener('click',function(e){e.preventDefault()});
+  });
+
+  // Phones: sticky Call / Text bar, shown once past the hero
+  (function(){var mb=document.getElementById('mbar');if(!mb)return;document.body.classList.add('has-mbar');
+    function t(){mb.classList.toggle('on',window.scrollY>hero.offsetHeight*.6)}
+    t(); window.addEventListener('scroll',t,{passive:true});
+  })();
 })();
 </script>
 <script src="/js/site-photos.js?v=2" data-site="saltwater-builder" data-projects data-texts defer></script>

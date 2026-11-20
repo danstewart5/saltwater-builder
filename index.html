@@ -659,7 +659,7 @@
             <div class="fld"><label for="fn">First Name<span class="req">*</span></label><input id="fn" name="first-name" type="text" autocomplete="given-name" maxlength="60" required></div>
             <div class="fld"><label for="ln">Last Name</label><input id="ln" name="last-name" type="text" autocomplete="family-name" maxlength="60"></div>
             <div class="fld"><label for="ph">Phone<span class="req">*</span></label><input id="ph" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required></div>
-            <div class="fld"><label for="em">Email<span class="q-opt" data-em-note>(optional)</span></label><input id="em" name="email" type="email" autocomplete="email" maxlength="160"></div>
+            <div class="fld"><label for="em">Email<span class="req">*</span></label><input id="em" name="email" type="email" autocomplete="email" maxlength="160" required></div>
             <div class="fld"><span class="q-lbl" id="q-pc">Best way to reach you</span>
               <div class="tiles sm" role="radiogroup" aria-labelledby="q-pc">
                 <label class="tile"><input type="radio" name="preferred-contact" value="Call" checked><span>Call</span></label>
@@ -839,7 +839,7 @@
     var desc=f.elements['description'],basePh=desc?desc.placeholder:'',email=f.elements['email'],emNote=f.querySelector('[data-em-note]');
     // Email becomes required when they ask us to reply by email
     function needEmail(){var pc=f.querySelector('input[name="preferred-contact"]:checked'),on=!!(pc&&pc.value==='Email');
-      email.required=on; if(emNote){emNote.className=on?'req':'q-opt';emNote.textContent=on?'*':'(optional)'}}
+      email.required=true}
     f.addEventListener('change',function(e){if(e.target.name==='preferred-contact')needEmail()}); needEmail();
     // File: show the name, keep it under 8 MB
     var file=f.querySelector('input[type=file][data-max-mb]'),dn=f.querySelector('.drop-name');

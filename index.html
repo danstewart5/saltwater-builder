@@ -69,6 +69,17 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="wrap about">
+      <div><p class="eyebrow">About</p><h2 class="h-lg">Based in Ucluelet, building across the coast.</h2></div>
+      <div>
+        <p class="lede">Custom homes, renovations and ADUs, from first sketch to final walkthrough.</p>
+        <p class="body" style="margin-top:14px">We build across Tofino, Whistler, the Sunshine Coast and remote coastal BC. Every project is grounded in building science and modern construction methods, professionally managed, and run with full transparency at every stage.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 3. NOW BUILDING: RISING TIDE -->
   <section class="sec tide" id="rising-tide">
     <div class="wrap grid">
@@ -79,6 +90,7 @@
         <p class="body" style="margin-top:14px" data-text="tide-body">An electric boat hub on Ucluelet&rsquo;s old WWII seaplane base, designed by Michael Green Architecture. Now under construction, about a two-year build.</p>
         <dl class="facts"><div><dt>Status</dt><dd>Under construction</dd></div><div><dt>Designed by</dt><dd>Michael Green Architecture</dd></div></dl>
         <a class="link" href="/projects/rising-tide-boat-works/"><span class="arr"></span><span class="label">See the project</span></a>
+        <a class="link" href="#contact" style="margin-left:24px"><span class="arr"></span><span class="label">Talk to us about a commercial build</span></a>
       </div>
     </div>
   </section>
@@ -88,28 +100,34 @@
     <div class="wrap">
       <p class="eyebrow">Our work</p>
       <h2 class="h-lg">Projects</h2>
-      <div class="pgrid" data-photo-projects>
-        <a class="card" data-photo-placeholder href="/projects/1406-imperial/">
+      <div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Projects">
+        <div class="slides" id="slides" data-photo-projects tabindex="0" aria-label="Project cards, scroll sideways">
+        <a class="card slide" data-photo-placeholder href="/projects/1406-imperial/">
           <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
           <p class="t">1406 Imperial</p><p class="c">Custom Homes</p>
         </a>
-        <a class="card" data-photo-placeholder href="/projects/1769-rainforest-lane/">
+        <a class="card slide" data-photo-placeholder href="/projects/1769-rainforest-lane/">
           <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="1769 Rainforest Lane" loading="lazy"></div>
           <p class="t">1769 Rainforest Lane</p><p class="c">Residential Developments</p>
         </a>
-        <a class="card" data-photo-placeholder href="/projects/ucluelet-modern-house/">
-          <div class="ph ph-empty" style="aspect-ratio:3/2"><div>Ucluelet Modern House<span>Photos coming soon</span></div></div>
+        <a class="card slide" data-photo-placeholder href="/projects/ucluelet-modern-house/">
+          <div class="ph ph-empty"><div>Ucluelet Modern House<span>Photos coming soon</span></div></div>
           <p class="t">Ucluelet Modern House</p>
         </a>
-        <a class="card" data-photo-placeholder href="/projects/gibsons-landing/">
-          <div class="ph ph-empty" style="aspect-ratio:3/2"><div>Gibsons Landing<span>Photos coming soon</span></div></div>
+        <a class="card slide" data-photo-placeholder href="/projects/gibsons-landing/">
+          <div class="ph ph-empty"><div>Gibsons Landing<span>Photos coming soon</span></div></div>
           <p class="t">Gibsons Landing</p>
         </a>
-        <a class="card" data-photo-placeholder href="/projects/rising-tide-boat-works/">
+        <a class="card slide" data-photo-placeholder href="/projects/rising-tide-boat-works/">
           <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="A Saltwater commercial build" loading="lazy"></div>
           <p class="t">Rising Tide Boat Works</p><p class="c">Commercial Developments &middot; Now building</p>
         </a>
-        <template data-project-template><a class="card" href="#contact"><div class="ph"><img src="{src}" alt="{title}" loading="lazy"></div><p class="t">{title}</p><p class="c" data-if-kind>{kind}</p></a></template>
+        </div>
+        <div class="sl-ctl">
+          <div class="sl-bar" aria-hidden="true"><span id="slBar"></span></div>
+          <button class="sl-btn" id="slPrev" type="button" aria-label="Previous project" aria-controls="slides"><span aria-hidden="true">&larr;</span></button>
+          <button class="sl-btn" id="slNext" type="button" aria-label="Next project" aria-controls="slides"><span aria-hidden="true">&rarr;</span></button>
+        </div>
       </div>
     </div>
   </section>
@@ -123,11 +141,11 @@
         <div class="ph land" data-photo-slot="photo-wide" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project" loading="lazy"></div>
       </div>
       <ul class="svc">
-        <li><a href="#projects" data-svc="custom home"><span class="n">01</span><span class="s">Custom Homes</span></a></li>
-        <li><a href="#projects" data-svc="residential"><span class="n">02</span><span class="s">Residential Developments</span></a></li>
-        <li><a href="#projects" data-svc="renovation"><span class="n">03</span><span class="s">Renovations</span></a></li>
-        <li><a href="#projects" data-svc="commercial"><span class="n">04</span><span class="s">Commercial Developments</span></a></li>
-        <li><a href="#projects" data-svc="accessory dwelling|adu"><span class="n">05</span><span class="s">ADUs (Accessory Dwelling Units)</span></a></li>
+        <li><a href="#projects" data-svc="custom home"><span class="s">Custom Homes</span></a></li>
+        <li><a href="#projects" data-svc="residential"><span class="s">Residential Developments</span></a></li>
+        <li><a href="#projects" data-svc="renovation"><span class="s">Renovations</span></a></li>
+        <li><a href="#projects" data-svc="commercial"><span class="s">Commercial Developments</span></a></li>
+        <li><a href="#projects" data-svc="accessory dwelling|adu"><span class="s">ADUs (Accessory Dwelling Units)</span></a></li>
       </ul>
     </div>
   </section>
@@ -220,6 +238,16 @@
            Never add made-up reviews or star ratings. Remove the hidden attribute on this section once there are real ones,
            and add a "Read our reviews on Google" link only when Saltwater has the real Google Business Profile link. -->
       <ul class="reviews" data-reviews></ul>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM: hidden until Saltwater gives us the real Instagram link. To switch on: remove `hidden` from the section,
+       wrap each tile in <a href="THE REAL INSTAGRAM LINK" target="_blank" rel="noopener"> and add a "Follow us on Instagram" link. -->
+  <section class="sec" id="instagram" hidden>
+    <div class="wrap">
+      <p class="eyebrow">Instagram</p>
+      <h2 class="h-lg">From the job sites</h2>
+      <div class="igrid"><div class="tile"><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_500,h_500,q_70,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="" loading="lazy" decoding="async"></div><div class="tile"><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_500,h_500,q_70,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="" loading="lazy" decoding="async"></div><div class="tile"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_500,h_500,q_70,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="" loading="lazy" decoding="async"></div><div class="tile"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_500,h_500,q_70,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="" loading="lazy" decoding="async"></div><div class="tile"><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_500,h_500,q_70,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="" loading="lazy" decoding="async"></div><div class="tile"><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg/v1/fit/w_500,h_500,q_70,enc_avif,quality_auto/5a3b42_09be3b94bee14498ba898faba337df7e.jpg" alt="" loading="lazy" decoding="async"></div></div>
     </div>
   </section>
 
@@ -536,13 +564,14 @@
   document.querySelectorAll('.svc a[data-svc]').forEach(function(a){
     a.addEventListener('click',function(e){
       e.preventDefault();
-      var keys=a.dataset.svc.split('|'),name=a.querySelector('.s').textContent.trim(),grid=document.querySelector('[data-photo-projects]'),hit=null;
-      if(grid) grid.querySelectorAll('.card').forEach(function(c){
+      var keys=a.dataset.svc.split('|'),name=a.querySelector('.s').textContent.trim(),sl=document.getElementById('slides'),hit=null;
+      if(sl) sl.querySelectorAll('.card').forEach(function(c){
         if(hit)return; var k=((c.querySelector('.c')||{}).textContent||'').toLowerCase();
         if(keys.some(function(x){return k.indexOf(x)>-1}))hit=c;
       });
       if(hit){
-        hit.scrollIntoView({behavior:'smooth',block:'center'});
+        document.getElementById('projects').scrollIntoView({behavior:'smooth',block:'start'});
+        sl.scrollTo({left:hit.offsetLeft-sl.offsetLeft,behavior:'smooth'});
         hit.classList.add('flash'); setTimeout(function(){hit.classList.remove('flash')},1800);
       }else{
         var m=document.getElementById('msg'); if(m&&!m.value) m.value="Hi, I'm interested in "+name.toLowerCase()+". ";
@@ -551,6 +580,19 @@
       }
     });
   });
+
+  // Project slider: swipe or scroll sideways; arrows step one card; no autoplay
+  (function(){var sl=document.getElementById('slides'),pv=document.getElementById('slPrev'),nx=document.getElementById('slNext'),bar=document.getElementById('slBar');if(!sl)return;
+    function step(){var c=sl.querySelector('.slide');return c?c.getBoundingClientRect().width+16:300}
+    function upd(){var max=sl.scrollWidth-sl.clientWidth;pv.disabled=sl.scrollLeft<4;nx.disabled=sl.scrollLeft>max-4;
+      if(bar){var w=max>0?Math.max(12,(sl.clientWidth/sl.scrollWidth)*100):100;bar.style.width=w+'%';bar.style.marginLeft=(max>0?(sl.scrollLeft/max)*(100-w):0)+'%'}}
+    var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    pv.addEventListener('click',function(){sl.scrollBy({left:-step(),behavior:rm?'auto':'smooth'})});
+    nx.addEventListener('click',function(){sl.scrollBy({left:step(),behavior:rm?'auto':'smooth'})});
+    sl.addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});
+    sl.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();nx.click()}else if(e.key==='ArrowLeft'){e.preventDefault();pv.click()}});
+    addEventListener('resize',upd);upd();
+  })();
 
   // Thank-you state after the Netlify form post, with a "Book a call" option
   if(location.search.indexOf('sent=1')>-1&&qf){

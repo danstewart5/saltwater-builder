@@ -342,3 +342,31 @@ footer .sub{border-top:1px solid rgba(255,255,255,.14);padding-top:18px;font-siz
 .crumb a,.pnext a,footer ul a,footer .sub a,footer .wrap p a{display:inline-flex;align-items:center;min-height:40px}
 .contact .qside .links a,.q-done .call a{display:inline-flex;align-items:center;min-height:40px}
 .proof a.v{display:inline-flex;align-items:center;min-height:40px}
+
+/* ---- project slider (replaces the grid) ---- */
+.slider{margin-top:34px}
+.slides{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px var(--pad) 10px;margin:0 calc(var(--pad)*-1);scroll-padding:0 var(--pad)}
+.slides::-webkit-scrollbar{display:none}
+.slides:focus-visible{outline:2px solid var(--cedar);outline-offset:2px}
+.slide{flex:0 0 78%;scroll-snap-align:start;background:#fff;border-radius:10px;padding:10px 10px 18px;box-shadow:0 1px 0 var(--rule),0 8px 22px rgba(31,59,56,.07)}
+.slide .ph{aspect-ratio:4/3}
+.slide .t,.slide .c{padding:0 6px}
+.slide:focus-visible{outline:2px solid var(--cedar);outline-offset:3px}
+.sl-ctl{display:flex;align-items:center;gap:10px;margin-top:18px}
+.sl-bar{flex:1;height:3px;border-radius:2px;background:rgba(45,73,85,.15);overflow:hidden}
+.sl-bar span{display:block;height:100%;background:var(--sea);border-radius:2px;width:30%}
+.sl-btn{flex:none;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--sea);background:#fff;color:var(--sea);font-size:20px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;-webkit-appearance:none;appearance:none}
+.sl-btn:hover:not(:disabled){background:var(--sea);color:#fff}
+.sl-btn:disabled{opacity:.35;cursor:default}
+.sl-btn:focus-visible{outline:2px solid var(--cedar);outline-offset:2px}
+@media (min-width:640px){.slide{flex-basis:46%}}
+@media (min-width:1000px){.slide{flex-basis:calc((100% - 32px)/2.4)}}
+.svc a{grid-template-columns:1fr auto;align-items:center}
+.svc a::after{content:"\2192";color:var(--cedar);font-size:18px}
+.about{display:grid;gap:22px}
+@media (min-width:900px){.about{grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}}
+.igrid{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.igrid .tile{aspect-ratio:1;overflow:hidden;border-radius:var(--r);background:#cdd6d3;display:block}
+@media (min-width:700px){.igrid{grid-template-columns:repeat(3,1fr)}}
+[hidden]{display:none!important}
+.lede{font-size:clamp(18px,2.4vw,21px);color:#33444a;max-width:34em}

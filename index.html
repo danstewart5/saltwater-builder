@@ -53,7 +53,7 @@
     <video class="hero-vid" id="heroVid" data-video-slot="hero-video" autoplay muted loop playsinline preload="metadata" poster="/wave-poster.jpg" aria-hidden="true"></video>
     <div class="wrap">
       <p class="eyebrow" style="color:var(--cedar-lt)">Ucluelet, British Columbia</p>
-      <h1 class="h-xl" id="wm" style="margin-top:12px">Custom homes for the Pacific edge.</h1>
+      <h1 class="h-xl" id="hero-title" style="margin-top:12px">Custom homes for the Pacific edge.</h1>
       <p class="sub">Saltwater Building Co. is a general contractor building custom homes, renovations and ADUs across Tofino, Whistler, the Sunshine Coast and remote coastal BC.</p>
       <div class="cta"><a class="btn" href="#contact">Request a quote</a><a class="btn-ghost" href="#projects">See our projects</a></div>
     </div>
@@ -90,7 +90,7 @@
         <p class="body" style="margin-top:14px" data-text="tide-body">An electric boat hub on Ucluelet&rsquo;s old WWII seaplane base, designed by Michael Green Architecture. Now under construction, about a two-year build.</p>
         <dl class="facts"><div><dt>Status</dt><dd>Under construction</dd></div><div><dt>Designed by</dt><dd>Michael Green Architecture</dd></div></dl>
         <a class="link" href="/projects/rising-tide-boat-works/"><span class="arr"></span><span class="label">See the project</span></a>
-        <a class="link" href="#contact" style="margin-left:24px"><span class="arr"></span><span class="label">Talk to us about a commercial build</span></a>
+        <a class="link" href="#contact"><span class="arr"></span><span class="label">Talk to us about a commercial build</span></a>
       </div>
     </div>
   </section>
@@ -574,7 +574,7 @@
         sl.scrollTo({left:hit.offsetLeft-sl.offsetLeft,behavior:'smooth'});
         hit.classList.add('flash'); setTimeout(function(){hit.classList.remove('flash')},1800);
       }else{
-        var m=document.getElementById('msg'); if(m&&!m.value) m.value="Hi, I'm interested in "+name.toLowerCase()+". ";
+        var m=document.getElementById('msg'); if(m&&!m.value) m.value="Hi, I'm interested in "+name+". ";
         var pt=qf&&qf.querySelector('input[name="project-type"][data-svc="'+a.dataset.svc+'"]'); if(pt) pt.checked=true;
         document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
       }

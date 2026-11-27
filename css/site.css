@@ -370,3 +370,7 @@ footer .sub{border-top:1px solid rgba(255,255,255,.14);padding-top:18px;font-siz
 @media (min-width:700px){.igrid{grid-template-columns:repeat(3,1fr)}}
 [hidden]{display:none!important}
 .lede{font-size:clamp(18px,2.4vw,21px);color:#33444a;max-width:34em}
+
+.tide .link{display:flex;width:fit-content}
+.tide .link+.link{margin-top:16px}
+.slides{align-items:flex-start}

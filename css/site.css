@@ -34,7 +34,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-hei
 .logo-mark{width:22px;height:21px;display:block}
 .logo-mark .l{stroke:#5DB5C0}.logo-mark .r{stroke:#2D4955}
 .brand .mark{font-family:var(--serif);font-size:21px;letter-spacing:-.01em;line-height:1}
-.brand .mark small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;margin-top:4px;opacity:.85}
+.brand .mark small{display:block;white-space:nowrap;font-family:var(--sans);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;margin-top:4px;opacity:.85}
 
 /* ---- header ---- */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:50;height:64px;transition:background .25s ease,box-shadow .25s ease;color:#fff}
@@ -334,3 +334,11 @@ footer .sub{border-top:1px solid rgba(255,255,255,.14);padding-top:18px;font-siz
 @media (max-width:699px){body.has-mbar footer .wrap{padding-bottom:96px}}
 @media (min-width:700px){.mbar{display:none}}
 [id]{scroll-margin-top:84px}
+
+/* ---- tap areas: at least 40px on text links ---- */
+.link{min-height:40px}
+.menu .menu-foot a{display:inline-flex;align-items:center;min-height:40px}
+@media (min-width:900px){.hdr .tel{display:inline-flex;align-items:center;min-height:40px}}
+.crumb a,.pnext a,footer ul a,footer .sub a,footer .wrap p a{display:inline-flex;align-items:center;min-height:40px}
+.contact .qside .links a,.q-done .call a{display:inline-flex;align-items:center;min-height:40px}
+.proof a.v{display:inline-flex;align-items:center;min-height:40px}

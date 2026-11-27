@@ -5,618 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Saltwater Building Co | West Coast General Contractor | Ucluelet, Tofino, Whistler &amp; Sunshine Coast</title>
 <meta name="description" content="A West Coast General Contractor. Servicing Ucluelet, Tofino, Whistler and the Sunshine Coast. Custom homes, renovations, residential developments, commercial construction and ADUs.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#F5F3F3">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://static.wixstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F5F3F3;
-    --ink:#1C1C1C;
-    --grey:#8F8781;
-    --rule:#8F8781;
-    --pad:23px;
-    --maxw:1440px;
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter Tight","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:15.5px;line-height:1.3;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  img{display:block;width:100%;height:100%;object-fit:cover}
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3,p{margin:0;font-weight:400}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-
-  .wm-sub{color:#fff;text-transform:uppercase;line-height:1;margin:0;padding:0 0 calc(var(--pad) * .95) .15em;opacity:.95;white-space:nowrap}
-  .hero .wordmark h1{padding-bottom:calc(var(--pad) * .45)}
-  /* logo (brand colours: teal #5DB5C0, slate #2D4955) */
-  .brand{display:flex;align-items:center;gap:10px}
-  .badge{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 1px 6px rgba(0,0,0,.18)}
-  .logo-mark{width:22px;height:21px;display:block}
-  .logo-mark .l{stroke:#5DB5C0}.logo-mark .r{stroke:#2D4955}
-  .hdr.solid .badge,.menu-open .badge{box-shadow:none}
-  .foot-logo{display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;background:#fff;border-radius:999px;padding:12px 22px 12px 14px}
-  .foot-logo .badge{width:auto;height:auto;box-shadow:none;background:none}
-  .foot-logo .logo-mark{width:34px;height:32px}
-  .foot-logo .wm{font-family:"DM Serif Display",Georgia,serif;font-size:26px;line-height:.95;color:#2D4955;margin:0}
-  .foot-logo .wm small{display:block;font-family:"Inter Tight",Arial,sans-serif;font-size:10px;letter-spacing:.32em;margin-top:5px;color:#5DB5C0}
-  /* ---------- header ---------- */
-  .hdr{position:fixed;top:0;left:0;right:0;z-index:50;height:56px;transition:background .25s ease}
-  .hdr .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
-  .hdr .mark{font-size:25px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .25s ease;padding-top:2px}
-  .hdr.solid{background:var(--bg)}
-  .hdr.solid .mark{opacity:1}
-  .plus{width:40px;height:40px;margin-right:-10px;border:0;background:none;padding:0;cursor:pointer;position:relative;color:#fff}
-  .plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:1.5px;background:currentColor;transform:translate(-50%,-50%);transition:transform .3s ease}
-  .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
-  .hdr.solid .plus,.menu-open .plus{color:var(--ink)}
-  .menu-open .plus::before{transform:translate(-50%,-50%) rotate(45deg)}
-  .menu-open .plus::after{transform:translate(-50%,-50%) rotate(135deg)}
-  .menu-open .hdr{background:var(--bg)}
-  .menu-open .hdr .mark{opacity:1}
-  .menu{position:fixed;inset:0;z-index:40;background:var(--bg);padding:110px var(--pad) 40px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
-  .menu-open .menu{opacity:1;visibility:visible}
-  .menu nav a{display:block;font-size:33px;line-height:1.25;letter-spacing:-.01em}
-  .menu .menu-foot{color:var(--grey);font-size:15.5px;line-height:1.25}
-  .menu-open{overflow:hidden}
-
-  /* ---------- 1 hero ---------- */
-  .hero{position:relative;height:76vh;height:76svh;min-height:420px;overflow:hidden;background:#6b6256}
-  .hero img{position:absolute;inset:0;transform-origin:62% 55%;animation:kb 18s ease-in-out infinite alternate;will-change:transform,opacity;opacity:0;transition:opacity 1s ease}
-  .hero img.on{opacity:1}
-  /* Slow push-in/pan */
-  @keyframes kb{0%{transform:scale(1) translate3d(0,0,0)}100%{transform:scale(1.12) translate3d(-2.5%,-1.5%,0)}}
-  @media (prefers-reduced-motion:reduce){.hero img{animation:none}}
-  .save-data .hero img{animation:none}
-  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to top,rgba(0,0,0,.28),rgba(0,0,0,0))}
-  .hero .wordmark{position:absolute;left:0;right:0;bottom:0;z-index:2}
-  .wordmark h1{color:#fff;text-transform:uppercase;font-weight:400;line-height:.8;letter-spacing:-.015em;white-space:nowrap;font-size:22.5vw;padding:0 0 calc(var(--pad) * .95);margin-left:-.04em}
-
-  .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .vid-tag{position:absolute;top:62px;left:var(--pad);z-index:3;background:rgba(255,216,77,.9);color:#1c1c1c;font-size:10px;line-height:1.2;padding:2px 6px;font-weight:500}
-  .hero{background:#2f3a40 url(wave-poster.jpg) center/cover no-repeat}
-  @media (prefers-reduced-motion:reduce){.hero-vid{display:none}}
-
-
-  /* ---------- added: trust strip, Rising Tide, stages ---------- */
-  .s-trust{margin-top:110px}
-  .s-trust .row{border-top:1px solid rgba(143,135,129,.35);border-bottom:1px solid rgba(143,135,129,.35)}
-  .s-trust .row{display:flex;flex-direction:column;gap:12px;padding-block:20px}
-  .s-trust .row > div{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:12px;row-gap:2px}
-  .s-trust .k{font-size:11.5px;color:var(--grey);letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
-  .s-trust .v{font-size:15.5px;line-height:1.25}
-  .s-trust a.v{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-  .s-tide{padding-top:110px}
-  .s-tide .eyebrow,.s-stages .eyebrow{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
-  .s-tide h2{margin-top:10px}
-  .s-tide .grid > div:last-child{margin-top:24px}
-  @media (min-width:900px){.s-tide .grid > div:last-child{margin-top:0}}
-  .s-tide .ph{margin-top:28px;aspect-ratio:16/10;overflow:hidden;background:#d8d4d1}
-  .s-tide .facts{margin:26px 0 0;border-top:1px solid rgba(143,135,129,.35)}
-  .s-tide .facts > div{padding:10px 0;border-bottom:1px solid rgba(143,135,129,.35)}
-  .s-tide .facts dt{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
-  .s-tide .facts dd{margin:2px 0 0;font-size:15.5px}
-  .s-tide .link{margin-top:30px}
-  .s-stages{padding-top:115px}
-  .s-stages h2{margin-top:10px}
-  .s-stages .intro{margin-top:14px;color:var(--grey);max-width:34em}
-  .stages{margin-top:30px;display:grid;grid-template-columns:1fr;gap:34px}
-  .stage .ph{aspect-ratio:4/3;overflow:hidden;background:#d8d4d1}
-  .stage .n{margin-top:12px;font-size:12px;color:var(--grey);letter-spacing:.04em}
-  .stage .t{margin-top:2px;font-size:20px;letter-spacing:-.005em}
-  .stage .d{margin-top:4px;font-size:15.5px;line-height:1.29;color:#4a4642}
-  @media (min-width:900px){
-    .s-trust .row{flex-direction:row;justify-content:space-between}
-    .s-trust .row > div{flex-direction:column;align-items:flex-start}
-    .s-tide{padding-top:170px}
-    .s-tide .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
-    .s-tide .ph{margin-top:0}
-    .s-tide .facts{margin-top:30px}
-    .s-stages{padding-top:170px}
-    .stages{grid-template-columns:repeat(4,1fr);gap:20px}
-  }
-
-  /* ---------- added: reviews, build portal, FAQ, licence badges ---------- */
-  .s-reviews,.s-portal,.s-faq{padding-top:110px}
-  .s-reviews .eyebrow,.s-portal .eyebrow,.s-faq .eyebrow{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
-  .s-reviews h2,.s-portal h2,.s-faq h2{margin-top:10px}
-  .s-reviews .intro,.s-portal .intro{margin-top:14px;color:var(--grey);max-width:34em}
-  .reviews{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:28px}
-  .reviews:empty{display:none}
-  .review{border-top:1px solid rgba(143,135,129,.35);padding-top:18px}
-  .review p{font-size:20px;line-height:1.3;letter-spacing:-.005em}
-  .review .who{margin-top:12px;font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
-  .s-reviews .link,.s-portal .link{margin-top:30px}
-  .s-portal .links{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin-top:30px}
-  .s-portal .links .link{margin-top:0}
-  .s-portal .grid > div:first-child{max-width:30em}
-  .s-portal ul{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid rgba(143,135,129,.35)}
-  .s-portal li{padding:10px 0;border-bottom:1px solid rgba(143,135,129,.35);font-size:15.5px}
-  .phone{margin:44px auto 0;width:260px;border-radius:34px;background:#1C1C1C;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.18)}
-  .phone .scr{border-radius:26px;overflow:hidden;background:var(--bg);font-size:11px;line-height:1.3}
-  .phone .bar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 8px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
-  .phone .bar b{font-weight:500;color:var(--ink)}
-  .phone .feed{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:4px;height:150px;padding:0 10px}
-  .phone .feed div{overflow:hidden;background:#d8d4d1;border-radius:4px}
-  .phone .feed div:first-child{grid-row:span 2}
-  .phone .sch{margin:12px 10px 0;padding:10px 12px;background:#fff;border-radius:6px}
-  .phone .sch .k{display:flex;justify-content:space-between;color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-size:9.5px}
-  .phone .sch .track{margin-top:8px;height:3px;background:rgba(143,135,129,.3);border-radius:2px;overflow:hidden}
-  .phone .sch .track span{display:block;width:62%;height:100%;background:#5DB5C0}
-  .phone .sch .st{display:flex;justify-content:space-between;margin-top:6px;font-size:9.5px;color:var(--grey)}
-  .phone .sch .st .on{color:var(--ink)}
-  .phone .note{margin:8px 10px 14px;padding:10px 12px;background:#fff;border-radius:6px;border-left:2px solid #2D4955}
-  .phone .note .k{color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-size:9.5px}
-  .phone .note p{margin-top:4px;font-size:11.5px;color:var(--ink)}
-  .faq{margin-top:34px;border-bottom:1px solid var(--rule)}
-  .faq details{border-top:1px solid var(--rule)}
-  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0;font-size:17.5px;line-height:1.25;-webkit-tap-highlight-color:transparent}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.3px no-repeat,linear-gradient(currentColor,currentColor) center/1.3px 12px no-repeat;transition:transform .25s ease}
-  .faq details[open] summary::after{transform:rotate(45deg)}
-  .faq .a{padding:0 0 18px;color:#4a4642;font-size:15.5px;line-height:1.35;max-width:38em}
-  .s-badges{margin-top:-1px}
-  .s-badges .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-block:20px;border-bottom:1px solid rgba(143,135,129,.35)}
-  .badge-x{display:flex;gap:12px;align-items:center;padding:12px;background:#fff;border-radius:3px}
-  .badge-x svg{flex:none;width:30px;height:30px;color:#2D4955}
-  .badge-x b{display:block;font-weight:500;font-size:13.5px;line-height:1.2}
-  .badge-x small{display:block;margin-top:2px;font-size:12px;color:var(--grey)}
-  @media (max-width:420px){.s-badges .row{grid-template-columns:1fr}}
-  @media (min-width:900px){
-    .s-reviews,.s-portal,.s-faq{padding-top:170px}
-    .reviews{grid-template-columns:repeat(3,1fr);gap:20px}
-    .s-portal .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
-    .phone{margin-top:0}
-    .s-faq .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
-    .faq{margin-top:0}
-    .faq summary{font-size:20px}
-    .s-badges .row{display:flex;gap:20px}
-  }
-
-  /* ---------- type scale ---------- */
-  .statement{font-size:33px;line-height:1.24;letter-spacing:-.012em}
-  .statement .g,.g{color:var(--grey)}
-  .h-md{font-size:24px;line-height:1.25;letter-spacing:-.01em}
-  .h-sm{font-size:20px;line-height:1.25;letter-spacing:-.005em}
-  .body{font-size:15.5px;line-height:1.29}
-  .link{display:inline-flex;align-items:center;gap:20px;font-weight:500;font-size:15px;line-height:1}
-  .link .arr{display:inline-block;width:16px;height:9px;position:relative}
-  .link .arr::before{content:"";position:absolute;left:0;right:1px;top:50%;height:1.2px;background:currentColor;transform:translateY(-50%)}
-  .link .arr::after{content:"";position:absolute;right:1px;top:50%;width:6px;height:6px;border-top:1.2px solid currentColor;border-right:1.2px solid currentColor;transform:translateY(-50%) rotate(45deg);transform-origin:center}
-  .link:hover .label{text-decoration:underline;text-underline-offset:3px}
-
-  /* ---------- 2 intro statement ---------- */
-  .s-intro{padding-top:36px}
-  /* ---------- 3 about ---------- */
-  .s-about{padding-top:110px}
-  .s-about .body{margin-top:36px}
-  .s-about .link{margin-top:48px}
-  /* ---------- 4 portrait ---------- */
-  .s-portrait{padding-top:50px}
-  .ph img{color:transparent;font-size:0}
-  .s-portrait .ph{aspect-ratio:4/5;overflow:hidden;background:#d8d4d1}
-  .ph-empty{display:flex;align-items:center;justify-content:center;background:#E3E0DE !important}
-  .ph-empty span{font-size:13px;color:var(--grey);letter-spacing:.01em}
-  .cap{margin-top:14px;font-size:15.5px;line-height:1.3;color:var(--ink)}
-
-  /* ---------- 5 projects ---------- */
-  .s-projects{padding-top:70px}
-  .s-projects .h-sm{margin-bottom:70px}
-  .carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--pad);scroll-padding:0 var(--pad);max-width:var(--maxw);margin:0 auto}
-  .carousel::-webkit-scrollbar{display:none}
-  .card{flex:0 0 83%;scroll-snap-align:start;display:block}
-  .card .t{font-weight:600;font-size:16px;line-height:1.35}
-  .card .c{font-size:16px;line-height:1.35;color:var(--ink)}
-  .card .ph{margin-top:55px;aspect-ratio:4/5;overflow:hidden;background:#d8d4d1}
-  .s-projects .link{margin-top:40px}
-
-  /* ---------- 6 quote ---------- */
-  .s-quote{padding-top:110px}
-  .quote{font-size:23px;line-height:1.2;letter-spacing:-.01em;text-indent:-.4em}
-  .attr{margin-top:34px;font-size:15.5px;line-height:1.3}
-
-  /* ---------- 7 services ---------- */
-  .s-services{padding-top:115px}
-  .s-services .link{margin-top:40px}
-  .svc{list-style:none;margin:70px 0 0;padding:0;border-bottom:1px solid var(--rule)}
-  .svc li{border-top:1px solid var(--rule)}
-  .svc a{display:grid;grid-template-columns:60px 1fr;padding:9px 0 9px;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
-  .svc a:active{opacity:.5}
-  @media (hover:hover){.svc a:hover .s{color:var(--ink)}}
-  .card.flash .ph{outline:2px solid var(--ink);outline-offset:4px;transition:outline-color .6s}
-  #about,#projects,#services,#approach,#contact,#faq{scroll-margin-top:70px}
-  .svc .n{font-size:11px;line-height:1;padding-top:7px;color:#5b5652;letter-spacing:.02em}
-  .svc .s{font-size:17.5px;line-height:1.2;color:var(--grey)}
-
-  /* ---------- 8 photos ---------- */
-  .s-photos{padding-top:86px}
-  .s-photos .land{aspect-ratio:5/4;overflow:hidden;background:#d8d4d1}
-  .bleed{margin-top:132px;height:135vw;max-height:92vh;overflow:hidden;background:#cfd4d6}
-
-  /* ---------- 9 approach ---------- */
-  .s-approach{padding-top:112px}
-  .s-approach .body{margin-top:38px}
-  .s-approach .link{margin-top:40px}
-  .s-approach .land{margin-top:56px;aspect-ratio:5/4;overflow:hidden;background:#d8d4d1}
-
-  /* ---------- 10 instagram ---------- */
-  .s-insta{padding-top:94px}
-  .s-insta .h-sm{margin-bottom:66px}
-  .ig .card{flex-basis:100%}
-  .ig .tile{aspect-ratio:628/746;overflow:hidden;background:#dcdcdc;display:block}
-  .ig .tile img{transition:transform .5s ease}
-  .ig .tile:hover img{transform:scale(1.03)}
-  .s-insta .link{margin-top:40px}
-
-  /* ---------- 11 contact ---------- */
-  .s-contact{padding-top:140px;padding-bottom:40px}
-  .s-contact .lead{margin-top:110px;font-size:24px;line-height:1.25;letter-spacing:-.01em}
-  .s-contact .lead + .lead{margin-top:20px}
-  form{margin-top:48px;max-width:574px}
-  .fld{margin-bottom:22px}
-  .fld label{display:block;font-size:17px;line-height:1.2;color:#3c3c3c;margin-bottom:6px}
-  .fld label .req{color:#c00;margin-left:4px}
-  .fld input,.fld textarea{width:92%;display:block;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid #c9c7c6;border-radius:3px;padding:8px 10px;height:37px;outline:none;-webkit-appearance:none;appearance:none}
-  .fld textarea{height:116px;resize:vertical}
-  .fld input:focus,.fld textarea:focus{border-color:var(--ink)}
-  .chk{display:flex;align-items:center;gap:10px;font-size:17px;color:#3c3c3c;margin:4px 0 26px;cursor:pointer}
-  .chk input{width:14px;height:14px;margin:0;accent-color:var(--ink)}
-  .btn{background:#000;color:#fff;border:0;border-radius:0;font:inherit;font-size:15px;width:115px;height:34px;cursor:pointer;-webkit-appearance:none}
-  .btn:hover{background:#2a2a2a}
-  .hp{position:absolute;left:-9999px}
-  /* quote wizard: without JS every step shows as one long form; the script adds .q-on and shows one step at a time */
-  .q-step{border:0;margin:0 0 44px;padding:0;min-width:0}
-  .q-step legend{padding:0;margin:0 0 22px;font-size:24px;line-height:1.25;letter-spacing:-.01em}
-  .q-step .q-sub{margin:-12px 0 22px;color:var(--grey);font-size:15.5px;line-height:1.29}
-  .q-opt{color:var(--grey);font-size:13px;margin-left:4px}
-  .q-lbl{display:block;font-size:17px;line-height:1.2;color:#3c3c3c;margin-bottom:8px}
-  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:92%}
-  .tiles.sm{grid-template-columns:repeat(3,1fr)}
-  .tiles.sm .tile span{min-height:46px;justify-content:center}
-  .tile{position:relative;display:block;cursor:pointer;-webkit-tap-highlight-color:transparent}
-  .tile input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
-  .tile span{display:flex;align-items:center;min-height:64px;height:100%;padding:12px 14px;background:#fff;border:1px solid #c9c7c6;border-radius:3px;font-size:16px;line-height:1.2;color:var(--ink);transition:border-color .15s,background .15s,color .15s}
-  @media (hover:hover){.tile:hover span{border-color:var(--ink)}}
-  .tile input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
-  .tile input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
-  .q-progress{width:92%;margin-bottom:34px}
-  .q-label{display:flex;justify-content:space-between;font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
-  .q-bar{margin-top:10px;height:1.5px;background:rgba(143,135,129,.35);position:relative}
-  .q-bar span{position:absolute;left:0;top:-.5px;bottom:-.5px;width:0;background:var(--ink);transition:width .3s ease}
-  .q-error{margin:14px 0 0;color:#c00;font-size:15px}
-  .q-nav{display:flex;align-items:center;justify-content:space-between;width:92%;margin-top:30px}
-  .q-nav .btn{width:auto;min-width:115px;height:44px;padding:0 22px}
-  .q-nav [data-next],.q-nav [type=submit]{margin-left:auto}
-  .q-back{background:none;border:0;padding:12px 0;cursor:pointer;color:var(--ink);font-family:inherit}
-  .q-back .arr{transform:scaleX(-1)}
-  .drop{display:block;width:92%;margin-top:4px;padding:16px 14px;border:1px dashed #c9c7c6;border-radius:3px;background:#fff;cursor:pointer}
-  .drop-h{display:block;font-size:16px;color:var(--ink)}
-  .drop input{display:block;margin:10px 0 6px;font:inherit;font-size:14px;max-width:100%}
-  .drop small{display:block;font-size:13px;color:var(--grey);line-height:1.3}
-  .drop-name{display:block;margin-top:6px;font-size:14px;font-weight:500}
-  .drop-name:empty{display:none}
-  .q-on .q-step{display:none;margin-bottom:0}
-  .q-on .q-step.q-cur{display:block;animation:qIn .25s ease}
-  @keyframes qIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.q-on .q-step.q-cur{animation:none}.q-bar span{transition:none}}
-  .q-done{margin-top:48px;max-width:574px}
-  .q-done .lead{margin-top:0}
-  .q-done .body{margin-top:18px;color:var(--grey)}
-  .q-done .link{margin-top:34px}
-  .q-done .call{margin-top:22px;font-size:15.5px}
-  .q-done .call a{text-decoration:underline;text-underline-offset:3px}
-  /* sticky call / text bar (phones only) */
-  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;background:var(--ink);padding-bottom:env(safe-area-inset-bottom);transform:translateY(110%);transition:transform .3s ease}
-  .mbar.on{transform:none}
-  .mbar a{flex:1;display:flex;align-items:center;justify-content:center;height:52px;color:#fff;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-  .mbar a + a{border-left:1px solid rgba(255,255,255,.25)}
-  .menu-open .mbar{display:none}
-  @media (max-width:699px){body.has-mbar footer .wrap{padding-bottom:110px}html:has(body.has-mbar){scroll-padding-bottom:70px}}
-  @media (min-width:700px){.mbar{display:none}}
-
-  /* ---------- 12 footer ---------- */
-  footer{position:relative;color:#fff;overflow:hidden;
-    background:
-      radial-gradient(ellipse 60% 70% at 18% 8%,rgba(255,255,255,.16),rgba(255,255,255,0) 70%),
-      radial-gradient(ellipse 50% 60% at 85% 85%,rgba(0,0,0,.25),rgba(0,0,0,0) 70%),
-      linear-gradient(160deg,#6e716d 0%,#5b5f5c 45%,#4c504e 100%);}
-  footer::before{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.25 -.35'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
-  footer::after{content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='p'><feTurbulence type='turbulence' baseFrequency='.012' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");mix-blend-mode:soft-light}
-  footer .wrap{position:relative;z-index:1;padding-top:62px;padding-bottom:58px;font-size:16px;line-height:1.3}
-  footer p + p{margin-top:28px}
-  footer a:hover{text-decoration:underline;text-underline-offset:3px}
-  footer .owner{font-size:13px;opacity:.65}
-
-  /* ---------- tablet / desktop ---------- */
-  @media (min-width:700px){
-    :root{--pad:40px}
-    .hdr{height:72px}
-    .hdr .mark{font-size:30px}
-    .statement{font-size:clamp(40px,4.6vw,66px);line-height:1.18;max-width:21em}
-    .h-md{font-size:clamp(28px,2.6vw,38px)}
-    .h-sm{font-size:clamp(22px,1.9vw,28px)}
-    .body,.attr{font-size:clamp(16px,1.25vw,19px)}
-    .link{font-size:clamp(15px,1.1vw,17px)}
-    .quote{font-size:clamp(30px,3vw,44px);max-width:24em}
-    .s-intro{padding-top:56px}
-    .s-about{padding-top:160px}
-    .s-portrait .ph{aspect-ratio:16/10}
-    .card{flex-basis:calc((100% - 32px)/2.4)}
-    .ig .card{flex-basis:calc((100% - 48px)/3.6)}
-    .svc .s{font-size:clamp(20px,2vw,30px)}
-    .svc a{grid-template-columns:22% 1fr;padding:14px 0}
-    .svc .n{font-size:13px;padding-top:10px}
-    .s-photos .land{width:66%;aspect-ratio:3/2}
-    .bleed{height:auto;aspect-ratio:16/9;max-height:none}
-    .s-approach .land{width:66%;margin-left:auto;aspect-ratio:3/2}
-    .s-contact .lead{font-size:clamp(28px,2.6vw,38px);max-width:22em}
-    .fld label{font-size:16px}
-    .q-step legend{font-size:clamp(28px,2.6vw,34px)}
-    .tiles{grid-template-columns:repeat(3,1fr)}
-    .tiles.sm{grid-template-columns:repeat(3,1fr)}
-    footer .wrap{font-size:17px}
-  }
-  @media (min-width:1000px){
-    :root{--pad:56px}
-    .s-about .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-    .s-about .body{margin-top:0}
-    .s-approach .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-    .s-approach .body{margin-top:0}
-    .s-quote,.s-services{padding-top:170px}
-    .s-services .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-    .s-services .svc{margin-top:0}
-    .s-contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:140px}
-    .s-contact .grid .lead{margin-top:0}
-    .s-contact form{margin-top:0}
-    footer .wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-top:90px;padding-bottom:90px}
-    footer p + p{margin-top:0}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/site.css?v=1">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Saltwater Building Co home"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg><span>Saltwater<i> Building Co.</i></span></a>
+  <nav class="hnav" aria-label="Main"><a href="/projects/">Projects</a><a href="/#how-we-build">How we build</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a></nav>
+  <a class="hbtn" href="/#contact">Request a quote</a>
+  <details class="mnav"><summary>Menu</summary><nav aria-label="Menu"><a href="/projects/">Projects</a><a href="/#how-we-build">How we build</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a><a href="tel:+16048484040">604-848-4040</a></nav></details>
+</div></header>
+<main id="main">
 
-<header class="hdr" id="hdr">
-  <div class="wrap">
-    <a href="#top" class="brand" aria-label="Saltwater Building Co home"><span class="badge"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg></span><span class="mark">Saltwater</span></a>
-    <button class="plus" id="menuBtn" aria-label="Open menu" aria-expanded="false"></button>
-  </div>
-</header>
+  <section class="hero" id="top" data-video-poster="hero-video"><div class="wrap">
+    <p class="eyebrow">Ucluelet, British Columbia</p>
+    <h1 class="h1" style="margin-top:12px">Custom homes, built for the coast.</h1>
+    <p class="lede">Saltwater Building Co. is a general contractor building custom homes, renovations and ADUs across Tofino, Whistler, the Sunshine Coast and remote coastal BC.</p>
+    <div class="cta"><a class="btn" href="#contact">Request a quote</a><a class="tl" href="/projects/">See our projects</a></div>
+    <div class="vid" id="vid"><video id="heroVid" data-video-slot="hero-video" muted loop playsinline preload="none" poster="/wave-poster.jpg" aria-hidden="true"></video><button class="play" id="playBtn" type="button">Play video</button></div>
+    <dl class="facts">
+      <div><dt>Licensed builder</dt><dd>BC licence <span style="white-space:nowrap">#52492</span></dd></div>
+      <div><dt>Home warranty</dt><dd>2-5-10 coverage</dd></div>
+      <div><dt>Where we build</dt><dd>Ucluelet, Tofino, Whistler, Sunshine Coast, remote coast</dd></div>
+      <div><dt>Call or text</dt><dd><a href="tel:+16048484040">604-848-4040</a></dd></div>
+    </dl>
+  </div></section>
 
-<div class="menu" id="menu" aria-hidden="true">
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#services">Services</a>
-    <a href="#approach">Approach</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="menu-foot">
-    <p>Saltwater Building Co.</p>
-    <p><a href="tel:+16048484040">604-848-4040</a></p>
-    <p>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p>
-  </div>
-</div>
-
-<main id="top">
-
-  <!-- 1. HERO -->
-  <section class="hero" id="hero" data-video-poster="hero-video">
-    <video class="hero-vid" id="heroVid" data-video-slot="hero-video" autoplay muted loop playsinline preload="metadata" poster="wave-poster.jpg" aria-hidden="true"></video>
-    <div class="wordmark"><div class="wrap"><h1 id="wm">Saltwater</h1><p class="wm-sub">Building Co</p></div></div>
-  </section>
-
-  <!-- 2. STATEMENT -->
-  <section class="s-intro">
-    <div class="wrap">
-      <p class="statement">Built for the wild west coast. <span class="g">Custom homes, renovations and ADUs, from first sketch to final walkthrough.</span></p>
+  <section class="sec" id="about"><div class="wrap two">
+    <div>
+      <p class="eyebrow">What we do</p>
+      <h2 class="h2">Based in Ucluelet, building across the coast.</h2>
+      <p class="body" style="margin-top:16px">We build custom homes, renovations, additions, ADUs and commercial projects from Tofino to Whistler, the Sunshine Coast and remote coastal BC. Every project is grounded in building science and modern construction methods, professionally managed, and run with full transparency at every stage.</p>
+      <div class="svcs" aria-label="What we build">
+        <a href="#contact" data-slug="custom-home">Custom homes</a><a href="#contact" data-slug="renovation">Renovations</a><a href="#contact" data-slug="addition">Additions</a><a href="#contact" data-slug="adu">ADUs</a><a href="#contact" data-slug="commercial">Commercial</a>
+      </div>
     </div>
-  </section>
+    <div class="ph" data-photo-slot="photo-wide" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project" loading="lazy" decoding="async" width="760" height="570"></div>
+  </div></section>
 
-  <!-- 3. ABOUT -->
-  <section class="s-about" id="about">
-    <div class="wrap grid">
-      <h2 class="h-md">Design. Build. Renovate.</h2>
+  <section class="sec" id="projects"><div class="wrap">
+    <p class="eyebrow">Our work</p>
+    <h2 class="h2">Projects</h2>
+    <div class="cases" data-photo-projects>
+<article class="case"><a class="ph" data-photo-slot="featured" data-photo-replace href="/projects/rising-tide-boat-works/" tabindex="-1" aria-hidden="true"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="A Saltwater commercial build" loading="lazy" decoding="async" width="760" height="507"></a>
+  <div class="txt"><p class="k">Commercial development &middot; Now building</p><h3><a href="/projects/rising-tide-boat-works/"><span data-text="tide-title">Rising Tide Boat Works</span></a></h3><p class="s" data-text="tide-body">An electric boat hub on Ucluelet&rsquo;s old WWII seaplane base, designed by Michael Green Architecture. Now under construction, about a two-year build.</p><a class="tl" href="/projects/rising-tide-boat-works/">Read the story</a></div></article>
+<article class="case"><a class="ph" href="/projects/1406-imperial/" tabindex="-1" aria-hidden="true"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy" decoding="async" width="760" height="507"></a>
+  <div class="txt"><p class="k">Custom home</p><h3><a href="/projects/1406-imperial/">1406 Imperial</a></h3><p class="s">A custom home by Saltwater Building Co.</p><a class="tl" href="/projects/1406-imperial/">Read the story</a></div></article>
+<article class="case"><a class="ph" href="/projects/1769-rainforest-lane/" tabindex="-1" aria-hidden="true"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="1769 Rainforest Lane" loading="lazy" decoding="async" width="760" height="507"></a>
+  <div class="txt"><p class="k">Residential development</p><h3><a href="/projects/1769-rainforest-lane/">1769 Rainforest Lane</a></h3><p class="s">A residential development by Saltwater Building Co.</p><a class="tl" href="/projects/1769-rainforest-lane/">Read the story</a></div></article>
+    </div>
+    <div class="also"><h3>Also built</h3><ul><li><a href="/projects/ucluelet-modern-house/">Ucluelet Modern House</a></li><li><a href="/projects/gibsons-landing/">Gibsons Landing</a></li></ul></div>
+    <p style="margin-top:28px"><a class="tl" href="/projects/">All projects</a></p>
+  </div></section>
+
+  <section class="sec" id="how-we-build"><div class="wrap">
+    <div class="two">
       <div>
-        <p class="body">Based in Ucluelet, we build across Tofino, Whistler, the Sunshine Coast and remote coastal BC. Every project is grounded in building science and modern construction methods, professionally managed, and run with full transparency at every stage.</p>
-        <a class="link" href="#about"><span class="arr"></span><span class="label">About Us</span></a>
+        <p class="eyebrow">How we build</p>
+        <h2 class="h2">Built to last out here.</h2>
+        <p class="body" style="margin-top:16px">We start with what you need, bring in the right trades, and stay with it to the finish, in town or on a remote coastal site.</p>
+        <p style="margin-top:14px"><a class="tl" href="/building-on-the-coast/">How building on the coast is different</a></p>
       </div>
+      <div class="ph" data-photo-slot="approach" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="A finished Saltwater home on the coast" loading="lazy" decoding="async" width="760" height="570"></div>
     </div>
-  </section>
+    <ol class="steps">
+      <li><h3>Talk it through</h3><p>Tell us what you need, your site or lot, and whether you have drawings or an idea. We can walk a lot with you before you buy.</p></li>
+      <li><h3>Plan it</h3><p>Bring drawings from your designer, or we work alongside one. We help you understand permits, and set out a schedule with you before we start.</p></li>
+      <li><h3>Build it</h3><p>Foundation, framing, weather-tight, finished. You get an update at every stage.</p></li>
+      <li><h3>Hand it over</h3><p>A final walkthrough, then the keys. Built for heavy rain, wind and salt air.</p></li>
+    </ol>
+    <h3 class="stg-h">Stage by stage</h3>
+    <div class="stages"><div><div class="ph" data-photo-slot="stage-1" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/5a3b42_09be3b94bee14498ba898faba337df7e.jpg" alt="Stage 1: foundation" loading="lazy" decoding="async" width="760" height="570"></div><p><b>Foundation</b>Lot cleared, drainage in, foundation poured for a wet site.</p></div><div><div class="ph" data-photo-slot="stage-2" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="Stage 2: framing" loading="lazy" decoding="async" width="760" height="570"></div><p><b>Framing</b>Walls and roof framed and braced for coastal wind.</p></div><div><div class="ph" data-photo-slot="stage-3" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="Stage 3: weather-tight" loading="lazy" decoding="async" width="760" height="570"></div><p><b>Weather-tight</b>Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div><div><div class="ph" data-photo-slot="stage-4" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_760,h_760,q_72,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Stage 4: finished" loading="lazy" decoding="async" width="760" height="570"></div><p><b>Finished</b>Keys handed over. Built to last on the wild side of the coast.</p></div></div>
+  </div></section>
 
+  <section class="sec"><div class="wrap">
+    <p class="eyebrow">How we work</p>
+    <p class="lede" style="margin-top:10px"><span data-text="quote-text">Throughout the construction process we are 100% transparent, so that at any time you know exactly where your project stands.</span><span data-text="quote-name" hidden>Saltwater Building Co.</span></p>
+    <div class="team"><div class="ph" data-photo-slot="team" data-photo-replace></div></div>
+  </div></section>
 
-  <!-- 4. TEAM PHOTO -->
-  <section class="s-portrait">
-    <div class="wrap">
-      <figure style="margin:0">
-        <!-- Default is a project photo; swap for a team photo of the Saltwater crew on site in the photo manager (keep the frame) -->
-        <div class="ph" data-photo-slot="team" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="A Saltwater-built home among the coastal trees" loading="lazy" decoding="async"></div>
-        <figcaption class="cap">Built by the Saltwater team</figcaption>
-      </figure>
-    </div>
-  </section>
+  <!-- Reviews: hidden until Saltwater has real Google reviews and the real Google reviews link.
+       Add real reviews one <li class="review"> each, word for word; never invented ones. Remove `hidden` then. -->
+  <section class="sec" id="reviews" hidden><div class="wrap">
+    <p class="eyebrow">Reviews</p><h2 class="h2">What our clients say on Google</h2>
+    <ul class="reviews" data-reviews></ul>
+  </div></section>
 
-  <!-- ADDED: RISING TIDE FEATURE -->
-  <section class="s-tide" id="rising-tide">
-    <div class="wrap grid">
-      <div class="ph" data-photo-slot="featured" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="A Saltwater commercial build" loading="lazy" decoding="async"></div>
-      <div>
-        <p class="eyebrow">Now building</p>
-        <h2 class="h-md" data-text="tide-title">Rising Tide Boat Works</h2>
-        <p class="body" style="margin-top:14px" data-text="tide-body">An electric boat hub on Ucluelet&rsquo;s old WWII seaplane base, designed by Michael Green Architecture. Now under construction, about a two-year build.</p>
-        <a class="link" href="#contact"><span class="arr"></span><span class="label">Talk to us about a commercial build</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. SELECT PROJECTS -->
-  <section class="s-projects" id="projects">
-    <div class="wrap"><h2 class="h-sm">Select Projects</h2></div>
-    <div class="carousel" data-photo-projects>
-      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
-        <p class="t">Bozman Cabin</p><p class="c">Custom Homes</p>
-        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Bozman Cabin" loading="lazy"></div>
-      </a>
-      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
-        <p class="t">1406 Imperial</p><p class="c">Custom Homes</p>
-        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
-      </a>
-      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
-        <p class="t">1769 Rainforest Lane</p><p class="c">Residential Developments</p>
-        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="1769 Rainforest Lane" loading="lazy"></div>
-      </a>
-      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
-        <p class="t">302 Reef</p><p class="c">Residential Developments</p>
-        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="302 Reef" loading="lazy"></div>
-      </a>
-      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
-        <p class="t">Centerpoint</p><p class="c">Commercial Developments</p>
-        <div class="ph"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="Centerpoint commercial development" loading="lazy"></div>
-      </a>
-      <a class="card" data-photo-placeholder href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">
-        <p class="t">ADU</p><p class="c">Accessory Dwelling Units</p>
-        <div class="ph"><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="Accessory dwelling unit" loading="lazy"></div>
-      </a>
-      <template data-project-template><a class="card" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><p class="t">{title}</p><p class="c" data-if-kind>{kind}</p><div class="ph"><img src="{src}" alt="{title}" loading="lazy"></div></a></template>
-    </div>
-    <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">View All Projects</span></a></div>
-  </section>
-
-  <!-- 6. PULL-QUOTE -->
-  <!-- PLACEHOLDER: replace this with a real client testimonial (quote + client name) once Saltwater supplies one. -->
-  <section class="s-quote">
-    <div class="wrap">
-      <blockquote style="margin:0">
-        <p class="quote">&ldquo;<span data-text="quote-text">Throughout the construction process we are 100% transparent, so that at any time you know exactly where your project stands.</span>&rdquo;</p>
-        <p class="attr">&mdash; <span data-text="quote-name">Saltwater Building Co.</span></p>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- 7. SERVICES -->
-  <section class="s-services" id="services">
-    <div class="wrap grid">
-      <div>
-        <h2 class="h-md">Building, renovating or adding an ADU? Bring us your plans, or your idea.</h2>
-        <a class="link" href="#services"><span class="arr"></span><span class="label">See Our Services</span></a>
-      </div>
-      <ul class="svc">
-        <li><a href="#projects" data-svc="custom home"><span class="n">01</span><span class="s">Custom Homes</span></a></li>
-        <li><a href="#projects" data-svc="residential"><span class="n">02</span><span class="s">Residential Developments</span></a></li>
-        <li><a href="#projects" data-svc="renovation"><span class="n">03</span><span class="s">Renovations</span></a></li>
-        <li><a href="#projects" data-svc="commercial"><span class="n">04</span><span class="s">Commercial Developments</span></a></li>
-        <li><a href="#projects" data-svc="accessory dwelling|adu"><span class="n">05</span><span class="s">ADUs (Accessory Dwelling Units)</span></a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 8. PHOTOS -->
-  <section class="s-photos">
-    <div class="wrap"><div class="land"><img data-photo-slot="photo-wide" src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Completed Saltwater Building Co project" loading="lazy"></div></div>
-    <div class="bleed"><img data-photo-slot="photo-full" src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_1400,h_1400,q_85,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy"></div>
-  </section>
-
-  <!-- ADDED: STAGE BY STAGE -->
-  <section class="s-stages">
-    <div class="wrap">
-      <p class="eyebrow">Start to finish</p>
-      <h2 class="h-md">A west coast home, stage by stage.</h2>
-      <p class="body intro">One of our builds, from bare lot to finished home.</p>
-      <div class="stages">
-        <div class="stage"><div class="ph" data-photo-slot="stage-1" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_09be3b94bee14498ba898faba337df7e.jpg" alt="Stage 1: foundation" loading="lazy" decoding="async"></div><p class="n">01</p><p class="t">Foundation</p><p class="d">Lot cleared, drainage in, foundation poured for a wet site.</p></div>
-        <div class="stage"><div class="ph" data-photo-slot="stage-2" data-photo-replace><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="Stage 2: framing" loading="lazy" decoding="async"></div><p class="n">02</p><p class="t">Framing</p><p class="d">Walls and roof framed and braced for coastal wind.</p></div>
-        <div class="stage"><div class="ph" data-photo-slot="stage-3" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="Stage 3: house wrapped with windows in, 1769 Rainforest Lane" loading="lazy" decoding="async"></div><p class="n">03</p><p class="t">Weather-tight</p><p class="d">Wrapped, windows in, rainscreen and siding on before the rain arrives.</p></div>
-        <div class="stage"><div class="ph" data-photo-slot="stage-4" data-photo-replace><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Stage 4: finished home, Bozman Cabin" loading="lazy" decoding="async"></div><p class="n">04</p><p class="t">Finished</p><p class="d">Keys handed over. Built to last on the wild side of the coast.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. APPROACH -->
-  <section class="s-approach" id="approach">
-    <div class="wrap grid">
-      <h2 class="h-md">Built to last out here.</h2>
-      <div>
-        <p class="body">We start with what you need, bring in the right trades, and stay with it to the finish, in town or on a remote coastal site.</p>
-        <a class="link" href="#approach"><span class="arr"></span><span class="label">Our Approach</span></a>
-      </div>
-    </div>
-    <div class="wrap"><div class="land"><img data-photo-slot="approach" src="https://static.wixstatic.com/media/d72bf6_5a41d0930f2d45c598232451b8af68de~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_5a41d0930f2d45c598232451b8af68de.jpg" alt="302 Reef" loading="lazy"></div></div>
-  </section>
-
-  <!-- 10. INSTAGRAM -->
-  <section class="s-insta">
-    <div class="wrap"><h2 class="h-sm">Instagram</h2></div>
-    <div class="carousel ig">
-      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
-      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
-      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
-      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/d72bf6_f33243cf7be446e5a892b96595932582~mv2.png/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_f33243cf7be446e5a892b96595932582.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
-      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/d72bf6_a8acef7b592145c8aa0487ef0539e196~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/d72bf6_a8acef7b592145c8aa0487ef0539e196.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
-      <a class="card tile" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><img src="https://static.wixstatic.com/media/5a3b42_09be3b94bee14498ba898faba337df7e~mv2.jpg/v1/fit/w_900,h_900,q_85,enc_avif,quality_auto/5a3b42_09be3b94bee14498ba898faba337df7e.jpg" alt="Saltwater Building Co on Instagram" loading="lazy"></a>
-    </div>
-    <div class="wrap"><a class="link" href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener"><span class="arr"></span><span class="label">Follow Us on Instagram</span></a></div>
-  </section>
-
-  <!-- ADDED: GOOGLE REVIEWS -->
-  <section class="s-reviews" id="reviews">
-    <div class="wrap">
-      <p class="eyebrow">Reviews</p>
-      <h2 class="h-md">What our clients say on Google</h2>
-      <p class="body intro">Hear from the homeowners we&rsquo;ve built for on the coast.</p>
-      <!-- Real Google reviews go here, one <li> each (copy them word for word, with the client's first name):
-           <li class="review"><p>&ldquo;Review text&rdquo;</p><p class="who">Client name &middot; Google review</p></li>
-           The list hides itself while it's empty. Never add made-up reviews or star ratings. -->
-      <ul class="reviews" data-reviews></ul>
-      <!-- TODO: replace href="#" with Saltwater's Google Business Profile reviews link -->
-      <a class="link" href="#" data-google-reviews><span class="arr"></span><span class="label">Read our reviews on Google</span></a>
-    </div>
-  </section>
-
-  <!-- ADDED: CLIENT BUILD PORTAL -->
-  <section class="s-portal" id="portal">
-    <div class="wrap grid">
-      <div>
-        <p class="eyebrow">Your build, in your pocket</p>
-        <h2 class="h-md">Follow your build from anywhere.</h2>
-        <p class="body intro">Every Saltwater client gets a private login to see how their build is going, wherever they are.</p>
-        <ul>
-          <li>Progress photos from site</li>
-          <li>Your schedule, stage by stage</li>
-          <li>Updates and notes from the team</li>
-        </ul>
-        <div class="links">
-          <a class="link" href="/portal/?demo=1"><span class="arr"></span><span class="label">See how it works</span></a>
-          <a class="link" href="#contact"><span class="arr"></span><span class="label">Start your project</span></a>
-          <a class="link" href="/portal/"><span class="arr"></span><span class="label">Client login</span></a>
-        </div>
-      </div>
-      <div class="phone" aria-hidden="true">
-        <div class="scr">
-          <div class="bar"><b>Your build</b><span>Updated today</span></div>
-          <div class="feed">
-            <div><img src="https://static.wixstatic.com/media/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152~mv2.jpg/v1/fit/w_500,h_500,q_80,enc_avif,quality_auto/d72bf6_83f8dbfdcded4cae876f1e85cb7a8152.jpg" alt="" loading="lazy" decoding="async"></div>
-            <div><img src="https://static.wixstatic.com/media/5a3b42_21a384ea183d4a649cf770378579812b~mv2.jpg/v1/fit/w_400,h_400,q_80,enc_avif,quality_auto/5a3b42_21a384ea183d4a649cf770378579812b.jpg" alt="" loading="lazy" decoding="async"></div>
-            <div><img src="https://static.wixstatic.com/media/5a3b42_d69d7f16c43440698806ce0b126fd360~mv2.jpg/v1/fit/w_400,h_400,q_80,enc_avif,quality_auto/5a3b42_d69d7f16c43440698806ce0b126fd360.jpg" alt="" loading="lazy" decoding="async"></div>
-          </div>
-          <div class="sch"><p class="k"><span>Schedule</span><span>Stage 3 of 4</span></p><div class="track"><span></span></div><p class="st"><span>Foundation</span><span>Framing</span><span class="on">Weather-tight</span><span>Finished</span></p></div>
-          <div class="note"><p class="k">Site update</p><p>Windows are in and the house is wrapped. Siding starts next week.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ADDED: FAQ -->
-  <section class="s-faq" id="faq">
-    <div class="wrap grid">
-      <div>
-        <p class="eyebrow">FAQ</p>
-        <h2 class="h-md">Questions we hear a lot.</h2>
-      </div>
-      <div class="faq">
+  <section class="sec" id="faq"><div class="wrap faq-wrap">
+    <div><p class="eyebrow">FAQ</p><h2 class="h2">Questions we hear a lot.</h2></div>
+    <div class="faq">
         <details><summary>How much does it cost to build a custom home out here?</summary><p class="a">It depends on the size of the home, the site and the finishes you choose. Building on the coast also adds remote-location costs, like getting materials and trades to site and preparing rocky or sloped lots. We give you a realistic ballpark after a site visit and a look at your plans or ideas.</p></details>
         <details><summary>How long does a build take?</summary><p class="a">It depends on the size and complexity of the home, the site and the weather. Before we start, we set out a schedule with you, then keep you updated at every stage.</p></details>
         <details><summary>How long do permits and approvals take?</summary><p class="a">It varies with the municipality or regional district, the type of project and how complete the drawings are. We help you understand what is needed and work with your designer to keep things moving.</p></details>
@@ -626,54 +109,31 @@
         <details><summary>What areas do you serve?</summary><p class="a">We are based in Ucluelet and build across Tofino, the West Coast, Whistler, the Sunshine Coast and remote coastal British Columbia.</p></details>
         <details><summary>How is building on the coast different?</summary><p class="a">Heavy rain, wind and salt air call for careful detailing, rainscreen walls and materials and fasteners that stand up to the weather. Remote sites also need planning for access, deliveries and working around the seasons.</p></details>
       </div>
-    </div>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does it cost to build a custom home out here?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size of the home, the site and the finishes you choose. Building on the coast also adds remote-location costs, like getting materials and trades to site and preparing rocky or sloped lots. We give you a realistic ballpark after a site visit and a look at your plans or ideas."}}, {"@type": "Question", "name": "How long does a build take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size and complexity of the home, the site and the weather. Before we start, we set out a schedule with you, then keep you updated at every stage."}}, {"@type": "Question", "name": "How long do permits and approvals take?", "acceptedAnswer": {"@type": "Answer", "text": "It varies with the municipality or regional district, the type of project and how complete the drawings are. We help you understand what is needed and work with your designer to keep things moving."}}, {"@type": "Question", "name": "Can you help if I don't have a lot yet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We can walk a lot with you before you buy and point out what affects the build, such as access, slope, rock, drainage and services."}}, {"@type": "Question", "name": "Do you build from my plans, or can you help with design?", "acceptedAnswer": {"@type": "Answer", "text": "Both. Bring drawings from your architect or designer and we will build them, or start with an idea and we will bring in the right designer and work alongside them from the start."}}, {"@type": "Question", "name": "Do you do renovations, additions and ADUs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Along with new custom homes and commercial builds, we take on major renovations, additions, suites and carriage houses."}}, {"@type": "Question", "name": "What areas do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "We are based in Ucluelet and build across Tofino, the West Coast, Whistler, the Sunshine Coast and remote coastal British Columbia."}}, {"@type": "Question", "name": "How is building on the coast different?", "acceptedAnswer": {"@type": "Answer", "text": "Heavy rain, wind and salt air call for careful detailing, rainscreen walls and materials and fasteners that stand up to the weather. Remote sites also need planning for access, deliveries and working around the seasons."}}]}</script>
-  </section>
+  </div></section>
 
-  <!-- ADDED: TRUST STRIP -->
-  <section class="s-trust">
-    <div class="wrap row">
-      <div><p class="k">Licensed builder</p><p class="v">BC licence <span style="white-space:nowrap">#52492</span></p></div>
-      <div><p class="k">Home warranty</p><p class="v">2-5-10 coverage</p></div>
-      <div><p class="k">Where we build</p><p class="v">Ucluelet · Tofino · Whistler · Sunshine Coast · remote coast</p></div>
-      <div><p class="k">Call or text</p><a class="v" href="tel:+16048484040">604-848-4040</a></div>
-    </div>
-  </section>
+  <div class="wrap"><div class="ph quiet"><img data-photo-slot="photo-full" src="https://static.wixstatic.com/media/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c~mv2.jpg/v1/fit/w_1300,h_1300,q_72,enc_avif,quality_auto/d72bf6_ccfbbb0b210b470ebc9c2f7da5a5c21c.jpg" alt="1406 Imperial" loading="lazy" decoding="async"></div></div>
 
-  <!-- 11. CONTACT -->
-  <section class="s-contact" id="contact">
-    <div class="wrap">
-      <p class="statement">From an idea to a reality. <span class="g">Tell us what you&rsquo;re planning.</span></p>
-      <div class="grid">
-        <div>
-          <p class="lead">We take on projects in Ucluelet, Tofino, Whistler, the Sunshine Coast and remote coastal British Columbia.</p>
-          
-        </div>
+  <section class="sec contact" id="contact"><div class="wrap">
+    <p class="eyebrow">Request a quote</p>
+    <h2 class="h2">Tell us what you&rsquo;re planning.</h2>
+    <div class="grid">
+      <div class="side"><p>We take on projects in Ucluelet, Tofino, Whistler, the Sunshine Coast and remote coastal British Columbia. Start with your name, phone, email and the kind of project. The rest is optional.</p><a class="tel" href="tel:+16048484040">Call or text 604-848-4040</a></div>
+      <div>
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1#contact" enctype="multipart/form-data" class="q-form">
           <input type="hidden" name="form-name" value="contact">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-          <div class="q-progress" hidden><p class="q-label"><span class="q-count"></span><span class="q-name"></span></p><div class="q-bar" role="progressbar" aria-label="Quote progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span></span></div></div>
+          <div class="q-progress" hidden><p class="q-label"><span class="q-count"></span><span class="q-name"></span></p><div class="q-bar" role="progressbar" aria-label="Quote progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><span></span></div></div>
 
           <fieldset class="q-step" data-step="1" data-title="Your details">
-            <legend>Start your project. First, who are we talking to?</legend>
+            <legend>Request a quote. Who should we call?</legend>
+            <p class="q-sub">Just your contact details and the type of project. Everything after this is optional.</p>
             <div class="fld"><label for="fn">First Name<span class="req">*</span></label><input id="fn" name="first-name" type="text" autocomplete="given-name" maxlength="60" required></div>
             <div class="fld"><label for="ln">Last Name</label><input id="ln" name="last-name" type="text" autocomplete="family-name" maxlength="60"></div>
             <div class="fld"><label for="ph">Phone<span class="req">*</span></label><input id="ph" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required></div>
             <div class="fld"><label for="em">Email<span class="req">*</span></label><input id="em" name="email" type="email" autocomplete="email" maxlength="160" required></div>
-            <div class="fld"><span class="q-lbl" id="q-pc">Best way to reach you</span>
-              <div class="tiles sm" role="radiogroup" aria-labelledby="q-pc">
-                <label class="tile"><input type="radio" name="preferred-contact" value="Call" checked><span>Call</span></label>
-                <label class="tile"><input type="radio" name="preferred-contact" value="Text"><span>Text</span></label>
-                <label class="tile"><input type="radio" name="preferred-contact" value="Email"><span>Email</span></label>
-              </div>
-            </div>
-            <p class="q-error" role="alert" hidden></p>
-            <div class="q-nav" hidden><button type="button" class="btn" data-next>Next</button></div>
-          </fieldset>
-
-          <fieldset class="q-step" data-step="2" data-title="Project">
-            <legend>What are you planning?</legend>
-            <div class="tiles" data-auto>
+            <div class="fld"><span class="q-lbl" id="q-pt">What are you planning?<span class="req">*</span></span>
+<div class="tiles" role="radiogroup" aria-labelledby="q-pt">
               <label class="tile"><input type="radio" name="project-type" value="New custom home" data-slug="custom-home" data-svc="custom home" required><span>New custom home</span></label>
               <label class="tile"><input type="radio" name="project-type" value="Addition" data-slug="addition"><span>Addition</span></label>
               <label class="tile"><input type="radio" name="project-type" value="Major renovation" data-slug="renovation" data-svc="renovation"><span>Major renovation</span></label>
@@ -681,24 +141,26 @@
               <label class="tile"><input type="radio" name="project-type" value="Commercial build" data-slug="commercial" data-svc="commercial"><span>Commercial build</span></label>
               <label class="tile"><input type="radio" name="project-type" value="Not sure yet" data-slug="not-sure"><span>Not sure yet</span></label>
             </div>
+            </div>
             <p class="q-error" role="alert" hidden></p>
-            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Next</button></div>
+            <div class="q-nav" hidden><button type="button" class="btn" data-next>Next</button></div>
           </fieldset>
 
-          <fieldset class="q-step" data-step="3" data-title="Location">
+
+          <fieldset class="q-step" data-step="2" data-title="Location" data-optional>
             <legend>Where&rsquo;s the project?</legend>
             <div class="tiles" data-auto>
-              <label class="tile"><input type="radio" name="location" value="Ucluelet" required><span>Ucluelet</span></label>
+              <label class="tile"><input type="radio" name="location" value="Ucluelet"><span>Ucluelet</span></label>
               <label class="tile"><input type="radio" name="location" value="Tofino"><span>Tofino</span></label>
               <label class="tile"><input type="radio" name="location" value="Elsewhere on the West Coast"><span>Elsewhere on the West Coast</span></label>
               <label class="tile"><input type="radio" name="location" value="Sunshine Coast"><span>Sunshine Coast</span></label>
               <label class="tile"><input type="radio" name="location" value="Other"><span>Other</span></label>
             </div>
             <p class="q-error" role="alert" hidden></p>
-            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Next</button></div>
+            <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
           </fieldset>
 
-          <fieldset class="q-step" data-step="4" data-title="Land" data-optional>
+          <fieldset class="q-step" data-step="3" data-title="Land" data-optional>
             <legend>What about the land?</legend>
             <div class="tiles" data-auto>
               <label class="tile"><input type="radio" name="land" value="I own the lot"><span>I own the lot</span></label>
@@ -710,7 +172,7 @@
             <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
           </fieldset>
 
-          <fieldset class="q-step" data-step="5" data-title="Plans" data-optional>
+          <fieldset class="q-step" data-step="4" data-title="Plans" data-optional>
             <legend>Do you have plans yet?</legend>
             <div class="tiles" data-auto>
               <label class="tile"><input type="radio" name="plans" value="I have drawings"><span>I have drawings</span></label>
@@ -721,7 +183,7 @@
             <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
           </fieldset>
 
-          <fieldset class="q-step" data-step="6" data-title="Budget" data-optional>
+          <fieldset class="q-step" data-step="5" data-title="Budget" data-optional>
             <legend>Roughly what budget are you working with?</legend>
             <div class="tiles" data-auto>
               <label class="tile"><input type="radio" name="budget" value="Under $500K"><span>Under $500K</span></label>
@@ -734,7 +196,7 @@
             <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
           </fieldset>
 
-          <fieldset class="q-step" data-step="7" data-title="Timeline" data-optional>
+          <fieldset class="q-step" data-step="6" data-title="Timeline" data-optional>
             <legend>When are you hoping to start?</legend>
             <div class="tiles" data-auto>
               <label class="tile"><input type="radio" name="timeline" value="Within 6 months"><span>Within 6 months</span></label>
@@ -746,14 +208,21 @@
             <div class="q-nav" hidden><button type="button" class="q-back link" data-back><span class="arr"></span><span class="label">Back</span></button><button type="button" class="btn" data-next>Skip</button></div>
           </fieldset>
 
-          <fieldset class="q-step" data-step="8" data-title="Details">
-            <legend>Tell us about it.</legend>
+          <fieldset class="q-step" data-step="7" data-title="Details">
+            <legend>Anything else you&rsquo;d like to add?</legend>
             <p class="q-sub">A few lines is plenty. Drawings or a photo of the site help us get back to you with something useful.</p>
-            <div class="fld"><label for="msg">Your project<span class="req">*</span></label><textarea id="msg" name="description" maxlength="5000" required placeholder="What you&rsquo;re planning, rough size, and anything we should know about the site." data-hint-custom-home="Rough size, bedrooms, the feel you&rsquo;re after, and anything about the lot (slope, access, views, services)." data-hint-addition="What you want to add, roughly how big, and the age and style of the house now." data-hint-renovation="Which parts of the home, what you want changed, and roughly when the house was built." data-hint-adu="Suite or carriage house? Rough size, who it&rsquo;s for, and where it would sit on the lot." data-hint-commercial="What the building is for, rough size, and where you are with the design and permits." data-hint-not-sure="Tell us what you have in mind and we&rsquo;ll help you work out the next step."></textarea></div>
+            <div class="fld"><label for="msg">Your project<span class="q-opt">(optional)</span></label><textarea id="msg" name="description" maxlength="5000" placeholder="What you&rsquo;re planning, rough size, and anything we should know about the site." data-hint-custom-home="Rough size, bedrooms, the feel you&rsquo;re after, and anything about the lot (slope, access, views, services)." data-hint-addition="What you want to add, roughly how big, and the age and style of the house now." data-hint-renovation="Which parts of the home, what you want changed, and roughly when the house was built." data-hint-adu="Suite or carriage house? Rough size, who it&rsquo;s for, and where it would sit on the lot." data-hint-commercial="What the building is for, rough size, and where you are with the design and permits." data-hint-not-sure="Tell us what you have in mind and we&rsquo;ll help you work out the next step."></textarea></div>
             <label class="drop" for="q-photo"><span class="drop-h">Add drawings or a photo<span class="q-opt">(optional)</span></span><input id="q-photo" name="attachment" type="file" accept="image/*,application/pdf" data-max-mb="8"><small>Plans, a sketch, or a photo of the lot or house. One file, up to 8 MB.</small><span class="drop-name" aria-live="polite"></span></label>
-            <label class="chk" style="margin-top:22px"><input type="checkbox" name="mailing-list" value="yes"> Join our mailing list.</label>
+                        <div class="fld" style="margin-top:20px"><span class="q-lbl" id="q-pc">Best way to reach you</span>
+              <div class="tiles sm" role="radiogroup" aria-labelledby="q-pc">
+                <label class="tile"><input type="radio" name="preferred-contact" value="Call" checked><span>Call</span></label>
+                <label class="tile"><input type="radio" name="preferred-contact" value="Text"><span>Text</span></label>
+                <label class="tile"><input type="radio" name="preferred-contact" value="Email"><span>Email</span></label>
+              </div>
+            </div>
+            <label class="chk" style="margin-top:6px"><input type="checkbox" name="mailing-list" value="yes"> Join our mailing list.</label>
             <p class="q-error" role="alert" hidden></p>
-            <div class="q-nav"><button type="button" class="q-back link" data-back hidden><span class="arr"></span><span class="label">Back</span></button><button class="btn" type="submit">Send</button></div>
+            <div class="q-nav"><button type="button" class="q-back link" data-back hidden><span class="arr"></span><span class="label">Back</span></button><button class="btn" type="submit">Send my request</button></div>
           </fieldset>
         </form>
         <div class="q-done" id="q-done" hidden>
@@ -764,70 +233,33 @@
         </div>
       </div>
     </div>
-  </section>
+  </div></section>
 
 </main>
-
-<!-- 12. FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-logo"><svg class="logo-mark" viewBox="0 0 62 58" aria-hidden="true"><path class="l" d="M6.5 58V28.5L27 11" fill="none" stroke-width="11.5" stroke-linejoin="round"/><path class="r" d="M30 3.5l25 23V58" fill="none" stroke-width="11.5" stroke-linejoin="round"/></svg><p class="wm">Saltwater<small>BUILDING CO</small></p></div>
-    <p><a href="tel:+16048484040">604-848-4040</a><br>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p>
-    <p><a href="https://www.instagram.com/saltwaterbuildingco/" target="_blank" rel="noopener">Instagram</a></p>
-    <p class="owner"><a href="/portal/">Client login</a> &nbsp;·&nbsp; <a href="/admin/leads/" rel="nofollow">Owner login</a></p>
-  </div>
-</footer>
-
+<div style="height:80px"></div>
+<footer><div class="wrap">
+  <div><p><strong>Saltwater Building Co.</strong></p><p>6-1920 Lyche Rd, PO Box 221<br>Ucluelet, BC V0R 3A0</p><p><a href="tel:+16048484040">604-848-4040</a></p></div>
+  <div><h4>Explore</h4><a href="/projects/">Projects</a><br><a href="/#how-we-build">How we build</a><br><a href="/building-on-the-coast/">Building on the coast</a><br><a href="/#contact">Request a quote</a></div>
+  <div><h4>Where we build</h4><p>Ucluelet, Tofino, Whistler, the Sunshine Coast and remote coastal British Columbia.</p></div>
+  <div class="sub"><span>&copy; Saltwater Building Co.</span><a href="/portal/">Client login</a><a href="/admin/leads/" rel="nofollow">Owner login</a></div>
+</div></footer>
 <div class="mbar" id="mbar" role="region" aria-label="Quick contact"><a href="tel:+16048484040">Call</a><a href="sms:+16048484040">Text</a></div>
-
 <script>
 (function(){
-  if(navigator.connection&&navigator.connection.saveData) document.documentElement.classList.add('save-data');
   // Image fallback: if a Wix original fails, use the resized Wix variant of the same file
-  document.querySelectorAll('img').forEach(function(img){
-    img.addEventListener('error',function(){
-      if(img.dataset.fb) return; img.dataset.fb=1;
-      img.src=img.src.split('/v1/')[0]+'/v1/fill/w_1600,h_1200,al_c,q_85/file.jpg';
-    });
-  });
-
-  // Fit the giant wordmark to the content width
-  var wm=document.getElementById('wm');
-  function fit(){
-    var avail=wm.parentElement.clientWidth-parseFloat(getComputedStyle(wm.parentElement).paddingLeft)-parseFloat(getComputedStyle(wm.parentElement).paddingRight);
-    wm.style.fontSize='100px';
-    var w=wm.scrollWidth;
-    if(w) wm.style.fontSize=(100*avail/w*0.995)+'px';
-    // Spread the small 'Building Co' line to the same width, like the logo
-    var sub=wm.nextElementSibling;
-    if(sub&&sub.classList.contains('wm-sub')){
-      var rw=document.createRange();rw.selectNodeContents(wm);var target=rw.getBoundingClientRect().width*0.97;
-      sub.style.fontSize=Math.max(12,target*0.052)+'px';sub.style.letterSpacing='0px';
-      var r=document.createRange();r.selectNodeContents(sub);var tw=r.getBoundingClientRect().width,n=sub.textContent.length;
-      if(n>1) sub.style.letterSpacing=Math.max(0,(target-tw)/(n-1))+'px';
-    }
-  }
-  fit(); window.addEventListener('resize',fit);
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
-
-  // Header: transparent over hero, solid with dark wordmark after
-  var hdr=document.getElementById('hdr'),hero=document.getElementById('hero');
-  function onScroll(){hdr.classList.toggle('solid',window.scrollY>hero.offsetHeight-hdr.offsetHeight)}
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
-
-  // Hero video: still image shows instantly; small loop picked by screen size; skipped on Save-Data or reduced motion
-  (function(){var v=document.getElementById('heroVid');if(!v)return;
-    var c=navigator.connection||{},slow=c.saveData||/(^|-)2g$/.test(c.effectiveType||''),rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(slow||rm){v.remove();return}
-    v.src=(c.effectiveType==='3g')?'wave-640.mp4':'wave-960.mp4';
-    var p=v.play();if(p&&p.catch)p.catch(function(){});
+  document.querySelectorAll('img').forEach(function(i){i.addEventListener('error',function(){if(i.dataset.fb)return;i.dataset.fb=1;i.src=i.src.split('/v1/')[0]+'/v1/fill/w_1600,h_1200,al_c,q_85/file.jpg'})});
+  // Menu: close after choosing a link
+  var d=document.querySelector('.mnav');if(d)d.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){d.open=false})});
+  // Hero video: nothing loads until wanted. Desktop: short muted loop after the page has loaded (not on Save-Data, 2g or reduced motion). Phones: tap Play.
+  (function(){var v=document.getElementById('heroVid'),box=document.getElementById('vid'),b=document.getElementById('playBtn');if(!v)return;
+    var c=navigator.connection||{},slow=c.saveData||/(^|-)2g$/.test(c.effectiveType||''),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(){if(!v.src)v.src='/wave-640.mp4';var p=v.play();if(p&&p.catch)p.catch(function(){});box.classList.add('on')}
+    b.addEventListener('click',go);
+    if(matchMedia('(min-width:860px)').matches&&!slow&&!rm)addEventListener('load',function(){setTimeout(go,600)});
   })();
-
-  // Menu
-  var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');
-  function setMenu(open){document.body.classList.toggle('menu-open',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Close menu':'Open menu');menu.setAttribute('aria-hidden',!open)}
-  btn.addEventListener('click',function(){setMenu(!document.body.classList.contains('menu-open'))});
-  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+  // Services chips: jump to the form with that project type picked
+  document.querySelectorAll('.svcs a[data-slug]').forEach(function(a){a.addEventListener('click',function(){
+    var t=document.querySelector('input[name="project-type"][data-slug="'+a.dataset.slug+'"]');if(t)t.checked=true})});
 
   // Quote wizard ("Start your project"). Without this script every step shows as one normal form.
   // One step at a time: tapping a tile answers it and moves on; optional steps can be skipped; Back goes back.
@@ -919,29 +351,6 @@
     });
   })();
 
-  // Services list: tap a service -> jump to a matching project in Select Projects (slides the carousel to it).
-  // Matches on each card's category text at tap time, so cards added later in the photo manager work too.
-  // No matching project (e.g. Renovations) -> go to the quote form with the message started for them
-  // (and the matching project type picked).
-  document.querySelectorAll('.svc a[data-svc]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var keys=a.dataset.svc.split('|'),name=a.querySelector('.s').textContent.trim(),car=document.querySelector('.carousel'),hit=null;
-      if(car) car.querySelectorAll('.card').forEach(function(c){
-        if(hit)return; var k=((c.querySelector('.c')||{}).textContent||'').toLowerCase();
-        if(keys.some(function(x){return k.indexOf(x)>-1}))hit=c;
-      });
-      if(hit){
-        document.getElementById('projects').scrollIntoView({behavior:'smooth',block:'start'});
-        car.scrollTo({left:car.scrollLeft+hit.getBoundingClientRect().left-car.getBoundingClientRect().left-parseFloat(getComputedStyle(car).paddingLeft||0),behavior:'smooth'});
-        hit.classList.add('flash'); setTimeout(function(){hit.classList.remove('flash')},1800);
-      }else{
-        var m=document.getElementById('msg'); if(m&&!m.value) m.value="Hi, I'm interested in "+name.toLowerCase()+". ";
-        var pt=qf&&qf.querySelector('input[name="project-type"][data-svc="'+a.dataset.svc+'"]'); if(pt) pt.checked=true;
-        document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
-      }
-    });
-  });
 
   // Thank-you state after the Netlify form post, with a "Book a call" option
   if(location.search.indexOf('sent=1')>-1&&qf){
@@ -958,19 +367,12 @@
     });
   })();
 
-  // TODO: no Google reviews link yet; until there is one the button does nothing instead of jumping to the top
-  document.querySelectorAll('[data-google-reviews]').forEach(function(b){
-    if(b.getAttribute('href')!=='#'){b.target='_blank';b.rel='noopener';return}
-    b.addEventListener('click',function(e){e.preventDefault()});
-  });
 
-  // Phones: sticky Call / Text bar, shown once past the hero
+  // Phones: sticky Call / Text bar, shown after a little scrolling
   (function(){var mb=document.getElementById('mbar');if(!mb)return;document.body.classList.add('has-mbar');
-    function t(){mb.classList.toggle('on',window.scrollY>hero.offsetHeight*.6)}
-    t(); window.addEventListener('scroll',t,{passive:true});
-  })();
+    function t(){mb.classList.toggle('on',window.scrollY>300)}t();addEventListener('scroll',t,{passive:true});})();
 })();
 </script>
-<script src="/js/site-photos.js?v=2" data-site="saltwater-builder" data-projects data-texts defer></script>
+<script src="/js/site-photos.js?v=2" data-site="saltwater-builder" data-texts defer></script>
 </body>
 </html>
